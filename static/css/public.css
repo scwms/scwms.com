@@ -1,0 +1,196 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-weight: 200;
+}
+
+h1 {
+	font-size: 1.5rem;
+	font-weight: 200;
+}
+
+h2 {
+	font-size: 1.4rem;
+	font-weight: 200;
+}
+
+h3 {
+	font-size: 1.3rem;
+	font-weight: 200;
+}
+
+h4 {
+	font-size: 1.2rem;
+	font-weight: 200;
+}
+
+.text-info {
+	font-weight: 200;
+}
+
+.text-center {
+	font-weight: 200;
+}
+
+.dropdown-menu {
+	border: 1px solid #ced4da;
+	background-color: transparent;
+}
+
+.dropdown-item {
+	font-weight: 200;
+	color: #ffffff;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+ul, ol, li {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.p-r {
+	position: relative;
+}
+
+.pt-100 {
+	padding-top: 100px;
+}
+
+.mr-10 {
+	margin-right: 10px;
+}
+
+.mt-10 {
+	margin-top: 10px;
+}
+
+.mt-20 {
+	margin-top: 20px;
+}
+
+/*reset*/
+.btn-group-xs>.btn, .btn-xs {
+	padding: .05rem .5rem;
+	font-size: .875rem;
+	line-height: 1.5;
+	border-radius: .2rem;
+}
+
+.navbar {
+	width: 100%;
+	padding: 0.5rem 0;
+}
+
+.navbar-toggler {
+	position: absolute;
+	right: 0
+}
+
+#collapsibleNavbar {
+	margin-top: 1.75rem;
+}
+
+#header .container-fluid {
+	padding: 0;
+}
+
+.nav-item {
+	padding-left: 1rem;
+}
+
+#header {
+	width: 100%;
+	height: 6rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-shadow: none;
+	border-bottom: 1px solid #787c7e;
+	z-index: 9999;
+}
+
+#header.nav-fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(20, 138, 157, 1);
+}
+
+#header .header-logo {
+	position: absolute;
+	color: #fff;
+	font-size: 1.3rem;
+	top: 0;
+	left: 0;
+	z-index: 11;
+	width: 20rem;
+	height: 6rem;
+	padding: 2rem 0 0 1rem;
+}
+
+#header .header-logo img {
+	width: 100%;
+	height: auto;
+}
+
+#header .top {
+	width: 100%;
+	height: 6rem;
+	padding-top: 1rem;
+}
+
+#header .nav-link {
+	font-size: 1.2rem;
+}
+
+#header .header-download {
+	border: 1px solid #fff;
+}
+
+.list03 {
+	background: url(../images/bg.jpg) no-repeat;
+	background-size: 100%;
+	margin: 100px 0 0 0;
+	padding: 0;
+}
+
+.list03 p {
+	background-color: rgba(23, 162, 184, 0.8);
+	padding: 30px;
+	margin: 0;
+}
+
+.footer {
+	background-color: #000;
+	color: #fff;
+	text-align: center;
+}
+
+.footer li {
+	list-style: none;
+	display: inline-block;
+	padding: 1rem;
+}
+
+.footer a {
+	color: #fff;
+}
+
+.footer .copyright {
+	padding: 0 0 1rem 0;
+}
+
+.contact {
+	padding: 0 0 1rem 0;
+	text-align: center;
+	font-size: .8rem;
+}
+
+#navSmall{
+	z-index:9999999;
+}
