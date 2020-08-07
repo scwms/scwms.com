@@ -24,11 +24,16 @@ h4 {
 	font-weight: 200;
 }
 
+p{
+	text-indent:2em;
+}
+
 .text-info {
 	font-weight: 200;
 }
 
 .text-center {
+	text-indent:0em;
 	font-weight: 200;
 }
 
@@ -193,12 +198,4 @@ ul, ol, li {
 
 #navSmall{
 	z-index:9999999;
-}
-
-p{
-	text-indent:2em;
-}
-
-p .text-center{
-	text-indent:0em;
 }
