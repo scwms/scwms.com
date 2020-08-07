@@ -24,8 +24,8 @@ h4 {
 	font-weight: 200;
 }
 
-p{
-	text-indent:2em;
+p {
+	text-indent: 2em;
 }
 
 .text-info {
@@ -33,7 +33,7 @@ p{
 }
 
 .text-center {
-	text-indent:0em;
+	text-indent: 0em;
 	font-weight: 200;
 }
 
@@ -196,11 +196,14 @@ ul, ol, li {
 	font-size: .8rem;
 }
 
-#navSmall{
-	z-index:9999999;
+#navSmall {
+	z-index: 9999999;
 }
 
 a {
-	text-decoration:none;
+	text-decoration: none
 }
 
+a:hover {
+	text-decoration: none
+}
