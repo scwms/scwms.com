@@ -198,3 +198,7 @@ ul, ol, li {
 p{
 	text-indent:2em;
 }
+
+p .text-center{
+	text-indent:0em;
+}
