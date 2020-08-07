@@ -200,6 +200,10 @@ ul, ol, li {
 	z-index: 9999999;
 }
 
+list-group-item>a{
+	color:#007bff;
+}
+
 a {
 	text-decoration: none
 }
