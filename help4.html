@@ -98,7 +98,7 @@
 			<div class="col col-12 col-md-2">
 				<div class="" id="help-nav">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="#c1">1、列表组件</a></li>
+						<li class="list-group-item"><a >1、列表组件</a></li>
 						<li class="list-group-item"><a href="help42.html">2、表单组件</a></li>
 						<li class="list-group-item"><a href="help43.html">3、数据导入️</a></li>
 						<li class="list-group-item"><a href="help44.html">4、打印模版️</a></li>
@@ -150,7 +150,9 @@
 								</tr><tr>
 					    	</table>
 					    	<p class="text-center">表 23</p>
+					    	<br>
 					    	<h5>1.1表头定义-定义导出数据列</h5>
+					    	<br>
 					    	<p>数据库配置表快速定位：windowdb_conf.{模块编号}_ld_th</p>
 					    	<p>描述：列表的表头定义配置表默认只有三行数据，必须带有一个id列。默认还会带有checkbox的描述列，用于描述列表的checkbox，其它列由设计人员自行定义，id=2 的数据为导出列定义。</p>
 					    	<p>导出按钮代码：</p>
@@ -160,7 +162,71 @@
 							</small>
 					    	<p>saveSearch方法导出的是被检索出的结果，包含第二页第三页...直到最后一页，而saveSelect方法必须要求选中数据行，才会导出数据。</p>
 					    	<p>导出列规则：id = 2 ，且值是”1,”为前缀的数据列，默认会被导出到excel文件中。其它数据不会被导入，但是会被解析到html网页中作为网页的一部分。</p>
-					    	<p></p>
+					    	<br>
+					    	<h5>1.2.表头定义-定义查询条件</h5>
+							<br>
+							<p>数据库配置表快速定位：windowdb_conf.{模块编号}_ld_th，windowdb_conf.{模块编号}_dd，windowdb_conf.{模块编号}_ld</p>
+					    	<p>描述：列表的表头定义配置表默认只有三行数据，必须带有一个id列。默认还会带有checkbox的描述列，用于描述列表的checkbox，其它列由设计人员自行定义，id=3 的数据为检索列定义。该列中的值如果包含input标签，则第一个input标签会自动加上字段名作为input的name，点击列表查询按钮，则会将该值传递后台检索处理。而该input的样式名即class=” .like.”表示模糊匹配（like ‘%%’），class=” .eq.”表示精确匹配（=），class=” .gt.”表示大于（>），class=” .lt.”表示小于（<），class=” .in.”表示包含（in(...)），class=” .between.”则表示SQL语句中的between and 第一个input的name后半部分等于.between.min.第二个input的name后半部分等于.between.max.，具体使用的方法请参考数据库中的示例。若该数据列表不需要额外的查询组件作为辅助，需要在第一列的第三行申明：“<!-- no search button -->”则列表页面上方不会解析出一个默认的查询按钮。</p>
+							<br>
+					    	<h5>1.3.表头定义-定义分页</h5>
+							<br>
+							<p>代码：<small>&lt;script&gt;$('#dg').datagrid({pageList: [10, 20, 30]});&lt;/script&gt;	</small></p>
+					    	<p>参数：pageList: 提供分页的列表行数</p>
+					    	<p>代码位置：windowdb_conf.{模块编号}_ld_th</p>
+					    	<p>描述：列表默认每页20行数据，该方法定义除了默认行数外，支持每页数据的可选行数数值。</p>
+					    	<br>
+					    	<h5>1.4.表头定义-定义添加按钮</h5>
+					    	<br>
+					    	<p>代码：<small>&lt;a href="javascript:add({templid});" title="根据指定的格式弹出添加页面"&gt;&lt;/a&gt;</small></p>
+					    	<p>参数：templid:模版id，对应的表单模版。</p>
+					    	<p>代码位置：windowdb_conf.{模块编号}_ld_th</p>
+					    	<p>描述：js方法add,调用弹出窗口，该窗口根据templid，解析windowdb_conf.{模块编号}_dd表中templid字段为add方法中参数传递的数值。</p>
+							<br>
+							<h5>1.5.表头定义-定义编辑按钮</h5>
+							<br>
+							<p>代码：<small>&lt;button onclick=’openurl(“窗口标题”,”${basePath}/datail/showAdd/page/{模块编号}/{templid}?id={数据主键id}”);’&gt;修改&lt;/button&gt;</small></p>
+					    	<p>参数：templid:模版id，对应的表单模版。</p>
+					    	<p>代码位置：windowdb_conf.{模块编号}_dd，windowdb_conf.{模块编号}_ld</p>
+					    	<p>描述：js方法openurl,调用弹出窗口，该窗口根据templid，解析windowdb_conf.{模块编号}_dd表中templid字段对应的数值。</p>
+					    	<br>
+					    	<h5>1.6.表头定义-定义帮助按钮以及帮助内容</h5>
+					    	<br>
+					    	<p>代码：<small>&lt;a href="javascript:help({id});" title="弹出右侧帮助侧边栏内容"&gt;&lt;/a&gt;</small></p>
+					    	<p>参数：id，windowdb_conf.{模块编号}_hp表中的id。</p>
+					    	<p>代码位置：windowdb_conf.{模块编号}_ld_th</p>
+					    	<p>描述：js方法help,调用对应模块的帮助窗口，该窗口根据id，解析windowdb_conf.{模块编号}_hp表中id字段为help方法中参数传递的数值的内容。</p>
+					    	<br>
+					    	<h5>1.7.列表数据定义-定义SQL语句查询列表数据</h5>
+					    	<br>
+					    	<p>位置：windowdb_conf.{模块编号}_dd</p>
+					    	<p>描述：windowdb_conf.{模块编号}_dd表中templid对应值是列表接口url中传递过来的值，例如：url中传递templid=100，则windowdb_conf.{模块编号}_dd表中需要建立一行templid=100的记录，其value字段保存一段select查询语句，查询语句查询出的字段，需要和windowdb_conf.{模块编号}_ld_th表中的字段对应。</p>
+					    	<br>
+					    	<h5>1.8.列表数据定义-绑定数据库视图（view）方式查询列表数据</h5>
+					    	<br>
+					    	<p>位置：windowdb_conf.{模块编号}_ld</p>
+					    	<p>描述：windowdb_conf.{模块编号}_ld视图。列表接口未指明datasrc为dd的情况下默认显示的数据，以及详细显示页面和详细打印的数据。</p>
+					    	<br>
+					    	<h5>1.9.列表数据定义-定义数据伪删除（可见、不可见）</h5>
+					    	<p>位置：windowdb_conf.{模块编号}_dd，windowdb_conf.{模块编号}_ld</p>
+					    	<p>代码：<small>&lt;button onclick="visible({业务表名},{id})"&gt;生效&lt;/button&gt;</small></p>
+					    	<p><small>&lt;button onclick="unvisible({业务表名},{id})"&gt;作废&lt;/button&gt;</small></p>
+					    	<p>描述：设置业务表中visible字段的开和关，从而控制业务数据是否可见（是否生效）从而达到标记业务数据状态的目的。</p>
+					    	<br>
+					    	<h5>1.10.列表数据定义-数据行中定义呼出流程面板按钮</h5>
+					    	<br>
+					    	<p>位置：windowdb_conf.{模块编号}_dd，windowdb_conf.{模块编号}_ld</p>
+					    	<p>代码：<small>&lt;button onclick="showTask({模块编号},{taskid})"&gt;提交&lt;/button&gt;</small></p>
+					    	<p>描述：根据模块编号和流程任务ID呼出流程面板。处理流程待办任务。</p>
+					    	<p>taskid：windowdb.wf_ins_task.id, 对应业务库中的流程实例表的主键ID</p>
+					    	<br>
+					    	<h5>1.11.列表数据定义-列表数据打印模版定义</h5>
+					    	<br>
+					    	<p>位置：windowdb_conf.{模块编号}_dd_pt，windowdb_conf.{模块编号}_ld</p>
+					    	<p>代码：<small>&lt;a href="javascript:printSearch({printid});" title="将查询的单页或者多页数据根据特定格式打印出来"&gt;&lt;/a&gt;</small></p>
+					    	<p><small>&lt;a href="javascript:printSelect({printid});" title="将勾选的数据根据特定格式打印出来"&gt;&lt;/a&gt;</small></p>
+					    	<p>描述：根据打印模版编号弹出数据面板。打印业务数据。</p>
+					    	<p>printid：windowdb_conf.{模块编号}_dd_pt.id, 对应打印模版表的主键ID。</p>
+					    	
 					    </div>
 					</div><!--/card--> 
 				</div><!--/help-con-->
