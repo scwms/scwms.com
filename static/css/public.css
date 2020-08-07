@@ -194,3 +194,7 @@ ul, ol, li {
 #navSmall{
 	z-index:9999999;
 }
+
+p{
+	text-indent:2em;
+}
