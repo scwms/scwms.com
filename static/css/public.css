@@ -24,6 +24,10 @@ h4 {
 	font-weight: 200;
 }
 
+a{
+ text-decoration:none;
+}
+
 p{
 	text-indent:2em;
 }
