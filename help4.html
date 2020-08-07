@@ -89,8 +89,14 @@
 		</div>		
 	</div>
 	<div class="list01-title bg-info">
-		<h2 class="text-center d-none d-md-block">请结合软件自带的帮助系统进行查阅</h2>
-		<h3 class="text-center d-block d-md-none">请结合软件自带的帮助系统进行查阅</h3>
+		
+		<div class="btn-group">
+		  <a class="btn btn-warning text-muted" href="help.html"><i class="glyphicon glyphicon-home"></i></a>
+		</div>
+		
+		<h2 class="text-center d-none d-md-block">第四章、配置业务组件</h2>
+		<h3 class="text-center d-block d-md-none">第四章、配置业务组件</h3>
+		
 	</div>
 	<!--内容-->
 	<div class="container-fluid help p-r">
@@ -151,7 +157,15 @@
 					    	</table>
 					    	<p class="text-center">表 23</p>
 					    	<h5>1.1表头定义-定义导出数据列</h5>
-					    	<p></p>
+					    	<p>数据库配置表快速定位：windowdb_conf.{模块编号}_ld_th</p>
+					    	<p>描述：列表的表头定义配置表默认只有三行数据，必须带有一个id列。默认还会带有checkbox的描述列，用于描述列表的checkbox，其它列由设计人员自行定义，id=2 的数据为导出列定义。</p>
+					    	<p>导出按钮代码：</p>
+					    	<small>
+					    	&lt;a href=&quot;javascript:saveSearch();&quot; title=&quot;将查询的单页或者多页数据导出为xls格式文件&quot;&gt;&lt;/a&gt;<br/>
+							&lt;a href=&quot;javascript:saveSelect();&quot; title=&quot;将勾选的数据导出为xls格式文件&quot;&gt;&lt;/a&gt;<br/><br/>
+							</small>
+					    	<p>saveSearch方法导出的是被检索出的结果，包含第二页第三页...直到最后一页，而saveSelect方法必须要求选中数据行，才会导出数据。</p>
+					    	<p>导出列规则：id = 2 ，且值是”1,”为前缀的数据列，默认会被导出到excel文件中。其它数据不会被导入，但是会被解析到html网页中作为网页的一部分。</p>
 					    	<p></p>
 					    </div>
 					</div><!--/card--> 
