@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
-	<title>配置业务组件 帮助文档 致力于快速开发 企业管理信息系统研发平台 WORKFLOW 沃克福勒</title>
+	<title>系统帮助组件 配置业务组件 帮助文档 致力于快速开发 企业管理信息系统研发平台 WORKFLOW 沃克福勒</title>
 	<meta content="NOODP" name="ROBOTS" />
-	<meta name="keywords" content="列表组件, 业务组件,帮助,文档,help,Document,白皮书,说明书,使用指南,开发指南">
-	<meta name="description" content="配置业务组件 帮助系统 企业软件研发平台 总体介绍部分、全篇介绍各类业务组件，如：列表组件、表单组件、数据导入组件、数据导出组件、打印组件、流程相关组件、帮助系统等等组件...">
+	<meta name="keywords" content="系统帮助组件, 业务组件,帮助,文档,help,Document,白皮书,说明书,使用指南,开发指南">
+	<meta name="description" content="系统帮助组件 帮助系统 企业软件研发平台 总体介绍部分、全篇介绍各类业务组件，如：列表组件、表单组件、数据导入组件、数据导出组件、打印组件、流程相关组件、帮助系统等等组件...">
 
 	<!-- 新 Bootstrap4 核心 CSS 文件 -->
 	<link rel="stylesheet" href="static/bootstrap4/css/bootstrap.css">
@@ -26,7 +26,7 @@
 <body>		
 	<header id="header" class="">
 		<div class="container-fluid p-r">
-			<a class="header-logo" title="第四章、配置业务组件 << 帮助系统 << 企业软件研发平台"><h1>企业软件研发平台</h1></a>		
+			<a class="header-logo" title="第5节、系统帮助组件 << 第四章、配置业务组件 << 帮助系统 << 企业软件研发平台"><h1>企业软件研发平台</h1></a>		
 			<div class="float-right top">	
 				<!-- <div class="text-light contact">
 					<span class="glyphicon" title="QQ号">QQ：6996899 </span> | <span title="微信号" class="glyphicon glyphicon-phone">微信：18032603709</span>
@@ -92,10 +92,11 @@
 		
 		<div class="btn-group">
 		  <a class="btn btn-warning text-muted" href="help.html"><i class="glyphicon glyphicon-home"></i></a>
+		  <a class="btn btn-warning text-muted" href="help4.html">第四章</a>
 		</div>
 		
-		<h2 class="text-center d-none d-md-block">第四章、配置业务组件</h2>
-		<h3 class="text-center d-block d-md-none">第四章、配置业务组件</h3>
+		<h2 class="text-center d-none d-md-block">第5节、系统帮助组件（系统帮助模版配置）</h2>
+		<h3 class="text-center d-block d-md-none">第5节、系统帮助组件（系统帮助模版配置）</h3>
 		
 	</div>
 	<!--内容-->
@@ -104,26 +105,18 @@
 			<div class="col col-12 col-md-2">
 				<div class="" id="help-nav">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="#c1">1、列表组件</a></li>
-						<li class="list-group-item"><a href="help42.html">2、表单组件</a></li>
-						<li class="list-group-item"><a href="help43.html">3、数据导入️</a></li>
-						<li class="list-group-item"><a href="help44.html">4、打印模版️</a></li>
-						<li class="list-group-item"><a href="help45.html">5、帮助组件️</a></li>
-						<li class="list-group-item"><a href="help46.html">6、流程组件️</a></li>
-						<li class="list-group-item"><a href="help47.html">7、流程节点️</a></li>
-						<li class="list-group-item"><a href="help48.html">8、路由动作️</a></li>
-						<li class="list-group-item"><a href="help49.html">9、触发器️</a></li>
+						<li class="list-group-item"><a href="#c1">组件</a></li> 
 					</ul>
 				</div>
 			</div>
 			<div class="col col-12 col-md-10">
 				<div class="help-con" id="c1">
 					<div class="card">
-						<div class="card-header" >1、列表组件</div>
+						<div class="card-header" >组件</div>
 					    <div class="card-body">
-					    	<p>本系统全部的列表页面，包括门户中的列表数据，均为列表组件配置并解析生成网页，网页的通用URL入口为：/list/page/{功能编码}?datasrc=dd&templid=100（有表头）和/list/noheader/{功能编码}?datasrc=dd&templid=100（无表头），两个接口功能一致，其中功能编码参数需要参考“系统管理”模块的“功能权限管理”列表页中的“编码”列，也可以参考软件帮助面板上方的“模块”编号；参数datasrc=dd表示列表页数据是通过windowdb_conf.{功能编码}_dd表中的templid=100的SQL语句获取的；如果没有这两个参数，系统会默认从windowdb_conf.{功能编码}_ld视图中获取数据。</p>
+					    	<p></p>
 					    	
-					    	<p>该接口参数如下表所示：</p>
+					    	<p></p>
 					    	<table class="table">
 						    	<tr>
 						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>列表组件接口地址：/list/page/{功能编码}，/list/noheader/{功能编码}</b></td>
@@ -139,33 +132,7 @@
 									<td>4</td><td>rows</td><td>20</td><td>每页显示行数</td>
 								</tr>
 					    	</table>
-					    	<p class="text-center">表 22</p>
-					    	
-					    	<p>该接口涉及配置表如下所示：</p>
-					    	<table class="table">
-						    	<tr>
-						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>列表组件配置库表清单</b></td>
-						    	</tr><tr>
-						    		<td><b>对象名</b></td><td><b>类型</b></td><td><b>说明</b></td>
-						    	</tr><tr>
-					    			<td>1</td><td>{功能编码}_dd</td><td>表</td><td>表单项配置数据，以及列表页面查询数据。</td>
-								</tr><tr>
-									<td>2</td><td>{功能编码}_ld</td><td>视图</td><td>明细数据视图（视图查询为明细页面以及打印页面提供数据）。</td>
-								</tr><tr>
-									<td>3</td><td>{功能编码}_ld_th</td><td>表</td><td>列表表头配置</td>
-								</tr><tr>
-					    	</table>
-					    	<p class="text-center">表 23</p>
-					    	<h5>1.1表头定义-定义导出数据列</h5>
-					    	<p>数据库配置表快速定位：windowdb_conf.{模块编号}_ld_th</p>
-					    	<p>描述：列表的表头定义配置表默认只有三行数据，必须带有一个id列。默认还会带有checkbox的描述列，用于描述列表的checkbox，其它列由设计人员自行定义，id=2 的数据为导出列定义。</p>
-					    	<p>导出按钮代码：</p>
-					    	<small>
-					    	&lt;a href=&quot;javascript:saveSearch();&quot; title=&quot;将查询的单页或者多页数据导出为xls格式文件&quot;&gt;&lt;/a&gt;<br/>
-							&lt;a href=&quot;javascript:saveSelect();&quot; title=&quot;将勾选的数据导出为xls格式文件&quot;&gt;&lt;/a&gt;<br/><br/>
-							</small>
-					    	<p>saveSearch方法导出的是被检索出的结果，包含第二页第三页...直到最后一页，而saveSelect方法必须要求选中数据行，才会导出数据。</p>
-					    	<p>导出列规则：id = 2 ，且值是”1,”为前缀的数据列，默认会被导出到excel文件中。其它数据不会被导入，但是会被解析到html网页中作为网页的一部分。</p>
+					    	 
 					    	<p></p>
 					    </div>
 					</div><!--/card--> 
