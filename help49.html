@@ -102,37 +102,145 @@
 			<div class="col col-12 col-md-2">
 				<div class="" id="help-nav">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="#c1">组件</a></li> 
+						<li class="list-group-item"><a href="#c1">SQL脚本检查</a></li> 
+						<li class="list-group-item"><a href="#c2">SQL脚本执行</a></li> 
+						<li class="list-group-item"><a href="#c3">Java代码执行</a></li> 
 					</ul>
 				</div>
 			</div>
 			<div class="col col-12 col-md-10">
-				<div class="help-con" id="c1">
-					<div class="card">
-						<div class="card-header" >组件</div>
+				<div class="help-con">
+
+					<div class="card" id="c0">
+						<div class="card-header">工作流节点路由触发器</div>
 					    <div class="card-body">
-					    	<p></p>
-					    	
-					    	<p></p>
-					    	<table class="table">
-						    	<tr>
-						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>列表组件接口地址：/list/page/{功能编码}，/list/noheader/{功能编码}</b></td>
-						    	</tr><tr>
-						    		<td><b>参数名</b></td><td><nobr><b>参数值</b></nobr></td><td><b>说明</b></td>
-						    	</tr><tr>
-					    			<td>1</td><td>datasrc</td><td>dd</td><td>该列表数据来源于 windowdb_conf.{功能编码}_dd 的配置库对象中记录的sql字符串，如果没有该参数则该列表数据来源于windowdb_conf.{功能编码}_ld的视图</td>
-								</tr><tr>
-									<td>2</td><td>templid</td><td>100</td><td>该列表数据来源于windowdb_conf.{功能编码}_dd表templid=100的记录值（sql）执行后的结果集（datasrc必须等于dd的前提下）</td>
-								</tr><tr>
-									<td>3</td><td>page</td><td>1</td><td>当前页码</td>
-								</tr><tr>
-									<td>4</td><td>rows</td><td>20</td><td>每页显示行数</td>
-								</tr>
-					    	</table>
-					    	 
-					    	<p></p>
+					    	<p>工作流路由触发器是节点之间跳转时处理业务数据的重要接口，一共分两种：1，执行 sql 代码；2，执行 java 代码。同时 sql 又分成 sql 代码检查业务和 sql 执行动作。java 组件同样也同时担负检查和执行业务代 码的双重职责。</p>
 					    </div>
 					</div><!--/card--> 
+					
+					
+					<div class="card" id="c1">
+						<div class="card-header" >配置跳转动作执行 SQL 代码检查业务</div>
+					    <div class="card-body">
+					    	<p>sql 代码检查业务负责检查 A 节点是否可以跳转到 B 节点，若业务不允许跳转，则返回一个描述问题的字 符串；若允许跳转，则返回一个空字符串。 </p>
+					    	<p>例如：销售订单提交到库房发货时，款到发货类型的订单，未收款，款项为 0 元，则不能被提交到库房。 理由是还没有收款。那么，SQL 代码检查业务组件就可以返回“该笔业务未收到款项”的消息。从而不能被提交。 </p>
+					    	<p>校验业务的时机又分成两种：1，执行动作之前，检查业务；2，执行动作之后，检查业务； </p>
+					    	<p>动作执行之前该笔业务数据还没有入库，因此不能获得该笔业务的 数据，但是可以获得尽可能早的触发时机。而动作执行之后，则可以获得该笔业务以及该笔业务所关联的该流 程实例任务、一并计算获得事后的校验结果。 </p>
+					    	<p>校验的 sql 语句可以有很多条。任意一条 sql 返回字符串表示路由跳转失败。而 sql 的执行顺序则是按照 order 字段从小到大的顺序一次执行。 </p>
+					    	<p>关于占位符：校验 sql 语句中可以通过占位符的方式获取系统当前的业务数据，以下是 sql 业务检查组件表中字段 sql 值的占位符以及含义：</p>
+					    	
+					    	<table class="table" id="t43">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="2" class="text-center"><b>关于流程节点路由检查表：windowdb.wf_def_node_route_checkscript.sql 字段中占位符的说明</b></td>
+						    	</tr><tr>
+						    		<td><b>占位符</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>${my.id}</td><td>当前登录人 id，关联 windowdb.person.id</td>
+								</tr><tr>
+									<td>2</td><td>${routeId}</td><td>路由 ID，关联 windowdb.wf_def_node_route.id</td>
+								</tr><tr>
+									<td>3</td><td>${ins_id}</td><td>流程实例 ID，关联 windowdb.wf_ins.id</td>
+								</tr><tr>
+									<td>4</td><td> ${task_insert_time}</td><td>该任务的创建时间，获取 windowdb.wf_ins_task.insert_time</td>
+								</tr><tr>
+									<td>5</td><td>${wf_def_id}</td><td>流程定义 ID，关联 windowdb.wf_def.id</td>
+								</tr><tr>
+									<td>6</td><td> ${from_node_index}</td><td> 来源节点的 index，关联 windowdb.wf_def_node.index </td>
+								</tr><tr>
+									<td>7</td><td> ${from_node_timeliness}</td><td> 来源节点的受理时限，关联 windowdb.wf_def_node.timeliness </td>
+								</tr><tr>
+									<td>8</td><td> ${from_node_type}</td><td> 来源节点的类型，关联 windowdb.wf_def_node.node_type </td>
+								</tr><tr>
+									<td>9</td><td>${from_node_id}</td><td> 来源节点的 ID，关联 windowdb.wf_def_node.id </td>
+								</tr><tr>
+									<td>10</td><td>${to_node_index}</td><td>目标节点的 index，关联 windowdb.wf_def_node.index </td>
+								</tr><tr>
+									<td>11</td><td>${to_node_type}</td><td>目标节点的类型，关联 windowdb.wf_def_node.node_type </td>
+								</tr><tr>
+									<td>12</td><td>${to_node_id}</td><td>目标节点的 ID，关联 windowdb.wf_def_node.id</td>
+								</tr> 
+								
+					    	</table>
+					    	 <p class="text-center">表 43</p>
+					    	 <p>以下是 sql 业务检查组件表（windowdb.wf_def_node_route_checkscript）的字段说明：</p>
+					    	 <table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="2" class="text-center"><b>流程节点路由表：windowdb.wf_def_node_route_checkscript 字段说明</b></td>
+						    	</tr><tr>
+						    		<td><b>占位符</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>id</td><td>主键</td>
+						    	</tr><tr>
+					    			<td>2</td><td>rid</td><td>路由 ID，关联 windowdb.wf_def_node_route.id </td>
+						    	</tr><tr>
+					    			<td>3</td><td>order</td><td>SQL 语句执行顺序 </td>
+						    	</tr><tr>
+					    			<td>4</td><td>sql</td><td>待执行的 SQL 语句 </td>
+						    	</tr><tr>
+					    			<td>5</td><td>b_a</td><td>before or after ？ 0，动作执行前执行检查；1，动作执行后执行检查；</td>
+								</tr>
+					    	</table>
+					    	 <p class="text-center">表 44</p>
+					    	 
+					    	 
+					    </div>
+					</div><!--/card--> 
+										
+
+					<div class="card" id="c2">
+						<div class="card-header">工作流节点路由触发器-配置流程发生扭转时执行 SQL 代码</div>
+					    <div class="card-body">
+					    	<p>sql 代码检查执行业务组件负责检查 A 节点跳转到 B 节点的事后，执行批量 SQL 语句，用于处理具体的 业务表数据。 </p>
+					    	<p>例如：费用报销财务审批通过时，执行一条 sql 向通知表中写入一行通知信息，通知当事人来财务部门领 款。</p>
+					    	<p>关于占位符：执行的 sql 语句中可以通过占位符的方式获取系统当前的业务数据，占位符如<a href="#t42">表 43</a>a>所示。</p>
+					    	<p> 以下是 sql 业务执行组件表（windowdb.wf_def_node_route_actionscript）的字段说明：</p>
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="2" class="text-center"><b>流程节点路由表：windowdb.wf_def_node_route_actionscript 字段说明</b></td>
+						    	</tr><tr>
+						    		<td><b>字段名</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>id</td><td>主键</td>
+						    	</tr><tr>
+					    			<td>2</td><td>rid</td><td>路由 ID，关联 windowdb.wf_def_node_route.id </td>
+						    	</tr><tr>
+					    			<td>3</td><td>order</td><td>SQL 语句执行顺序 </td>
+						    	</tr><tr>
+					    			<td>4</td><td>sql</td><td>待执行的 SQL 语句 </td>
+						    	</tr><tr>
+					    			<td>5</td><td>requrnkey</td><td>  sql 返回值；0，无返回值；1，insert 语句返回主键 id；2，select 语句返回字符串</td>
+								</tr>
+					    	</table>
+					    	 <p class="text-center">表 45</p>
+					    </div>
+					</div><!--/card--> 			
+
+					<div class="card" id="c3">
+						<div class="card-header">工作流节点路由触发器-配置流程发生扭转时时执行 Java 代码</div>
+					    <div class="card-body">
+					    	<p>编写一新的 java 类编译并加载用于处理流程动作扭转发生时的业务。目前已经不建议使用该方法，尽可 能参考本章 9.2 节使用 sql 语句的方式来处理。但是，如果修改数据库中的业务数据已经不能解决问题。例如： 需要调用接口发邮件，调用接口发短信，或者需要调用其它第三方服务、又或者需要调用操作系统底层服务的， 可以考虑阅读本节内容，使用 java 扩展类来处理业务。 代码示例如下所示：</p>
+					    	 <small>
+					    	 <per>
+					    	 	package cn.net.workflow.workflow.route;
+					    	 	import java.util.Map;
+					    	 	import com.windowdb.wms.dao.WfInsTaskDao;
+					    	 	public class RouteManualId{路由ID} extends com.windowdb.wms.service.sup.RouteManual{
+					    	 		@Override
+					    	 		public void go(WfInsTaskDao dao , Object billId, Map<String,Object> wfInfo ) throws Exception{
+					    	 			// FIXME 请此处编写代码处理业务逻辑，可以执行发送短信、邮件以及调用第三方接口或消息。
+					    	 			// dao 提供数据库操作服务。
+					    	 			// billId 单据编号
+					    	 			// wfInfo 流程对象
+					    	 			// 注意类名必须以“RouteManualId”作为前缀，后面紧跟一个数字，数字必须是路由ID，执行该路由跳转时才会被调用。
+					    	 		}
+ 					    	 	}
+					    	 </per>
+					    	 </small>
+					    	 <p>注意事项请参考上述代码中的注释内容。</p>
+					    </div>
+					</div><!--/card--> 
+					
+
 				</div><!--/help-con-->
 			</div>
 		</div>
