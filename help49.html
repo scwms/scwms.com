@@ -220,21 +220,21 @@
 					    <div class="card-body">
 					    	<p>编写一新的 java 类编译并加载用于处理流程动作扭转发生时的业务。目前已经不建议使用该方法，尽可 能参考本章 9.2 节使用 sql 语句的方式来处理。但是，如果修改数据库中的业务数据已经不能解决问题。例如： 需要调用接口发邮件，调用接口发短信，或者需要调用其它第三方服务、又或者需要调用操作系统底层服务的， 可以考虑阅读本节内容，使用 java 扩展类来处理业务。 代码示例如下所示：</p>
 					    	 <small>
-					    	 <per>
-					    	 	package cn.net.workflow.workflow.route;
-					    	 	import java.util.Map;
-					    	 	import com.windowdb.wms.dao.WfInsTaskDao;
-					    	 	public class RouteManualId{路由ID} extends com.windowdb.wms.service.sup.RouteManual{
-					    	 		@Override
-					    	 		public void go(WfInsTaskDao dao , Object billId, Map<String,Object> wfInfo ) throws Exception{
-					    	 			// FIXME 请此处编写代码处理业务逻辑，可以执行发送短信、邮件以及调用第三方接口或消息。
-					    	 			// dao 提供数据库操作服务。
-					    	 			// billId 单据编号
-					    	 			// wfInfo 流程对象
-					    	 			// 注意类名必须以“RouteManualId”作为前缀，后面紧跟一个数字，数字必须是路由ID，执行该路由跳转时才会被调用。
-					    	 		}
- 					    	 	}
-					    	 </per>
+					    	 <code>
+					    	 	package cn.net.workflow.workflow.route;<br>
+					    	 	import java.util.Map;<br>
+					    	 	import com.windowdb.wms.dao.WfInsTaskDao;<br><br>
+					    	 	public class RouteManualId{路由ID} extends com.windowdb.wms.service.sup.RouteManual{<br>
+					    	 	&nbsp;&nbsp;@Override<br>
+					    	 	&nbsp;&nbsp;public void go(WfInsTaskDao dao , Object billId, Map&lt;String,Object&gt; wfInfo ) throws Exception{<br>
+					    	 	&nbsp;&nbsp;&nbsp;&nbsp;// FIXME 请此处编写代码处理业务逻辑，可以执行发送短信、邮件以及调用第三方接口或消息。<br>
+					    	 	&nbsp;&nbsp;&nbsp;&nbsp;// dao 提供数据库操作服务。<br>
+					    	 	&nbsp;&nbsp;&nbsp;&nbsp;// billId 单据编号<br>
+					    	 	&nbsp;&nbsp;&nbsp;&nbsp;// wfInfo 流程对象<br>
+					    	 	&nbsp;&nbsp;&nbsp;&nbsp;// 注意类名必须以“RouteManualId”作为前缀，后面紧跟一个数字，数字必须是路由ID，执行该路由跳转时才会被调用。<br>
+					    	 	&nbsp;&nbsp;}<br>
+ 					    	 	}<br>
+					    	 </code>
 					    	 </small>
 					    	 <p>注意事项请参考上述代码中的注释内容。</p>
 					    </div>
