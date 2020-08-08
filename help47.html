@@ -108,31 +108,58 @@
 			</div>
 			<div class="col col-12 col-md-10">
 				<div class="help-con" id="c1">
+					
+
+
 					<div class="card">
-						<div class="card-header" >组件</div>
+						<div class="card-header" >工作流节点定义业务表配置</div>
 					    <div class="card-body">
+					    	<p>流程的节点分成四中模式：1 指派模式；2，单人竞争模式；3，全员模式；4，表决模式</p>
+					    	<p>模式介绍：</p>
+					    	<p>当节点类型为【指派模式】时，上个节点提交至此，操作人需要指派某一受理人受理，流程操作面板 界面会提示一下拉列表，列表中列出全部的受理候选人，过滤器（filter_op_formula）过滤掉的除外， 由操作人选取一人后提交流程。 </p>
+					    	<p>当节点类型为【单人竞争模式】时，上个节点提交至此，无需选择候选人，多名候选人中如有一人受 序号 模块帮助表：windowdb_conf.{模块编号}_hp 字段说明 字段名 说明 1 id 主键，helpid，（help({helpid})） 2 content 打印模版正文 序号 工作流定义表：windowdb.wf_def 主要业务字段说明 字段名 说明 1 id 主键 2 title 流程定义标题，显示在“软件门户”的“新业务”版块。 3 code 唯一标识，用于各模块 SQL 语句中对流程定义的标识。 4 fun_code function 编码，对应的功能权限编码，该流程对应了系统的哪一具体功能模块。 关联字段 windowdb.branch_auth.code 5 table_name 流程关联的业务表表名，该表必须有 id，wf_creator,wf_status 三个固定和流程相 关的字段。 6 column_name 流程关联的业务表字段名，必须为主键 id 7 icon 流程定义图标，显示在“软件门户”的“新业务”版块。 8 visible 是否可见（有效），1，有效；0，无效； ... 其它辅助字段请参考数据库中 windowdb.wf_def 表。
+WORKFLOW-沃客福勒 企业软件研发平台 v 1.1 沃客福勒-致力于快速开发-企业软件研发平台 第 58页 理，其他人则不能受理该任务。 </p>
+					    	<p>当节点类型为【全员模式】时，上个节点提交至此，无需选择候选人，多名候选人必须全员受理，该 流程节点的任务才可以继续提交至下一节点。 </p>
+					    	<p>当节点类型为【表决模式】时，上个节点提交至此，无需选择候选人，多名候选人必须半数以上人员 完成受理，该流程节点的任务才可以继续提交至下一节点。 </p>
 					    	<p></p>
+					    	<p>两种路由类型：0，自动路由；1，手动路由</p>
+					    	<p>路由介绍：</p>
+					    	<p>当节点路由类型为【自动路由】时，节点的下一受理节点是根据提前预定的路由规则来决定。</p>
+					    	<p>例如： 报销金额小于 1000 元，跳转到部门经理审核，而大于 1000 元则自动提交至总经理审核。 </p>
+					    	<p>当节点路由类型为【手动路由】时，节点的下一受理节点是根据受理用户的手动选择来决定的。</p>
+					    	<p>在流 程面板界面上将会出现两个审批路由选择：1，提交至经理审批，2，提交至总经理审批；</p>
+					    	<p>当前受理人只能 根据实际的业务表单中的数据和规则，任选其一。 </p>
+					    	<p>工作流节点定义表 windowdb.wf_def_node 主要业务字段如下表所示：</p>
 					    	
-					    	<p></p>
 					    	<table class="table">
 						    	<tr>
-						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>列表组件接口地址：/list/page/{功能编码}，/list/noheader/{功能编码}</b></td>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="2" class="text-center"><b>工作流节点定义表：windowdb.wf_def_node 主要业务字段说明</b></td>
 						    	</tr><tr>
-						    		<td><b>参数名</b></td><td><nobr><b>参数值</b></nobr></td><td><b>说明</b></td>
+						    		<td><b>字段名</b></td><td><b>说明</b></td>
 						    	</tr><tr>
-					    			<td>1</td><td>datasrc</td><td>dd</td><td>该列表数据来源于 windowdb_conf.{功能编码}_dd 的配置库对象中记录的sql字符串，如果没有该参数则该列表数据来源于windowdb_conf.{功能编码}_ld的视图</td>
+					    			<td>1</td><td>id</td><td>主键</td>
 								</tr><tr>
-									<td>2</td><td>templid</td><td>100</td><td>该列表数据来源于windowdb_conf.{功能编码}_dd表templid=100的记录值（sql）执行后的结果集（datasrc必须等于dd的前提下）</td>
+									<td>2</td><td>title</td><td>流程节点定义标题。</td>
 								</tr><tr>
-									<td>3</td><td>page</td><td>1</td><td>当前页码</td>
+									<td>3</td><td>func_node</td><td>是否为功能型节点，1，功能型节点；该类型节点的实例数据不显示在统一待办列表 0，普通流程节点，流程实例对应的待办任务会显示在统一待办列表。</td>
 								</tr><tr>
-									<td>4</td><td>rows</td><td>20</td><td>每页显示行数</td>
+									<td>4</td><td>filter_op_forrmula</td><td>待受理人过滤器，一段 SQL 片段，会追加到跳转到该流程节点时选择受理候选人列表 的 SQL 语句最后方，用于过滤不符合条件的受理人。例如常见的应用场景：过滤掉其 他部门的部门经理或领导。只列出和当前登录人同部分的候选人。</td>
+								</tr><tr>
+									<td>5</td><td>node_index</td><td>该节点的索引顺序。</td>
+								</tr><tr>
+									<td>6</td><td>node_type</td><td>节点类型：0，指派模式；1，单人竞争模式；2，全员模式；3，表决模式；默认 1</td>
+								</tr><tr>
+									<td>7</td><td>route_type</td><td>路由类型：1，手动路由；0，自动路由；默认 1</td>
+								</tr><tr>
+									<td>8</td><td>visible</td><td>是否可见（有效），1，有效；0，无效；</td>
+								</tr><tr>
+									<td></td><td>...</td><td>其它辅助字段请参考数据库中 windowdb.wf_def_node 表字段的注解文本。</td>
 								</tr>
 					    	</table>
-					    	 
-					    	<p></p>
+					    	 <p class="text-center">表 40</p>
 					    </div>
 					</div><!--/card--> 
+					
 				</div><!--/help-con-->
 			</div>
 		</div>

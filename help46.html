@@ -105,31 +105,41 @@
 			</div>
 			<div class="col col-12 col-md-10">
 				<div class="help-con" id="c1">
+					
 					<div class="card">
-						<div class="card-header" >组件</div>
+						<div class="card-header" >工作流定义业务表配置</div>
 					    <div class="card-body">
-					    	<p></p>
+					    	<p>工作流定义表 windowdb.wf_def 主要业务字段如下表所示：</p>
 					    	
-					    	<p></p>
 					    	<table class="table">
 						    	<tr>
-						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>列表组件接口地址：/list/page/{功能编码}，/list/noheader/{功能编码}</b></td>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="2" class="text-center"><b>工作流定义表：windowdb.wf_def 主要业务字段说明</b></td>
 						    	</tr><tr>
-						    		<td><b>参数名</b></td><td><nobr><b>参数值</b></nobr></td><td><b>说明</b></td>
+						    		<td><b>字段名</b></td><td><b>说明</b></td>
 						    	</tr><tr>
-					    			<td>1</td><td>datasrc</td><td>dd</td><td>该列表数据来源于 windowdb_conf.{功能编码}_dd 的配置库对象中记录的sql字符串，如果没有该参数则该列表数据来源于windowdb_conf.{功能编码}_ld的视图</td>
+					    			<td>1</td><td>id</td><td>主键</td>
 								</tr><tr>
-									<td>2</td><td>templid</td><td>100</td><td>该列表数据来源于windowdb_conf.{功能编码}_dd表templid=100的记录值（sql）执行后的结果集（datasrc必须等于dd的前提下）</td>
+									<td>2</td><td>title</td><td>流程定义标题，显示在“软件门户”的“新业务”版块。</td>
 								</tr><tr>
-									<td>3</td><td>page</td><td>1</td><td>当前页码</td>
+									<td>3</td><td>code</td><td>唯一标识，用于各模块 SQL 语句中对流程定义的标识。</td>
 								</tr><tr>
-									<td>4</td><td>rows</td><td>20</td><td>每页显示行数</td>
+									<td>4</td><td>fun_code</td><td>function 编码，对应的功能权限编码，该流程对应了系统的哪一具体功能模块。 关联字段 windowdb.branch_auth.code</td>
+								</tr><tr>
+									<td>5</td><td>table_name</td><td>流程关联的业务表表名，该表必须有 id，wf_creator,wf_status 三个固定和流程相 关的字段。</td>
+								</tr><tr>
+									<td>6</td><td>column_name</td><td>流程关联的业务表字段名，必须为主键 id</td>
+								</tr><tr>
+									<td>7</td><td>icon</td><td>流程定义图标，显示在“软件门户”的“新业务”版块。</td>
+								</tr><tr>
+									<td>8</td><td>visible</td><td>是否可见（有效），1，有效；0，无效；</td>
+								</tr><tr>
+									<td></td><td>...</td><td>其它辅助字段请参考数据库中 windowdb.wf_def 表字段的注解文本。</td>
 								</tr>
 					    	</table>
-					    	 
-					    	<p></p>
+					    	 <p class="text-center">表 39</p>
 					    </div>
 					</div><!--/card--> 
+					
 				</div><!--/help-con-->
 			</div>
 		</div>
