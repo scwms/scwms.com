@@ -102,16 +102,17 @@
 			<div class="col col-12 col-md-2">
 				<div class="" id="help-nav">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="#c1">组件</a></li> 
+						<li class="list-group-item"><a href="#c1">节点表</a></li> 
+						<li class="list-group-item"><a href="#c2">节点单据</a></li> 
 					</ul>
 				</div>
 			</div>
 			<div class="col col-12 col-md-10">
-				<div class="help-con" id="c1">
+				<div class="help-con" >
 					
 
 
-					<div class="card">
+					<div class="card" id="c1">
 						<div class="card-header" >工作流节点定义业务表配置</div>
 					    <div class="card-body">
 					    	<p>流程的节点分成四中模式：1 指派模式；2，单人竞争模式；3，全员模式；4，表决模式</p>
@@ -157,6 +158,34 @@ WORKFLOW-沃客福勒 企业软件研发平台 v 1.1 沃客福勒-致力于快�
 								</tr>
 					    	</table>
 					    	 <p class="text-center">表 40</p>
+					    </div>
+					</div><!--/card--> 
+					
+					
+
+					<div class="card" id="c2">
+						<div class="card-header" >配置流程节点单据样式模版</div>
+					    <div class="card-body">
+					    	<p>配置表：windowdb_conf.{模块编号}_dd_pt，windowdb_conf.{模块编号}_ld</p>
+					    	<p>调用位置：流程面板处“再看一下”链接。 </p>
+					    	<p>描述：呼出流程面板后，操作人再提交之前，可以再看一下流程对应的业务单据，点击“再看一下”链接， 即可打开单据展示窗口，单据展示的内容模版则是配置对应模块的配置表 windowdb_conf.{模块编 号}_dd_pt 中，而配置表的 id 则等于流程的节点编号，关于流程的节点编号，该编号的获取请参考业务表字 段 windowdb.wf_def_node.id。 </p>
+					    	<p>printid：windowdb_conf.{模块编号}_dd_pt.id, 对应流程节点 ID（windowdb.wf_def_node.id）。 printid 可以有多个，用半角逗号分割。 </p>
+					    	<p>打印分页代码：<small>&lt;div style="page-break-before: always" class="split_page"&gt;&lt;/div&gt;</small></p>
+					    	
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="2" class="text-center"><b>打印模版表：windowdb_conf.{模块编号}_dd_pt 字段说明</b></td>
+						    	</tr><tr>
+						    		<td><b>字段名</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>id</td><td>主键，此处对应 windowdb.wf_def_node.id</td>
+								</tr><tr>
+									<td>2</td><td>title</td><td>标题</td>
+								</tr><tr>
+									<td>3</td><td>content</td><td>模版正文</td>
+								</tr>
+					    	</table>
+					    	 <p class="text-center">表 41</p>
 					    </div>
 					</div><!--/card--> 
 					
