@@ -345,6 +345,116 @@
 					</div><!--/card--> 
 					
 					
+					<div class="card" id="c9">
+						<div class="card-header" >树形数据选择组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"treebox","options":{"required":true}}</p>
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>treebox 组件其它选项（options）说明</b></td>
+						    	</tr><tr>
+						    		<td><b>名称</b></td><td><b>类型</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>value</td><td>数字</td><td>组件内默认显示的值</td>
+								</tr> <tr>
+					    			<td>2</td><td>valueField</td><td>字符串</td><td>data json 字符串中的那个字段作为下拉列表的 value 字段</td>
+								</tr> <tr>
+					    			<td>3</td><td>url</td><td>字符串</td><td>远程获得 data</td>
+								</tr> 
+					    	</table>
+					    	<p class="text-center">表 32</p>
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="c10">
+						<div class="card-header" >附件上传组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"filebox","options":{"required":true}}</p>
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>filebox 组件其它选项（options）说明</b></td>
+						    	</tr><tr>
+						    		<td><b>名称</b></td><td><b>类型</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>buttonText</td><td>字符串</td><td>文件上传组件选择文件按钮显示文本</td>
+								</tr> <tr>
+					    			<td>2</td><td>multiline</td><td>布尔</td><td>true 表示多行，false 表示单行，默认 false</td>
+								</tr> <tr>
+					    			<td>3</td><td>separator</td><td>字符串</td><td>用于分割多个文件名</td>
+								</tr>  <tr>
+					    			<td>4</td><td>accept</td><td>字符串</td><td>申明文件类型,例如：image/*</td>
+								</tr> 
+					    	</table>
+					    	<p class="text-center">表 32</p>
+					    </div>
+					</div><!--/card--> 
+					
+					
+					<div class="card" id="c11">
+						<div class="card-header" >表单内嵌列表组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"datagrid","options":{"th":"003016001"}}</p>
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>datagrid 组件其它选项（options）说明</b></td>
+						    	</tr><tr>
+						    		<td><b>名称</b></td><td><b>类型</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>th</td><td>字符串</td><td>设定列表表头，用模块编号作为 th 的值，例如：003016001</td>
+								</tr> <tr>
+					    			<td>2</td><td>pageSize</td><td>布尔</td><td> 列表每页显示的数据行数</td>
+								</tr> 
+					    	</table>
+					    	<p class="text-center">表 33</p>
+					    </div>
+					</div><!--/card--> 
+					
+					
+					<div class="card" id="c12">
+						<div class="card-header" >HTML只读文本展示组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"html"}</p>
+					    	<p>描述：字段 value 的值为 sql 语句，SQL 语句返回的结果作为网页显示。</p>
+					    </div>
+					</div><!--/card--> 
+					
+					
+					<div class="card" id="c13">
+						<div class="card-header" >Javascript网页脚本组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"script"}</p>
+					    	<p>描述：字段 value 的值为 javascript 代码，解析时直接显示到网页端。</p>
+					    </div>
+					</div><!--/card--> 
+					
+					
+					<div class="card" id="c14">
+						<div class="card-header" >表单提交时执行SQL语句组件</div>
+					    <div class="card-body">
+					    	<p>表：windowdb_conf.{模块编号}_ad </p>
+					    	<p>描述：以占位符方式接受表单提交过来的数据，并且按照 id 的顺序执行 SQL 语句。占位符在表单表 windowdb_conf.{模块编号}_dd.dbcol 中定义，并且以“${...}”的字符拼接方式。</p>
+					    	
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>配置表单数据表：windowdb_conf.{模块编号}_ad 字段说明</b></td>
+						    	</tr><tr>
+						    		<td><b>字段名</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>id</td><td>主键</td>
+								</tr><tr>
+									<td>2</td><td>templid</td><td>模版 id，相同模块可以有多套模版。例如：员工表在初次采集和修改数据时表单项不同。</td>
+								</tr><tr>
+									<td>3</td><td>returnkey</td><td>0，表示 insertsql 没有返回值；1。Insert 语句返回 id；3，select 返回单个字符串</td>
+								</tr><tr>
+									<td>4</td><td>insertsql</td><td>以占位符方式接受表单提交过来的数据，并且执行 SQL 语句。</td>
+								</tr>
+					    	</table>
+					    	<p class="text-center">表 35</p>
+					    	
+					    </div>
+					</div><!--/card--> 
+					
+					
 				</div><!--/help-con-->
 			</div>
 		</div>
