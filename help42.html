@@ -99,37 +99,252 @@
 			<div class="col col-12 col-md-2">
 				<div class="" id="help-nav">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="#c1">组件</a></li> 
+						<li class="list-group-item"><a href="#c1">单行文本</a></li> 
+						<li class="list-group-item"><a href="#c2">多行文本</a></li> 
+						<li class="list-group-item"><a href="#c3">图文混排</a></li> 
+						<li class="list-group-item"><a href="#c4">数字录入</a></li> 
+						<li class="list-group-item"><a href="#c5">数字选择</a></li> 
+						<li class="list-group-item"><a href="#c6">日期选择</a></li> 
+						<li class="list-group-item"><a href="#c7">时间录入</a></li> 
+						<li class="list-group-item"><a href="#c8">下拉选择</a></li> 
+						<li class="list-group-item"><a href="#c9">树形选择</a></li> 
+						<li class="list-group-item"><a href="#c10">附件上传</a></li> 
+						<li class="list-group-item"><a href="#c11">内嵌表单</a></li> 
+						<li class="list-group-item"><a href="#c12">只读文本</a></li> 
+						<li class="list-group-item"><a href="#c13">JS脚本</a></li> 
+						<li class="list-group-item"><a href="#c14">执行动作</a></li> 
 					</ul>
 				</div>
 			</div>
 			<div class="col col-12 col-md-10">
-				<div class="help-con" id="c1">
-					<div class="card">
-						<div class="card-header" >组件</div>
+				<div class="help-con" >
+				
+					<div class="card" id="c0">
+						<div class="card-header" >配置表概述</div>
 					    <div class="card-body">
-					    	<p></p>
-					    	
-					    	<p></p>
+					    	<p>数据库配置表快速定位：windowdb_conf.{模块编号}_dd，windowdb_conf.{模块编号}_ad </p>
+					    	<p>描述：系统表单统一为弹出窗口样式，弹出窗口中带有单个或多个页签（例如：图 7 所示），每个页签中 又有若干行不同类型的数据输入框，右下方带有一个确定按钮用于保存填写的数据，若数据未按要求填写，会 自动跳转到有问题的页签。另外右下方默认还带有一个取消按钮，用于取消保存填写的表单数据。点击确认之 后，系统会取 windowdb_conf.{模块编号}_ad 表中的 SQL 语句来执行，执行过 SQL 语句之后，表单数据 以及关联的业务数据都将同步到业务库中。以下章节将逐一介绍表单中的各个输入框。</p>
+					    </div>
+					</div><!--/card-->
+
+
+
+					<div class="card" id="c1">
+						<div class="card-header" >单行文本输入框组件</div>
+					    <div class="card-body">
+					    	<p>数据库配置表快速定位：windowdb_conf.{模块编号}_dd，windowdb_conf.{模块编号}_ad</p>
+					    	<p>描述：windowdb_conf.{模块编号}_dd 表则负责存储模块表单的配置 数据，表字段如下所示：</p>
 					    	<table class="table">
 						    	<tr>
-						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>列表组件接口地址：/list/page/{功能编码}，/list/noheader/{功能编码}</b></td>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>配置表单数据表：windowdb_conf.{模块编号}_dd 字段说明</b></td>
 						    	</tr><tr>
-						    		<td><b>参数名</b></td><td><nobr><b>参数值</b></nobr></td><td><b>说明</b></td>
+						    		<td><b>字段名</b></td><td><b>说明</b></td>
 						    	</tr><tr>
-					    			<td>1</td><td>datasrc</td><td>dd</td><td>该列表数据来源于 windowdb_conf.{功能编码}_dd 的配置库对象中记录的sql字符串，如果没有该参数则该列表数据来源于windowdb_conf.{功能编码}_ld的视图</td>
+					    			<td>1</td><td>id</td><td>主键</td>
 								</tr><tr>
-									<td>2</td><td>templid</td><td>100</td><td>该列表数据来源于windowdb_conf.{功能编码}_dd表templid=100的记录值（sql）执行后的结果集（datasrc必须等于dd的前提下）</td>
+									<td>2</td><td>templid</td><td>模版 id，相同模块可以有多套模版。例如：员工表在初次采集和修改数据时表单项不同。</td>
 								</tr><tr>
-									<td>3</td><td>page</td><td>1</td><td>当前页码</td>
+									<td>3</td><td>group</td><td>表单项分组，解析到页面时就是表单的页签，表单必须至少有一个页签。</td>
 								</tr><tr>
-									<td>4</td><td>rows</td><td>20</td><td>每页显示行数</td>
+									<td>4</td><td>name</td><td>表单项的 label 标签。</td>
+								</tr><tr>
+									<td>5</td><td>value</td><td>表单项的默认值。注意：除了 script 和 html 组件，其余都是 SQL 语句返回值。</td>
+								</tr><tr>
+									<td>6</td><td>editor</td><td>表单输入组件编辑器（默认为JSON格式）</td>
+								</tr><tr>
+									<td>7</td><td>dbcol</td><td>对应数据库字段名称，解析到网页时就是 input 的 name，注意：小数点自动转换下划线</td>
 								</tr>
 					    	</table>
-					    	 
-					    	<p></p>
+					    	<p class="text-center">表 24</p>
+					    	<p>以下章节将逐一介绍表单中的各个输入框，对应配置数据是 windowdb_conf.{模块编号}_dd.editor。</p>
 					    </div>
 					</div><!--/card--> 
+					
+					
+					
+					<div class="card" id="c2">
+						<div class="card-header" >多行文本输入框组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"textarea","options":{"multiline":true}}</p>
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>textarea 组件其它选项（options）说明</b></td>
+						    	</tr><tr>
+						    		<td><b>名称</b></td><td><b>类型</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>multiline</td><td>布尔</td><td>true 表示多行，false 表示单行，默认 false</td>
+								</tr><tr>
+					    			<td>2</td><td>height</td><td>数字</td><td>组件的高度</td>
+								</tr><tr>
+					    			<td>3</td><td>value</td><td>字符串</td><td>组件内默认显示的值</td>
+								</tr><tr>
+					    			<td>4</td><td>prompt</td><td>字符串</td><td>组件为空时组件内显示的提示性文本</td>
+								</tr><tr>
+					    			<td>5</td><td>readonly</td><td>布尔</td><td>true 表示该组件的值不可被修改，false 表示可以被修改值，默认 false</td>
+								</tr><tr>
+					    			<td>6</td><td>disabled</td><td>布尔</td><td>true 表示该组件不可用，false 表示该组件可用，默认 fals</td>
+								</tr><tr>
+					    			<td>7</td><td>editable</td><td>布尔</td><td>true 表示该组件可以被编辑，false 表示该组件不可以被编辑，默认 true</td>
+								</tr><tr>
+					    			<td>8</td><td>validType</td><td>字符串</td><td>表单校验脚本。例如：['length[2,255]表示字符长度从 2 到 255。</td>
+								</tr><tr>
+					    			<td>9</td><td>required</td><td>布尔</td><td>true 表示该组件必须不能为空，false 表示可以为空。默认 false</td>
+								</tr> 
+					    	</table>
+					    	<p class="text-center">表 25</p>
+					    </div>
+					</div><!--/card--> 
+					
+					
+					<div class="card" id="c3">
+						<div class="card-header" >多行文本图文混排输入框组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"wang","options":{"required":true}}</p>
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>wang 组件其它选项（options）说明</b></td>
+						    	</tr><tr>
+						    		<td><b>名称</b></td><td><b>类型</b></td><td><b>说明</b></td>
+								</tr><tr>
+					    			<td>1</td><td>height</td><td>数字</td><td>组件的高度</td>
+								</tr><tr>
+					    			<td>2</td><td>required</td><td>布尔</td><td>true 表示该组件必须不能为空，false 表示可以为空。默认 false</td>
+								</tr> 
+					    	</table>
+					    	<p class="text-center">表 26</p>
+					    </div>
+					</div><!--/card--> 
+					
+					
+					<div class="card" id="c4">
+						<div class="card-header" >数字输入框组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"numberbox","options":{"required":true}}</p>
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>numberbox 组件其它选项（options）说明</b></td>
+						    	</tr><tr>
+						    		<td><b>名称</b></td><td><b>类型</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>min</td><td>数字</td><td>最小数值</td>
+								</tr><tr>
+					    			<td>2</td><td>max</td><td>数字</td><td>最大数值</td>
+								</tr><tr>
+					    			<td>3</td><td>value</td><td>数字</td><td>组件内默认显示的值</td>
+								</tr><tr>
+					    			<td>4</td><td>prompt</td><td>字符串</td><td>组件为空时组件内显示的提示性文本</td>
+								</tr><tr>
+					    			<td>5</td><td>readonly</td><td>布尔</td><td>true 表示该组件的值不可被修改，false 表示可以被修改值，默认 false</td>
+								</tr><tr>
+					    			<td>6</td><td>disabled</td><td>布尔</td><td>true 表示该组件不可用，false 表示该组件可用，默认 fals</td>
+								</tr><tr>
+					    			<td>7</td><td>precision</td><td>数字</td><td>小数点后保留的位数</td>
+								</tr><tr>
+					    			<td>8</td><td>required</td><td>布尔</td><td>true 表示该组件必须不能为空，false 表示可以为空。默认 false</td>
+								</tr> 
+					    	</table>
+					    	<p class="text-center">表 27</p>
+					    </div>
+					</div><!--/card--> 
+					
+					
+					<div class="card" id="c5">
+						<div class="card-header" >数字选择框组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"numberspinner","options":{"required":true}}</p>
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>numberspinner 组件其它选项（options）说明</b></td>
+						    	</tr><tr>
+						    		<td><b>名称</b></td><td><b>类型</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>min</td><td>数字</td><td>最小数值</td>
+								</tr><tr>
+					    			<td>2</td><td>max</td><td>数字</td><td>最大数值</td>
+								</tr><tr>
+					    			<td>3</td><td>value</td><td>数字</td><td>组件内默认显示的值</td>
+								</tr><tr>
+					    			<td>4</td><td>prompt</td><td>字符串</td><td>组件为空时组件内显示的提示性文本</td>
+								</tr><tr>
+					    			<td>5</td><td>required</td><td>布尔</td><td>true 表示该组件必须不能为空，false 表示可以为空。默认 false</td>
+								</tr> 
+					    	</table>
+					    	<p class="text-center">表 28</p>
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="c6">
+						<div class="card-header" >日期选择框组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"datebox","options":{"required":true}}</p>
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>datebox 组件其它选项（options）说明</b></td>
+						    	</tr><tr>
+						    		<td><b>名称</b></td><td><b>类型</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>value</td><td>数字</td><td>组件内默认显示的值</td>
+								</tr><tr>
+					    			<td>2</td><td>prompt</td><td>字符串</td><td>组件为空时组件内显示的提示性文本</td>
+								</tr><tr>
+					    			<td>3</td><td>required</td><td>布尔</td><td>true 表示该组件必须不能为空，false 表示可以为空。默认 false</td>
+								</tr> 
+					    	</table>
+					    	<p class="text-center">表 29</p>
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="c7">
+						<div class="card-header" >日期时间输入框组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"datetimebox","options":{"required":true}}</p>
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>datetimebox 组件其它选项（options）说明</b></td>
+						    	</tr><tr>
+						    		<td><b>名称</b></td><td><b>类型</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>value</td><td>数字</td><td>组件内默认显示的值</td>
+								</tr><tr>
+					    			<td>2</td><td>prompt</td><td>字符串</td><td>组件为空时组件内显示的提示性文本</td>
+								</tr><tr>
+					    			<td>3</td><td>required</td><td>布尔</td><td>true 表示该组件必须不能为空，false 表示可以为空。默认 false</td>
+								</tr> 
+					    	</table>
+					    	<p class="text-center">表 30</p>
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="c8">
+						<div class="card-header" >下拉列表选择组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"combobox","options":{"required":true}}</p>
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>combobox 组件其它选项（options）说明</b></td>
+						    	</tr><tr>
+						    		<td><b>名称</b></td><td><b>类型</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>value</td><td>数字</td><td>组件内默认显示的值</td>
+								</tr><tr>
+					    			<td>2</td><td>prompt</td><td>字符串</td><td>组件为空时组件内显示的提示性文本</td>
+								</tr><tr>
+					    			<td>3</td><td>required</td><td>布尔</td><td>true 表示该组件必须不能为空，false 表示可以为空。默认 false</td>
+								</tr> <tr>
+					    			<td>4</td><td>valueField</td><td>字符串</td><td>data json 字符串中的那个字段作为下拉列表的 value 字段</td>
+								</tr> <tr>
+					    			<td>5</td><td>textField</td><td>字符串</td><td>data json 字符串中的那个字段作为下拉列表的显示字段</td>
+								</tr> <tr>
+					    			<td>6</td><td>data</td><td>json</td><td>例如：[{"id":0,"text":"女"},{"id":1,"text":"男"}]</td>
+								</tr> <tr>
+					    			<td>7</td><td>url</td><td>字符串</td><td>远程获得 data</td>
+								</tr> 
+					    	</table>
+					    	<p class="text-center">表 31</p>
+					    </div>
+					</div><!--/card--> 
+					
+					
 				</div><!--/help-con-->
 			</div>
 		</div>
