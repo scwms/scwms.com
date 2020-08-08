@@ -105,31 +105,33 @@
 			</div>
 			<div class="col col-12 col-md-10">
 				<div class="help-con" id="c1">
+					
 					<div class="card">
-						<div class="card-header" >组件</div>
+						<div class="card-header" >表单数据详细页面对应的打印模版配置</div>
 					    <div class="card-body">
-					    	<p></p>
+					    	<p>位置：windowdb_conf.{模块编号}_dd_hp</p>
+							<p>调用代码：<small>&lt;a href="javascript:help({helpid});" title="寻求该模块帮助"&gt;&lt;/a&gt;</small></p>
+							<p>描述：根据模块帮助编号弹出右侧帮助面板。展示该模块的帮助说明。</p>
+							<p>helpid：windowdb_conf.{模块编号}_dd_pt.id, 对应打印模版表的主键 ID。 printid 可以有多个，用半角逗号分割。</p>
+							<p>帮助页内跳转代码：<small>&lt;a href="javascript:top.help({模块编号},{helpid})"&gt;返回&lt;/a&gt;</small></p>
 					    	
-					    	<p></p>
 					    	<table class="table">
 						    	<tr>
-						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>列表组件接口地址：/list/page/{功能编码}，/list/noheader/{功能编码}</b></td>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="2" class="text-center"><b>模块帮助表：windowdb_conf.{模块编号}_hp 字段说明</b></td>
 						    	</tr><tr>
-						    		<td><b>参数名</b></td><td><nobr><b>参数值</b></nobr></td><td><b>说明</b></td>
+						    		<td><b>字段名</b></td><td><b>说明</b></td>
 						    	</tr><tr>
-					    			<td>1</td><td>datasrc</td><td>dd</td><td>该列表数据来源于 windowdb_conf.{功能编码}_dd 的配置库对象中记录的sql字符串，如果没有该参数则该列表数据来源于windowdb_conf.{功能编码}_ld的视图</td>
+					    			<td>1</td><td>id</td><td>主键，helpid，（help({helpid})）</td>
 								</tr><tr>
-									<td>2</td><td>templid</td><td>100</td><td>该列表数据来源于windowdb_conf.{功能编码}_dd表templid=100的记录值（sql）执行后的结果集（datasrc必须等于dd的前提下）</td>
-								</tr><tr>
-									<td>3</td><td>page</td><td>1</td><td>当前页码</td>
-								</tr><tr>
-									<td>4</td><td>rows</td><td>20</td><td>每页显示行数</td>
+									<td>2</td><td>content</td><td>帮助正文</td>
 								</tr>
 					    	</table>
-					    	 
-					    	<p></p>
+					    	 <p class="text-center">表 38</p>
 					    </div>
 					</div><!--/card--> 
+					
+					
+					
 				</div><!--/help-con-->
 			</div>
 		</div>
