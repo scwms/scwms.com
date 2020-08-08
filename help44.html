@@ -99,37 +99,46 @@
 			<div class="col col-12 col-md-2">
 				<div class="" id="help-nav">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="#c1">组件</a></li> 
+						<li class="list-group-item"><a href="#c1">打印组件</a></li> 
 					</ul>
 				</div>
 			</div>
 			<div class="col col-12 col-md-10">
 				<div class="help-con" id="c1">
+					
+			<div class="col col-12 col-md-10">
+				<div class="help-con" id="c1">
+				
+				
 					<div class="card">
-						<div class="card-header" >组件</div>
+						<div class="card-header" >表单数据详细页面对应的打印模版配置</div>
 					    <div class="card-body">
-					    	<p></p>
+					    	<p>位置：windowdb_conf.{模块编号}_dd_pt，windowdb_conf.{模块编号}_ld</p>
+							<p>调用代码：</p>
+							<p><small>&lt;a href="javascript:printSearch({printid});" title="将查询的单页或者多页数据根据特定格式打印出来"&gt;&lt;/a&gt;</small></p>
+							<p><small>&lt;a href="javascript:printSelect({printid});" title="将勾选的数据根据特定格式打印出来"&gt;&lt;/a&gt;</small></p>
+							<p>描述：根据打印模版编号弹出数据面板。打印业务数据。 </p>
+							<p>printid：windowdb_conf.{模块编号}_dd_pt.id, 对应打印模版表的主键 ID。 printid 可以有多个，用半角逗号分割。 </p>
+							<p>打印分页代码：<small>&lt;div style="page-break-before: always" class="split_page"&gt;&lt;/div&gt;</small></p>
 					    	
-					    	<p></p>
 					    	<table class="table">
 						    	<tr>
-						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>列表组件接口地址：/list/page/{功能编码}，/list/noheader/{功能编码}</b></td>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="2" class="text-center"><b>列表组件接口地址：/list/page/{功能编码}，/list/noheader/{功能编码}</b></td>
 						    	</tr><tr>
-						    		<td><b>参数名</b></td><td><nobr><b>参数值</b></nobr></td><td><b>说明</b></td>
+						    		<td><b>字段名</b></td><td><b>说明</b></td>
 						    	</tr><tr>
-					    			<td>1</td><td>datasrc</td><td>dd</td><td>该列表数据来源于 windowdb_conf.{功能编码}_dd 的配置库对象中记录的sql字符串，如果没有该参数则该列表数据来源于windowdb_conf.{功能编码}_ld的视图</td>
+					    			<td>1</td><td>id</td><td>主键</td>
 								</tr><tr>
-									<td>2</td><td>templid</td><td>100</td><td>该列表数据来源于windowdb_conf.{功能编码}_dd表templid=100的记录值（sql）执行后的结果集（datasrc必须等于dd的前提下）</td>
+									<td>2</td><td>title</td><td>标题</td>
 								</tr><tr>
-									<td>3</td><td>page</td><td>1</td><td>当前页码</td>
-								</tr><tr>
-									<td>4</td><td>rows</td><td>20</td><td>每页显示行数</td>
+									<td>3</td><td>content</td><td>打印模版正文</td>
 								</tr>
 					    	</table>
-					    	 
-					    	<p></p>
+					    	 <p class="text-center">表 36</p>
 					    </div>
 					</div><!--/card--> 
+					
+					
 				</div><!--/help-con-->
 			</div>
 		</div>
