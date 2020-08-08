@@ -96,38 +96,45 @@
 	<!--内容-->
 	<div class="container-fluid help p-r">
 		<div class="row">
+			
 			<div class="col col-12 col-md-2">
 				<div class="" id="help-nav">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="#c1">组件</a></li> 
+						<li class="list-group-item"><a href="#c1">批量导入</a></li> 
 					</ul>
 				</div>
 			</div>
+			
 			<div class="col col-12 col-md-10">
 				<div class="help-con" id="c1">
 					<div class="card">
-						<div class="card-header" >组件</div>
+						<div class="card-header" >批量导入数据组件配置说明</div>
 					    <div class="card-body">
-					    	<p></p>
+					    	<p>批量数据导入的示例请参考第二章网页调试界面的第 5.2 小节，批量导入账号。该章节所介绍的功能即批 量数据导入组件所配置。 </p>
+					    	<p>该组件由一个列表组件，以及两个表单组件组合共同完成。列表组件负责展示刚刚上传到临时表中的待选 数据。由一个表单负责上传 excel 文件并根据配置库中的对应的映射表中的配置规则将 excel 中的数据保存到 待选数据临时表，另一表单负责处理导入的临时数据，将临时数据导入到业务库并且生效。 </p>
+					    	<p>导入待选数据临时表表名称以：im_xls_开头，参考表 3，导入待选数据临时表必须被保存在业务库 windowdb 中。该表必须有一个主键 ID 和一个 insert_time 列，其余字段根据业务需要由程序设计和研发人 员自行设计。具体可参考 windowdb.im_xls_user_info 表。 </p>
+					    	<p>临时表字段映射表：windowdb_conf.{模块编号}_im</p>
 					    	
-					    	<p></p>
 					    	<table class="table">
 						    	<tr>
-						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>列表组件接口地址：/list/page/{功能编码}，/list/noheader/{功能编码}</b></td>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="2" class="text-center"><b>列表组件接口地址：/list/page/{功能编码}，/list/noheader/{功能编码}</b></td>
 						    	</tr><tr>
-						    		<td><b>参数名</b></td><td><nobr><b>参数值</b></nobr></td><td><b>说明</b></td>
+						    		<td><b>字段名</b></td><td><b>说明</b></td>
 						    	</tr><tr>
-					    			<td>1</td><td>datasrc</td><td>dd</td><td>该列表数据来源于 windowdb_conf.{功能编码}_dd 的配置库对象中记录的sql字符串，如果没有该参数则该列表数据来源于windowdb_conf.{功能编码}_ld的视图</td>
+					    			<td>1</td><td>id</td><td>主键</td>
 								</tr><tr>
-									<td>2</td><td>templid</td><td>100</td><td>该列表数据来源于windowdb_conf.{功能编码}_dd表templid=100的记录值（sql）执行后的结果集（datasrc必须等于dd的前提下）</td>
+									<td>2</td><td>templid</td><td>模版 id，相同模块可以有多套模版。例如：员工表在初次采集和修改数据时表单项不同。</td>
 								</tr><tr>
-									<td>3</td><td>page</td><td>1</td><td>当前页码</td>
+									<td>3</td><td>rowindex</td><td>行索引，从 0 开始 0，1，2..</td>
 								</tr><tr>
-									<td>4</td><td>rows</td><td>20</td><td>每页显示行数</td>
+									<td>3</td><td>colindex</td><td>列索引，从 0 开始 0，1，2..</td>
+								</tr><tr>
+									<td>4</td><td>dbcol</td><td>  列对应的待选数据临时表字段名称，表名.字段名</td>
+								</tr><tr>
+									<td>5</td><td>note</td><td>列的解释说明</td>
 								</tr>
 					    	</table>
-					    	 
-					    	<p></p>
+					    	 <p class="text-center">表 36</p>
 					    </div>
 					</div><!--/card--> 
 				</div><!--/help-con-->
