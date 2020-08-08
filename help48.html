@@ -102,37 +102,42 @@
 			<div class="col col-12 col-md-2">
 				<div class="" id="help-nav">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="#c1">组件</a></li> 
+						<li class="list-group-item"><a href="#c1">流程路由</a></li> 
 					</ul>
 				</div>
 			</div>
 			<div class="col col-12 col-md-10">
-				<div class="help-con" id="c1">
-					<div class="card">
-						<div class="card-header" >组件</div>
+				<div class="help-con" >
+					
+
+					<div class="card" id="c1">
+						<div class="card-header" >配置流程节点路由（提交打回或者跳转）</div>
 					    <div class="card-body">
-					    	<p></p>
+					    	<p>流程节点路由是流程节点和流程节点之间扭转往来的通道。例如：从 A 节点提交到 B 节点需要一条路由信 息，从 B 节点退回到 A 节点又需要另外一条路由信息，从 A 节点跳转到 C 节点还需要路由信息来支持。而路 由的选择，则取决于节点路由是手动还是自动，手动路由由业务受理人自行决定，自动路由由预定好的规则来 设定。</p>
+					    	<p>以下是路由表（windowdb.wf_def_node_route）的关键业务字段说明：</p>
 					    	
-					    	<p></p>
 					    	<table class="table">
 						    	<tr>
-						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>列表组件接口地址：/list/page/{功能编码}，/list/noheader/{功能编码}</b></td>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="2" class="text-center"><b>流程节点路由表：windowdb.wf_def_node_route 字段说明</b></td>
 						    	</tr><tr>
-						    		<td><b>参数名</b></td><td><nobr><b>参数值</b></nobr></td><td><b>说明</b></td>
+						    		<td><b>字段名</b></td><td><b>说明</b></td>
 						    	</tr><tr>
-					    			<td>1</td><td>datasrc</td><td>dd</td><td>该列表数据来源于 windowdb_conf.{功能编码}_dd 的配置库对象中记录的sql字符串，如果没有该参数则该列表数据来源于windowdb_conf.{功能编码}_ld的视图</td>
+					    			<td>1</td><td>id</td><td>主键，此处对应 windowdb.wf_def_node.id</td>
 								</tr><tr>
-									<td>2</td><td>templid</td><td>100</td><td>该列表数据来源于windowdb_conf.{功能编码}_dd表templid=100的记录值（sql）执行后的结果集（datasrc必须等于dd的前提下）</td>
+									<td>2</td><td>title</td><td>标题，也是跳转时候显示的选项。</td>
 								</tr><tr>
-									<td>3</td><td>page</td><td>1</td><td>当前页码</td>
+									<td>3</td><td>node_id</td><td>当前节点编号（从该节点开始跳转）</td>
 								</tr><tr>
-									<td>4</td><td>rows</td><td>20</td><td>每页显示行数</td>
+									<td>4</td><td>to_node_id</td><td>目标节点编号（跳转到那个节点）</td>
+								</tr><tr>
+									<td>5</td><td>visible</td><td>是否可见（生效）0，无效路由；1，有效路由；</td>
 								</tr>
 					    	</table>
-					    	 
-					    	<p></p>
+					    	 <p class="text-center">表 42</p>
 					    </div>
 					</div><!--/card--> 
+					
+					
 				</div><!--/help-con-->
 			</div>
 		</div>
