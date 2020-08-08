@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
-	<title>表单组件 配置业务组件 帮助文档 WORKFLOW - 沃克福勒 企业软件研发平台 致力于快速开发</title>
+	<title>执行动作类组件 表单组件 配置业务组件 帮助文档 WORKFLOW - 沃克福勒 企业软件研发平台 致力于快速开发</title>
 	<meta content="NOODP" name="ROBOTS" />
-	<meta name="keywords" content="表单组件, 业务组件,帮助,文档,help,Document,白皮书,说明书,使用指南,开发指南">
-	<meta name="description" content="配置表单组件 帮助系统 企业软件快速开发平台 总体介绍部分、全篇介绍各类业务组件，如：列表组件、表单组件、数据导入组件、数据导出组件、打印组件、流程相关组件、帮助系统等等组件...">
+	<meta name="keywords" content="执行动作组件, 表单组件, 业务组件,帮助,文档,help,Document,白皮书,说明书,使用指南,开发指南">
+	<meta name="description" content="执行动作 配置表单组件 帮助系统 企业软件快速开发平台 总体介绍部分、全篇介绍各类业务组件，如：列表组件、表单组件、数据导入组件、数据导出组件、打印组件、流程相关组件、帮助系统等等组件...">
 
 	<!-- 新 Bootstrap4 核心 CSS 文件 -->
 	<link rel="stylesheet" href="static/bootstrap4/css/bootstrap.css">
@@ -26,7 +26,7 @@
 <body>		
 	<header id="header" class="">
 		<div class="container-fluid p-r">
-			<a class="header-logo" title="第2节、表单组件 << 第四章、配置业务组件 << 帮助系统 << 企业软件快速开发平台"  href="index.html"><h1>企业软件快速开发平台</h1></a>		
+			<a class="header-logo" title="执行动作组件 << 第2节、表单组件 << 第四章、配置业务组件 << 帮助系统 << 企业软件快速开发平台"  href="index.html"><h1>企业软件快速开发平台</h1></a>		
 			<div class="float-right top">	
 				<nav class="navbar navbar-expand-md navbar-dark  d-none d-md-block" id="navBig">
 				    <ul class="navbar-nav float-right">
@@ -87,10 +87,11 @@
 		<div class="btn-group">
 		  <a class="btn btn-warning text-muted" href="help.html"><i class="glyphicon glyphicon-home"></i></a>
 		  <a class="btn btn-warning text-muted" href="help4.html">第四章</a>
+		  <a class="btn btn-warning text-muted" href="help42.html">第2节</a>
 		</div>
 		
-		<h2 class="text-center d-none d-md-block">第2节、表单组件</h2>
-		<h3 class="text-center d-block d-md-none">第2节、表单组件</h3>
+		<h2 class="text-center d-none d-md-block">表单提交时执行SQL语句</h2>
+		<h3 class="text-center d-block d-md-none">表单提交时执行SQL语句</h3>
 		
 	</div>
 	<!--内容-->
@@ -99,26 +100,59 @@
 			<div class="col col-12 col-md-2">
 				<div class="" id="help-nav">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="help421.html">文本录入类</a></li> 
-						<li class="list-group-item"><a href="help422.html">日期时间类</a></li> 
-						<li class="list-group-item"><a href="help423.html">下拉选择类</a></li> 
-						<li class="list-group-item"><a href="help424.html">附件和列表</a></li> 
-						<li class="list-group-item"><a href="help425.html">只读组件</a></li> 
-						<li class="list-group-item"><a href="help426.html">表单提交动作</a></li> 
+						
+						
+						
+						<li class="list-group-item"><a href="#c14">执行动作</a></li> 
+						<li class="list-group-item"><a href="#c15">占位符说明</a></li> 
+						
+						
 					</ul>
 				</div>
 			</div>
 			<div class="col col-12 col-md-10">
 				<div class="help-con" >
 				
-					<div class="card" id="c0">
-						<div class="card-header" >配置表概述</div>
+
+
+					<div class="card" id="c14">
+						<div class="card-header" >表单提交时执行SQL语句组件</div>
 					    <div class="card-body">
-					    	<p>数据库配置表快速定位：windowdb_conf.{模块编号}_dd，windowdb_conf.{模块编号}_ad </p>
-					    	<p>描述：系统表单统一为弹出窗口样式，弹出窗口中带有单个或多个页签（例如：图 7 所示），每个页签中 又有若干行不同类型的数据输入框，右下方带有一个确定按钮用于保存填写的数据，若数据未按要求填写，会 自动跳转到有问题的页签。另外右下方默认还带有一个取消按钮，用于取消保存填写的表单数据。点击确认之 后，系统会取 windowdb_conf.{模块编号}_ad 表中的 SQL 语句来执行，执行过 SQL 语句之后，表单数据 以及关联的业务数据都将同步到业务库中。以下章节将逐一介绍表单中的各个输入框。</p>
+					    	<p>表：windowdb_conf.{模块编号}_ad </p>
+					    	<p>描述：以占位符方式接受表单提交过来的数据，并且按照 id 的顺序执行 SQL 语句。占位符在表单表 windowdb_conf.{模块编号}_dd.dbcol 中定义，并且以“${...}”的字符拼接方式。</p>
+					    	
+					    	<table class="table">
+						    	<tr>
+						    		<td rowspan="2"><b>序<br><br>号</b></td><td colspan="3" class="text-center"><b>配置表单数据表：windowdb_conf.{模块编号}_ad 字段说明</b></td>
+						    	</tr><tr>
+						    		<td><b>字段名</b></td><td><b>说明</b></td>
+						    	</tr><tr>
+					    			<td>1</td><td>id</td><td>主键</td>
+								</tr><tr>
+									<td>2</td><td>templid</td><td>模版 id，相同模块可以有多套模版。例如：员工表在初次采集和修改数据时表单项不同。</td>
+								</tr><tr>
+									<td>3</td><td>returnkey</td><td>0，表示 insertsql 没有返回值；1。Insert 语句返回 id；3，select 返回单个字符串</td>
+								</tr><tr>
+									<td>4</td><td>insertsql</td><td>以占位符方式接受表单提交过来的数据，并且执行 SQL 语句。</td>
+								</tr>
+					    	</table>
+					    	<p class="text-center">表 35</p>
+					    	
 					    </div>
-					</div><!--/card-->
- 
+					</div><!--/card--> 
+					
+					
+					<div class="card" id="c15">
+						<div class="card-header" >表单提交时执行SQL语句中占位符说明</div>
+					    <div class="card-body">
+					    	<p>占位符格式1：${变量名}  （解析后变量值两边带单引号',例如：${my.name} > '竹林春雨'）</p>
+					    	<p>占位符格式1：#{变量名}  （解析后变量值两边不带单引号,例如：#{my.id} > 1 ）</p>
+					    	<p>变量名来源：由相同模块的表单定义表：windowdb_conf.{模块编号}_dd 中的 dbcol 字段值中定义(对应_ad表并且以“${...}”的字符拼接方式接收客户输入值)。</p>
+					    	
+					    </div>
+					</div><!--/card--> 
+					
+					
 					
 				</div><!--/help-con-->
 			</div>

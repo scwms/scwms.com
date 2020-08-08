@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
-	<title>表单组件 配置业务组件 帮助文档 WORKFLOW - 沃克福勒 企业软件研发平台 致力于快速开发</title>
+	<title>只读类组件 表单组件 配置业务组件 帮助文档 WORKFLOW - 沃克福勒 企业软件研发平台 致力于快速开发</title>
 	<meta content="NOODP" name="ROBOTS" />
-	<meta name="keywords" content="表单组件, 业务组件,帮助,文档,help,Document,白皮书,说明书,使用指南,开发指南">
-	<meta name="description" content="配置表单组件 帮助系统 企业软件快速开发平台 总体介绍部分、全篇介绍各类业务组件，如：列表组件、表单组件、数据导入组件、数据导出组件、打印组件、流程相关组件、帮助系统等等组件...">
+	<meta name="keywords" content="只读组件, 表单组件, 业务组件,帮助,文档,help,Document,白皮书,说明书,使用指南,开发指南">
+	<meta name="description" content="只读 配置表单组件 帮助系统 企业软件快速开发平台 总体介绍部分、全篇介绍各类业务组件，如：列表组件、表单组件、数据导入组件、数据导出组件、打印组件、流程相关组件、帮助系统等等组件...">
 
 	<!-- 新 Bootstrap4 核心 CSS 文件 -->
 	<link rel="stylesheet" href="static/bootstrap4/css/bootstrap.css">
@@ -26,7 +26,7 @@
 <body>		
 	<header id="header" class="">
 		<div class="container-fluid p-r">
-			<a class="header-logo" title="第2节、表单组件 << 第四章、配置业务组件 << 帮助系统 << 企业软件快速开发平台"  href="index.html"><h1>企业软件快速开发平台</h1></a>		
+			<a class="header-logo" title="只读组件 << 第2节、表单组件 << 第四章、配置业务组件 << 帮助系统 << 企业软件快速开发平台"  href="index.html"><h1>企业软件快速开发平台</h1></a>		
 			<div class="float-right top">	
 				<nav class="navbar navbar-expand-md navbar-dark  d-none d-md-block" id="navBig">
 				    <ul class="navbar-nav float-right">
@@ -87,10 +87,11 @@
 		<div class="btn-group">
 		  <a class="btn btn-warning text-muted" href="help.html"><i class="glyphicon glyphicon-home"></i></a>
 		  <a class="btn btn-warning text-muted" href="help4.html">第四章</a>
+		  <a class="btn btn-warning text-muted" href="help42.html">第2节</a>
 		</div>
 		
-		<h2 class="text-center d-none d-md-block">第2节、表单组件</h2>
-		<h3 class="text-center d-block d-md-none">第2节、表单组件</h3>
+		<h2 class="text-center d-none d-md-block">只读组件</h2>
+		<h3 class="text-center d-block d-md-none">只读组件</h3>
 		
 	</div>
 	<!--内容-->
@@ -99,26 +100,39 @@
 			<div class="col col-12 col-md-2">
 				<div class="" id="help-nav">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="help421.html">文本录入类</a></li> 
-						<li class="list-group-item"><a href="help422.html">日期时间类</a></li> 
-						<li class="list-group-item"><a href="help423.html">下拉选择类</a></li> 
-						<li class="list-group-item"><a href="help424.html">附件和列表</a></li> 
-						<li class="list-group-item"><a href="help425.html">只读组件</a></li> 
-						<li class="list-group-item"><a href="help426.html">表单提交动作</a></li> 
+						
+						
+						
+						<li class="list-group-item"><a href="#c12">HTML代码</a></li> 
+						<li class="list-group-item"><a href="#c13">JS脚本</a></li> 
+						
+						
 					</ul>
 				</div>
 			</div>
 			<div class="col col-12 col-md-10">
 				<div class="help-con" >
 				
-					<div class="card" id="c0">
-						<div class="card-header" >配置表概述</div>
+
+
+					<div class="card" id="c12">
+						<div class="card-header" >HTML只读文本展示组件</div>
 					    <div class="card-body">
-					    	<p>数据库配置表快速定位：windowdb_conf.{模块编号}_dd，windowdb_conf.{模块编号}_ad </p>
-					    	<p>描述：系统表单统一为弹出窗口样式，弹出窗口中带有单个或多个页签（例如：图 7 所示），每个页签中 又有若干行不同类型的数据输入框，右下方带有一个确定按钮用于保存填写的数据，若数据未按要求填写，会 自动跳转到有问题的页签。另外右下方默认还带有一个取消按钮，用于取消保存填写的表单数据。点击确认之 后，系统会取 windowdb_conf.{模块编号}_ad 表中的 SQL 语句来执行，执行过 SQL 语句之后，表单数据 以及关联的业务数据都将同步到业务库中。以下章节将逐一介绍表单中的各个输入框。</p>
+					    	<p>代码：{"type":"html"}</p>
+					    	<p>描述：字段 value 的值为 sql 语句，SQL 语句返回的结果作为网页显示。</p>
 					    </div>
-					</div><!--/card-->
- 
+					</div><!--/card--> 
+					
+					
+					<div class="card" id="c13">
+						<div class="card-header" >Javascript网页脚本组件</div>
+					    <div class="card-body">
+					    	<p>代码：{"type":"script"}</p>
+					    	<p>描述：字段 value 的值为 javascript 代码，解析时直接显示到网页端。</p>
+					    </div>
+					</div><!--/card--> 
+					
+					
 					
 				</div><!--/help-con-->
 			</div>
