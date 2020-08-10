@@ -21,6 +21,16 @@
 	 
 	<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
 	<script src="../static/bootstrap4/js/bootstrap.min.js"></script>
+	<script>
+		function copyText(str){
+			var input = document.createElement('input'); 
+			input.value = str;
+			document.body.appendChild(input);
+			input.select();
+			document.execCommand("Copy"); 
+			input.style.display='none';
+		}
+	</script>
 </head>
 <body>	
 	<header id="header" class="">
@@ -79,8 +89,11 @@
 			<div class="mask-btns">
 				<p class="text-center">
 				
-					<a target="_blank" href="https://pan.baidu.com/s/1JNKrtWqSkPZVMcugNkh8tA" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>百度下载 (workf1.3.exe) 提取码:3e5q</a>
+					<a target="_blank" href="https://pan.baidu.com/s/1JNKrtWqSkPZVMcugNkh8tA" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>百度下载 (workf1.3.exe)</a>
 					<br class="d-block d-md-none">
+					提取码:<a href="javascript:copyText('3e5q')">3e5q</a>
+					<br class="d-block d-md-none">
+					
 					<a target="_blank" class="text-success" href="doc.pdf">PDF文档下载</a>
 				
 				</p>
