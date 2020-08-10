@@ -33,6 +33,7 @@
 .help-nav{
 	position: fixed;
 	top: 100px;
+	z-index:9999;
 }
 #help-nav{	
 	margin-top: 10px;
