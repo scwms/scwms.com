@@ -121,6 +121,7 @@ ul, ol, li {
 
 #header.nav-fixed {
 	position: fixed;
+	height:5.3rem;
 	top: 0;
 	left: 0;
 	background-color: rgba(20, 138, 157, 1);
