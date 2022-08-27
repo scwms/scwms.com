@@ -39,9 +39,11 @@
 				      <li class="nav-item">
 				      	<a class="nav-link disabled" href="download.html">下载</a> 
 				      </li>
-				      <li class="nav-item">
-				        <a class="nav-link " href="workf/download.html"> <button type="button" class="btn btn-outline-light btn-xs">进销存</button> </a>
-				      </li>    
+					  <!-- 
+						  <li class="nav-item">
+							  <a class="nav-link " href="workf/download.html"> <button type="button" class="btn btn-outline-light btn-xs">进销存</button> </a>
+							</li>    
+						-->
 				    </ul>
 				    <div class="clearfix"></div>
 				</nav>
@@ -64,9 +66,12 @@
 					      <li class="nav-item"> 
 				        <a class="nav-link disabled" href="download.html">下载</a> 
 					      </li>
-					      <li class="nav-item">
-					        <a class="nav-link " href="workf/download.html"> <button type="button" class="btn btn-outline-light btn-xs">进销存</button> </a>
-					      </li>    
+						  <!-- 
+
+							  <li class="nav-item">
+								  <a class="nav-link " href="workf/download.html"> <button type="button" class="btn btn-outline-light btn-xs">进销存</button> </a>
+								</li>    
+							-->
 					    </ul>
 				    </div>
 				</nav>
@@ -79,9 +84,7 @@
 			<h2 class="mask-title d-block d-md-none">沃克福勒软件快速开发平台 软件下载</h2>
 			<div class="mask-btns">
 				<p class="text-center">
-					<a target="_blank" href="https://pan.baidu.com/s/1L4qFQSVwOY9_NqjYkfsACg" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>百度下载 (workflow1.1.exe)</a>
-					<br class="d-block d-md-none"><br class="d-block d-md-none">
-					提取码: quuu
+					<a target="_blank" href="https://hub.docker.com/r/6996899/workflow_net_cn" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>查看详细版本</a>
 				</p>
 			</div>			
 		</div>		
@@ -91,38 +94,41 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-md-8">
-					<h2 class="text-info">授权说明</h2>
+					当前仅支持使用Docker安装<br><br>
+					安装步骤：
+					<br>
+ 					拉取镜像<br>
+					<code>docker push 6996899/workflow_net_cn:v1.5</code>
 					<br><br>
-					<ul class="list-faq">
+					启动容器<br>
+					<code>docker run -itd --name wf -p 1980:1980 --mac-address=f4:0f:24:33:26:39 6996899/workflow_net_cn sh -c "/opt/workflow.net.cn/start.sh"</code>
+					<br><br>
+					注意 端口号可以修改成任意的，但是 mac地址必须保持f4:0f:24:33:26:39，否则将无法启动服务。
+					<br><br>
+					进入容器：<br>
+					<code>docker exec -it wf bash</code>
+					<br><br>
+					<code>cd /opt/workflow.net.cn/</code>
+					<br><br>
+					启动服务:<br>
+					<code>/opt/workflow.net.cn/start.sh</code>
+					<br><br>
+					访问WEB管理界面<br>
+					修改hosts文件<br>
+					linux下编辑： /etc/hosts<br>
 					
-					  <li class="text-info glyphicon glyphicon-file	">试用版授权包</li>
-					  <li class="text-muted">截止日期：2021-01-01</li>
-					  <li class="text-muted">用途说明：仅以交流学习为目的，不得用于商业盈利。</li>
-					  <li class="text-muted">其它说明：期满后会持续更新授权包。最终解释权归本站所有。</li>
-					  <li></li>
+					windows 下编辑： C:/windows/system32/drivers/etc/hosts
+					<br><br>
+					
+					增加一行：<br>
+					<code>127.0.0.1        workflow.net.cn</code>
+					<br><br>
+					局域网内其它客户机若要访问，请将127.0.0.1 更换成docker所在的宿主机IP地址。
+					<br><br>
+					web登录默认账号：000001 密码：123456
+					<br><br>
+					若无法登录，请参考业务库中的 person_user 表数据。
 					  
-					</ul>
-					
-					
-					<br><br>
-					<h2 class="text-info">下载文件说明</h2>
-					<br><br>
-					<ul class="list-faq">
-					
-					  <li class="text-info glyphicon glyphicon-file	"> workflow1.1.exe</li>
-					  <li class="text-muted">用途说明：安装包</li>
-					  <li class="text-muted">解压方式：双击解压缩</li>
-					  <li class="text-muted">启动方式：打开目录，右键点击”start.bat”文件，选择“使用超级管理员身份打开”</li>
-					  <li></li>
-					  <li class="text-info glyphicon glyphicon-file	"> workflow.jar</li>
-					  <li class="text-muted">用途说明：授权包</li>
-					  <li class="text-muted">安装方式：打开软件主目录下的update目录,替换掉该目录下的同名文件</li>
-					  <li class="text-muted">其它说明：未授权的软件部分功能可能无法正常使用</li>
-					  <li></li>
-					  <li class="text-info glyphicon glyphicon-file	"> WORKFLOW-沃客福勒 软件快速开发平台 v 1.1 使用说明.pdf</li>
-					  <li class="text-muted">用途说明：说明文档</li>
-					  
-					</ul>
 				</div>
 				
 			</div>
@@ -130,9 +136,7 @@
 	</div>
 	<div class="container-fluid list03">
 		<p class="text-center">
-			<a target="_blank" href="https://pan.baidu.com/s/1L4qFQSVwOY9_NqjYkfsACg" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>百度下载 (workflow1.1.exe)</a>
-			<br class="d-block d-md-none"><br class="d-block d-md-none">
-			提取码: quuu
+			<a target="_blank" href="https://hub.docker.com/r/6996899/workflow_net_cn" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>查看详细版本</a>
 		</p>
 	</div>
 	<footer>
