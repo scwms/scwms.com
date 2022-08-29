@@ -33,12 +33,12 @@
 				      	<a class="nav-link active" href="help.html">文档</a>
 				      </li>
 				      <li class="nav-item">
-				      	<a class="nav-link disabled" href="faq.html">FAQ</a>
+				      	<a class="nav-link disabled" href="faq.html">技术支持</a>
 				      </li>
 				      <li class="nav-item">
 				      	<a class="nav-link active" href="download.html">下载</a> 
 				      </li>
-				      <li class="nav-item">
+				      <li class="nav-item nodisplay">
 				        <a class="nav-link " href="workf/download.html"> <button type="button" class="btn btn-outline-light btn-xs">进销存</button> </a>
 				      </li>    
 				    </ul>
@@ -58,12 +58,12 @@
 					      	<a class="nav-link active" href="help.html">文档</a>
 					      </li>
 					      <li class="nav-item">
-					      	<a class="nav-link disabled" href="faq.html">FAQ</a>
+					      	<a class="nav-link disabled" href="faq.html">技术支持</a>
 					      </li>
 					      <li class="nav-item">
 				      	<a class="nav-link active" href="download.html">下载</a> 
 				      </li>
-				      <li class="nav-item">
+				      <li class="nav-item nodisplay">
 				        <a class="nav-link " href="workf/download.html"> <button type="button" class="btn btn-outline-light btn-xs">进销存</button> </a>
 				      </li>    
 					    </ul>
@@ -86,25 +86,26 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-8">
 					<h2 class="text-info"> </h2>
-					<p></p>
+					<br/>
+					<br/>
+					<br/>
+					<p>具体技术问题请加QQ群：690266685</p>
+					<br/>
+					<br/>
+					<br/>
+					
 					<ul class="list-faq">
-					  <li class="text-info"><span class="glyphicon glyphicon-question-sign mr-10"></span>如何启动软件服务？</li>
-					  <li class="text-muted"><span class="glyphicon glyphicon-pencil mr-10"></span>右键点击”start.bat”文件，选择“使用超级管理员身份打开”。</li>
-						
-					  <li class="text-info"><span class="glyphicon glyphicon-question-sign mr-10"></span>启动时，被要求输入密码，输入密码时候无任何反应。怎么办？</li>
-					  <li class="text-muted"><span class="glyphicon glyphicon-pencil mr-10"></span>启动密码会随不同版本而不同，研发平台的试用版密码默认为：workflow.net.cn，输入密码时屏幕不会有任何输出，输入完密码后敲“回车”键，密码正确即可启动成功。</li>
-
-					  <li class="text-info"><span class="glyphicon glyphicon-question-sign mr-10"></span>如何打开软件功能界面？</li>
-					  <li class="text-muted"><span class="glyphicon glyphicon-pencil mr-10"></span>双击打开“open.bat“文件。</li>
-
-					  <li class="text-info"><span class="glyphicon glyphicon-question-sign mr-10"></span>在服务正常启动的情况下，为何请求不到登录页面？</li>
-					  <li class="text-muted"><span class="glyphicon glyphicon-pencil mr-10"></span>请不要选择控制台（黑色DOS窗口）上的输出信息，如果控制台文字被选中，请敲回车键，取消选中状态，然后刷新浏览器，即可请求到登录页面。</li>
+					  <li class="text-info"><span class="glyphicon glyphicon-question-sign mr-10"></span>如何部署？</li>
+					  <li class="text-muted"><span class="glyphicon glyphicon-pencil mr-10"></span>docker push 6996899/workflow_net_cn:v1.5</li>
+					  
+					   <li class="text-info"><span class="glyphicon glyphicon-question-sign mr-10"></span>如何启动软件服务？</li>
+					  <li class="text-muted"><span class="glyphicon glyphicon-pencil mr-10"></span>docker run -itd --name wf -p 1980:1980 --mac-address=f4:0f:24:33:26:39 6996899/workflow_net_cn sh -c "/opt/workflow.net.cn/start.sh"</li>
 
 					  <li class="text-info"><span class="glyphicon glyphicon-question-sign mr-10"></span>其他未安装服务的相同网络设备要如何访问系统操作界面？</li>
 					  <li class="text-muted"><span class="glyphicon glyphicon-pencil mr-10"></span>需要修改系统host文件，将127.0.0.1的地址指向到安装服务的网络地址。</li>
 					  
-					  <li class="text-info"><span class="glyphicon glyphicon-question-sign mr-10"></span>系统升级或更换授权包之后无法登录怎么办？</li>
-					  <li class="text-muted"><span class="glyphicon glyphicon-edit mr-10"></span>清理浏览器缓存之后再尝试。</li>
+					  <li class="text-info"><span class="glyphicon glyphicon-question-sign mr-10"></span>无法登录怎么办？</li>
+					  <li class="text-muted"><span class="glyphicon glyphicon-edit mr-10"></span>清理浏览器缓存或者更换浏览器之后再尝试。</li>
 					  
 					</ul>
 				</div>
