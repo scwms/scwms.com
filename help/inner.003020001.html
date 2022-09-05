@@ -139,7 +139,7 @@
 					    	<p>模版，参考术语和概念章节</p>
 
 					    	<p>3，type</p>
-					    	<p>所连接数据源的类型，注意：以Sql开头的对应配置库中才可以执行sql语句，以Spl开头的使用spl脚本。</p>
+					    	<p>所连接数据源的类型。</p>
 					    	<p>可以输入的值包括如下：</p>
 
 					    	<p><b>SqlLite</b> 当前版本正在使用</p>
@@ -156,7 +156,7 @@
 						<p></p>
 					    	<p><b>SqlDM</b> 国内 达梦</p>
 						<p></p>
-					    	<p><b>SqlElasticSearch</b> ElasticSearch 非关系型数据库，注意：只支持有限的SQL查询方式，例如：select * from user where MATCH(name,'张三')，分页支持limit 但是只能带一个数字，需要和id > x 一起配合使用。写数据请使用http请求。建议所有非关系型数据库都采用spl方式。</p>
+					    	<p><b>SqlElasticSearch</b> ElasticSearch 非关系型数据库，注意：只支持有限的SQL查询方式，例如：select * from user where MATCH(name,'张三')，分页支持limit 但是只能带一个数字，需要和id > x 一起配合使用。写数据请使用http请求。</p>
 						<p></p>
 					    	<p><b>SqlH2</b> java H2数据库</p>
 						<p></p>
@@ -172,16 +172,12 @@
 						<p></p>
 						<p><b>SqlSysBase</b> SysBase </p>
 						<p></p>
- 						<p><b>SplEsproc</b> 使用SPL语句分析数据。注意：具体连接哪个数据库需要写到配置库的SPL脚本里。</p>
-                                                <p>例如连接ES：=es_open("localhost:9200")</p>
-                                                <p>又例如连接mongodb：=mongo_open("mongodb://root:sa@localhost:27017/col")</p>
-                                                <p>其它使用方式，请自行百度</p>
-                                                <p></p>
+ 						 
 
 						<p>4，visible</p>
                                                 <p>对于系统，该数据源是否可见。1，正常可见；0，不可见；</p>
-						<p>当该数据源出于可见状态时，配置库中对应模块表中使用了相同templid的配置数据，包括sql和spl，都会使用该连接去执行。</p>
-						<p>反之，当该数据源出于不可见状态时，配置库中对应模块表中使用了相同templid的配置数据，包括sql和spl，都会在系统默认的业务库中执行。此时若业务库中也有三方系统相同表，则sql脚本依然有效。</p>
+						<p>当该数据源出于可见状态时，配置库中对应模块表中使用了相同templid的配置数据，会使用该连接去执行。</p>
+						<p>反之，当该数据源出于不可见状态时，配置库中对应模块表中使用了相同templid的配置数据，会在系统默认的业务库中执行。此时若业务库中也有三方系统相同表，则sql脚本依然有效。</p>
 
                                                 <p>5，conf</p>
                                                 <p>json格式的配置项，系统会根据json里面的url去连接该数据库。以下是一些常用数据库的配置示例：</p>
@@ -313,12 +309,6 @@
                                                 <p>  "url":"jdbc:jtds:sybase://127.0.0.1:5000/dbname",</p>
                                                 <p>  "username":"root",</p>
                                                 <p>  "password":"123456",</p>
-                                                <p>}</p>
-                                                <p></p>
-
-                                                <p>SPL数据源配置示例：</p>
-                                                <p>{</p>
-                                                <p>  "url":"jdbc:esproc:local://",</p>
                                                 <p>}</p>
                                                 <p></p>
 
