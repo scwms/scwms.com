@@ -4,11 +4,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
-	<title>功能模块详细说明</title>
+	<title>功能模块-详细说明</title>
 	<meta content="NOODP" name="ROBOTS" />
 	<meta name="keywords" content="列表组件, 业务组件,帮助,文档,help,Document,白皮书,说明书,使用指南,开发指南">
 	<meta name="description" content="配置业务组件 帮助系统 软件快速开发平台 总体介绍部分、全篇介绍各类业务组件，如：列表组件、表单组件、数据导入组件、数据导出组件、打印组件、流程相关组件、帮助系统等等组件...">
-
+ 
 	<!-- 新 Bootstrap4 核心 CSS 文件 -->
 	<link rel="stylesheet" href="../static/bootstrap4/css/bootstrap.css">
 	<link rel="stylesheet" href="../static/css/public.css">
@@ -25,50 +25,77 @@
 </head>
 <body>
 		 
-
 <body>		
+<header id="header" >
 	<div class="list01-title bg-info">
 		<div class="btn-group">
 		  <a class="btn btn-warning text-muted" href="https://workflow.net.cn"><i class="glyphicon glyphicon-home"></i></a>
 		</div>
-		<h1 class="text-center d-none d-md-block">自定义功能模块详细说明</h1>
-		<h2 class="text-center d-block d-md-none">自定义功能模块详细说明</h2>
+		<h2 class="text-center">界面端自定义功能模块详细说明</h2>
 	</div>
+</header>
+
+<div id="slider" style="display:none;"><div class="slider_mask"><h1 class="mask-title d-none d-md-block">WORKFLOW-软件快速开发平台调试系统使用说明书</h1></div></div>
+
+	
 	<!--内容-->
 
 	<div class="container-fluid help p-r">
 
-		<!-- <div class="help-title bg-light text-dark" id="help-title"><h1>使用说明</h1></div> -->
-
-		
-
 		<div class="row">
 
-			<div class="col col-12 col-md-2">
+			<div class="col col-12 col-md-2" style="top:150px;width:250px;">
 
-				<div class="" id="help-nav">
+				<div class="" id="help-nav" style="top:150px;width:250px;">
 
 					<ul class="list-group">
 
-						<li class="list-group-item"><a href="#c1">1、添加功能</a></li>
-
-						<li class="list-group-item"><a href="#c2">2、修改功能</a></li>
-
-						<li class="list-group-item"><a href="#c3">3、隐藏功能</a></li>	
-
-						<li class="list-group-item"><a href="#c4">4、功能授权</a></li>	
-
+						<li class="list-group-item"><a href="#c">概述</a></li>
+						<li class="list-group-item"><a href="#c0">系统管理>>功能管理</a></li>
+						<li class="list-group-item"><a href="#c1">添加功能</a></li>
+						<li class="list-group-item"><a href="#c2">修改功能</a></li>
+						<li class="list-group-item"><a href="#c3">隐藏功能</a></li>	
+						<li class="list-group-item"><a href="#c4">功能授权</a></li>
+						<li class="list-group-item"><a href="#cc">扩展</a></li>	
 						
-
 					</ul>
 
 				</div>
 
 			</div>
 
-			<div class="col col-12 col-md-10">
 
+
+			<div class="col col-12 col-md-10" style="top:150px;" >
+				
+				
 				<div class="help-con">
+					 
+
+					<div class="card" id="c">
+
+						<div class="card-header" >概述</div>
+
+					    <div class="card-body">
+				
+								<p>
+									   若要在系统中增加一个属于您自己的功能模块，至少需要如下两步：
+								</p>
+								<p>
+										 1，首先需要在“功能列表”中设计出一个菜单，并且授权给特定的角色，使其能够看到并且操作。
+								</p>
+								<p>
+										 2，在配置库中配置出一个列表功能（或者其它类型的功能组件），修改菜单链接，使菜单可以打开该功能模块。
+								</p>
+								<p>
+										 而本章节旨在负责讲清楚第1步，如何设计出一个菜单，并且授权给特定用户角色。
+								</p>
+
+					    </div>
+
+					</div><!--/card--> 
+					
+					
 
 					<div class="card" id="c0">
 
@@ -146,21 +173,48 @@
 
 					</div><!--/card--> 
 
+
+
+
+					<div class="card" id="cc">
+
+						<div class="card-header" >扩展</div>
+
+					    <div class="card-body">
+
+					    	<p>
+						 
+								</p>
+								
+								<p>
+										 倘若这个模块的数据是来源于其它数据库的，您还需要再<a href="inner.003020001.html">定义一下该模块的数据源</a>。
+								</p>
+								
+								<p>
+										 倘若这个模块需要走业务流审批，您还需要为业务表单<a href="inner.003020007.html">定义一套审批流程</a>。
+								</p>
+					    </div>
+
+					</div><!--/card--> 
+
 				</div><!--/help-con-->
 
+
+				
+				
+				
 			</div>
 
 		</div>
 
 		
-
 		
 
 		
 
 	</div>
 	<!--底部-->
-	<div class="container-fluid list03">
+	<div class="container-fluid list03" style="margin-top: 200px;">
 		<p class="text-center"><a href="download.html" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>试用最新版本</a></p>
 	</div>
 	<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
