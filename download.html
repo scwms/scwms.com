@@ -96,21 +96,20 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-md-8">
-					当前仅支持使用Docker安装<br>
+					支持Docker部署<br>
 					<br> 安装步骤： <br> 拉取镜像<br>
 					<code>docker pull 6996899/workflow_net_cn</code>
 					<br>
 					<br> 启动容器<br>
-					<code>docker run -itd --name wf -p 1980:1980
-						--mac-address=f4:0f:24:33:26:39 6996899/workflow_net_cn sh -c
-						"/opt/workflow.net.cn/start.sh"</code>
+					<code>
+						docker run -itd --name wf -p 1980:1980 --mac-address=f4:0f:24:33:26:39 6996899/workflow_net_cn sh -c "/opt/workflow.net.cn/start.sh"
+					</code>
 					<br>
 					<br> 注意 端口号可以修改成任意的，但是 mac地址必须保持f4:0f:24:33:26:39，否则将无法启动服务。 <br>
 					<br> 进入容器：<br>
-					<code>docker exec -it wf bash</code>
-					<br>
-					<br>
-					<code>cd /opt/workflow.net.cn/</code>
+					<code>
+						docker exec -it wf bash
+					</code>
 					<br>
 					<br> 启动服务:<br>
 					<code>/opt/workflow.net.cn/start.sh</code>
@@ -119,7 +118,9 @@
 					/etc/hosts<br> windows 下编辑：
 					C:/windows/system32/drivers/etc/hosts <br>
 					<br> 增加一行：<br>
-					<code>127.0.0.1   trial.workflow.net.cn</code>
+					<code>
+						127.0.0.1   trial.workflow.net.cn
+					</code>
 					<br>
 					<br> 局域网内其它客户机若要访问，请将127.0.0.1 更换成docker所在的宿主机IP地址。 <br>
 					<br> web登录默认账号：000001 密码：123456 <br>
