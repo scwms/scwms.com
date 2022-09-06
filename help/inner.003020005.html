@@ -1,1 +1,163 @@
-文档编写中...
+<!Doctype html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>自定义HTML页面</title>
+	<meta content="NOODP" name="ROBOTS" />
+	<meta name="keywords" content=", ,,,help,Document,,,,">
+	<meta name="description" content="   ...">
+
+	<!--  Bootstrap4  CSS  -->
+	<link rel="stylesheet" href="../static/bootstrap4/css/bootstrap.css">
+	<link rel="stylesheet" href="../static/css/public.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<!-- jQuerybootstrap.min.js  -->
+	<script src="../static/js/jquery.min.js"></script>
+
+	<!-- bootstrap.bundle.min.js  popper.min.js -->
+	<script src="../static/js/popper.min.js"></script>
+
+	<!--  Bootstrap4  JavaScript  -->
+	<script src="../static/bootstrap4/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+	<body>
+		<header id="header">
+			<div class="list01-title bg-info">
+				<div class="btn-group">
+					<a class="btn btn-warning text-muted" href="https://workflow.net.cn" target="_blank"><i
+							class="glyphicon glyphicon-home"></i></a>
+				</div>
+				<h2 class="text-center">自定义HTML、CSS、JS静态文件</h2>
+			</div>
+		</header>
+
+		<div id="slider" style="display:none;">
+			<div class="slider_mask">
+				<h1 class="mask-title d-none d-md-block">WORKFLOW-试用说明</h1>
+			</div>
+		</div>
+
+
+		<!---->
+
+		<div class="container-fluid help p-r">
+
+			<div class="row">
+
+				<div class="col col-12 col-md-2" style="top:150px;width:250px;">
+
+					<div class="" id="help-nav" style="top:150px;width:250px;">
+
+						<ul class="list-group">
+
+							<li class="list-group-item"><a href="#c">概述</a></li>
+							<li class="list-group-item"><a href="#c0">常用术语</a></li>
+							<li class="list-group-item"><a href="#c1">配置说明</a></li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+
+
+				<div class="col col-12 col-md-10" style="top:150px;">
+
+
+					<div class="help-con">
+
+
+						<div class="card" id="c">
+
+							<div class="card-header">概述</div>
+
+							<div class="card-body">
+
+								<p>
+									特殊情况下，系统需要符合特定审美和要求的表单页面，例如：为了配合某某活动，公司专门设计了符合该活动主题的页面，此时可以将设计好页面的代码复制到静态资源配置中（static_code），只需要通过浏览器请求统一URL即可进行访问。
+								</p>
+
+							</div>
+
+						</div>
+						<!--/card-->
+
+						<div class="card" id="c0">
+
+							<div class="card-header">常用术语</div>
+
+							<div class="card-body">
+
+								<b>1，静态资源配置表</b>
+								<p>特指配置库中表：static_code_src，该表中配置的内容可以通过浏览器输入url： /getResource/{id}/html进行访问到，同时还支持css和js，访问方式只需要将{id}替换成该表中对应数据的ID，将html替换成css或者js即可。
+								</p>
+
+							</div>
+
+						</div>
+						<!--/card-->
+						<div class="card" id="c1">
+
+							<div class="card-header">静态资源配置表字段说明</div>
+
+							<div class="card-body">
+
+								<b>表名</b>
+								<p>static_code_src</p>
+ 
+
+								<b>1，id</b>
+								<p>静态资源ID，访问时需要拼接到url路径中。</p>
+								<p>例如：</p>
+								<p>/getResource/{id}/html</p>
+								<p>/getResource/{id}/js</p>
+								<p>/getResource/{id}/css</p>
+								
+								<b>2，static_code</b>
+								<p>用于存储静态资源代码，可以是html代码，javascript代码或者css代码</p>
+  
+								<b>3，visible</b>
+								<p>对于系统，该数据源是否可见。1，正常可见；0，不可见；</p>
+								<p>当该数据源出于可见状态时，通过/getResource/{id}/html|js|css接口地址才可以请求到数据。</p>
+  
+							</div>
+
+						</div>
+						<!--/card-->
+
+
+
+					</div>
+					<!--/help-con-->
+
+
+
+
+
+				</div>
+
+			</div>
+
+
+
+
+
+
+		</div>
+		<!---->
+		<div class="container-fluid list03" style="margin-top: 200px;">
+			<p class="text-center"><a href="/download.html" class="btn btn-outline-light"><span
+						class="glyphicon glyphicon-download mr-10"></span>立即试用最新版本</a></p>
+		</div>
+		<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>
