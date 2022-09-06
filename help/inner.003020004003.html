@@ -1,1 +1,254 @@
-inner.003020004003.html
+<!Doctype html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>数据处理--数据绑定</title>
+<meta content="NOODP" name="ROBOTS" />
+<meta name="keywords" content=", ,,,help,Document,,,,">
+<meta name="description" content="   ...">
+
+<!--  Bootstrap4  CSS  -->
+<link rel="stylesheet" href="../static/bootstrap4/css/bootstrap.css">
+<link rel="stylesheet" href="../static/css/public.css">
+<link rel="stylesheet" href="../static/css/style.css">
+<!-- jQuerybootstrap.min.js  -->
+<script src="../static/js/jquery.min.js"></script>
+
+<!-- bootstrap.bundle.min.js  popper.min.js -->
+<script src="../static/js/popper.min.js"></script>
+
+<!--  Bootstrap4  JavaScript  -->
+<script src="../static/bootstrap4/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<body>
+	<header id="header">
+		<div class="list01-title bg-info">
+			<div class="btn-group">
+				<a class="btn btn-warning text-muted" href="https://workflow.net.cn"
+					target="_blank"><i class="glyphicon glyphicon-home"></i></a>
+			</div>
+			<h2 class="text-center">数据处理--数据和数据多对多关联</h2>
+		</div>
+	</header>
+
+	<div id="slider" style="display: none;">
+		<div class="slider_mask">
+			<h1 class="mask-title d-none d-md-block">WORKFLOW-试用说明</h1>
+		</div>
+	</div>
+
+
+	<!---->
+
+	<div class="container-fluid help p-r">
+
+		<div class="row">
+
+			<div class="col col-12 col-md-2" style="top: 150px; width: 250px;">
+
+				<div class="" id="help-nav" style="top: 150px; width: 250px;">
+
+					<ul class="list-group">
+
+						<li class="list-group-item"><a href="#c">概述</a></li>
+						<li class="list-group-item"><a href="#c0">常用术语</a></li>
+						<li class="list-group-item"><a href="#c1">左侧数据</a></li>
+						<li class="list-group-item"><a href="#c2">右侧数据</a></li>
+
+					</ul>
+
+				</div>
+
+			</div>
+
+
+
+			<div class="col col-12 col-md-10" style="top: 150px;">
+
+
+				<div class="help-con">
+
+
+					<div class="card" id="c">
+
+						<div class="card-header">概述</div>
+
+						<div class="card-body">
+
+							<p>多数情况下，我们需要对数据的多对多关联关系进行维护。也就是数据和数据之间的绑定和解除绑定行为。</p>
+							<p>通过调用js函数ln(viewName, templid, id,
+								lntitle)调用此数据绑定组件。而在tab页签中，例如列表页中调用需要在js函数前增加parent.来达到调用用函数的目的。例如：parent.ln(viewName,
+								templid, id, lntitle)调用此组件。</p>
+							<p>系统会首先根据viewName找到该模块的DD表，再根据templid找到配置数据，根据配置数据中的vlue和editor，也就是右侧数据和左侧数据，来解析该组件的左右两个列表。sql具体所要查询的数据列需要查看对应的demo示例。</p>
+
+						</div>
+
+					</div>
+					<!--/card-->
+
+					<div class="card" id="c0">
+
+						<div class="card-header">常用术语</div>
+
+						<div class="card-body">
+
+							<b>1，多对多关联关系</b>
+							<p>两个实体对象之间的关联关系，也就是关联关系表，例如：角色和权限两张表之间的关系是由一张多对多关联关系表来维护的。</p>
+
+							<b>2，左侧数据</b>
+							<p>数据绑定组件打开之后，分左右两侧，位于绑定组件左侧的数据。</p>
+							<p>左侧数据要求有id，title两列。点击左侧数据，右侧数据可以根据左侧数据id进行切换。</p>
+
+							<b>3，右侧数据</b>
+							<p>数据绑定组件打开之后，分左右两侧，位于绑定组件右侧的数据。</p>
+							<p>右侧数据要求有id，templid，group，name，value，targetcol，targetval，selfcol，lntable等列数据，详细说明参考后续章节。</p>
+
+						</div>
+
+					</div>
+					<!--/card-->
+					<div class="card" id="c1">
+
+						<div class="card-header">左侧数据配置说明</div>
+
+						<div class="card-body">
+
+							<b>右侧sql被保存在editor字段中，如下所示：</b>
+							<p>
+							<pre>
+								<code>
+select 
+	b.id, 
+	(
+	
+	substr((a.code||'____________________'), 1,20)||
+	' - '||
+	substr((COALESCE(ppp.title||'　','')||coalesce(pp.title||'　','')||coalesce(p.title||'　','')||b.title)||'　　　　　　　　　　　　　　　　　　　　　　　　',1,20)
+	
+	) title
+from 
+	branch_auth a
+inner join branch b on b.id = a.id 
+left join branch p on p.id = b.p_id and p.id > 60 
+left join branch pp on pp.id = p.p_id and pp.id > 60 
+left join branch ppp on ppp.id = pp.p_id and ppp.id > 60 
+inner join main._role_auth ra on ra.aid = a.id 
+inner join main._role_user ru on ru.rid = ra.rid 
+where a.granted = 1 
+group by b.id 
+order by a.code,  a.sort_num
+</code>
+							</pre>
+							</p>
+							<b>字段说明</b>
+							<p>
+								<b>1,id</b>
+								<p>业务数据的id，系统会根据该id刷新右侧数据，显示哪些数据绑定过，哪些数据没有绑定。</p>
+								<b>2,title</b>
+								<p>组件左侧列表项显示的内容。</p>
+
+							</p>
+
+
+
+						</div>
+
+					</div>
+					<!--/card-->
+
+
+					<div class="card" id="c1">
+
+						<div class="card-header">右侧数据配置说明</div>
+
+						<div class="card-body">
+
+							<b>右侧sql被保存在value字段中，如下所示：</b>
+							<p>
+							<pre>
+								<code>
+SELECT
+	`r`.`id` AS `id`,
+	1980 AS `templid`,
+	`r`.`label` AS `group`,
+	('授予 '|| substr( (`r`.`title` || '　　　　　　　　　　　　　　') , 1, 8 )||'角色 对【'||( select coalesce((p.title||'>'),'')||b.title from branch b left join branch p on p.id = b.p_id and p.id > 60 where b.id = ${id} limit 1 ) ||'】模块的使用权限？') AS `name`,	
+	(
+		'select COALESCE((select 1 from `_role_auth` where aid = ${id} and rid = '||`r`.`id`|| '),0) from dual'
+	) AS `value`,
+	'rid' AS `targetcol`,
+	`r`.`id` AS `targetval`,
+	'aid' AS `selfcol`,
+	'_role_auth' AS `lntable`
+FROM
+	 `role` `r`
+WHERE
+	`r`.`code` LIKE '0002%' 
+</code>
+							</pre>
+							</p>
+
+							</p>
+							<b>字段说明</b>
+							<p>
+								<b>1,id</b>
+								<p>外表业务数据的id，系统会根据该id刷新右侧数据，显示哪些数据绑定过，哪些数据没有绑定。</p>
+								<b>2,templid</b>
+								<p>模块id，系统需要根据该模块id找到原始的配置数据。</p>
+								<b>3,group</b>
+								<p>右侧列表数据按此分组显示。</p>
+								<b>4,name</b>
+								<p>右侧列表项目要展示的内容。</p>
+								<b>5,value</b>
+								<p>0，未绑定；1，已绑定。</p>
+								<b>6,targetcol</b>
+								<p>目标字段。</p>
+								<b>7,targetval</b>
+								<p>目标字段的值。</p>
+								<b>8,selfcol</b>
+								<p>左侧业务数据字段。</p> 
+								<b>9,lntable</b>
+								<p>关联表表名。</p> 
+							</p>
+
+						</div>
+
+					</div>
+					<!--/card-->
+
+
+
+				</div>
+				<!--/help-con-->
+
+
+
+
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+	</div>
+	<!---->
+	<div class="container-fluid list03" style="margin-top: 200px;">
+		<p class="text-center">
+			<a href="/download.html" class="btn btn-outline-light"><span
+				class="glyphicon glyphicon-download mr-10"></span>立即试用最新版本</a>
+		</p>
+	</div>
+	<script src="../static/js/public.js" type="text/javascript"
+		charset="utf-8"></script>
+</body>
+
+</html>
