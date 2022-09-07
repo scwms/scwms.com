@@ -1,1 +1,166 @@
-inner.003020010.html
+<!Doctype html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>业务库表介绍</title>
+<meta content="NOODP" name="ROBOTS" />
+<meta name="keywords" content="help,Document">
+<meta name="description" content="...">
+
+<!-- Bootstrap4 CSS -->
+<link rel="stylesheet" href="../static/bootstrap4/css/bootstrap.css">
+<link rel="stylesheet" href="../static/css/public.css">
+<link rel="stylesheet" href="../static/css/style.css">
+<!-- jQuery bootstrap.min.js -->
+<script src="../static/js/jquery.min.js"></script>
+
+<!-- bootstrap.bundle.min.js popper.min.js -->
+<script src="../static/js/popper.min.js"></script>
+
+<!-- Bootstrap4 JavaScript -->
+<script src="../static/bootstrap4/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<body>
+	<header id="header">
+		<div class="list01-title bg-info">
+			<div class="btn-group">
+				<a class="btn btn-warning text-muted" href="https://workflow.net.cn"
+					target="_blank"><i class="glyphicon glyphicon-home"></i></a>
+			</div>
+			<h2 class="text-center">业务库中数据表的命名和使用规范</h2>
+		</div>
+	</header>
+
+	<div id="slider" style="display: none;">
+		<div class="slider_mask">
+			<h1 class="mask-title d-none d-md-block">WORKFLOW-试用说明</h1>
+		</div>
+	</div>
+
+
+	<!-- -->
+
+	<div class="container-fluid help p-r">
+		<div class="row">
+			<div class="col col-12 col-md-2" style="top: 150px; width: 250px;">
+				<div class="" id="help-nav" style="top: 150px; width: 250px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a href="#c">概述</a></li>
+						<li class="list-group-item"><a href="#c0">命名规范</a></li>
+						<li class="list-group-item"><a href="#c1">继承规范</a></li>
+						<li class="list-group-item"><a href="#c2">内置业务表介绍</a></li>
+						
+
+					</ul>
+				</div>
+			</div>
+
+			<div class="col col-12 col-md-10" style="top: 150px;">
+
+				<div class="help-con">
+					<div class="card" id="c">
+						<div class="card-header">概述</div>
+						<div class="card-body">
+
+							<p>系统默认的业务库主要用于保存人员权限、流程定义和实例以及彼此之间的关联关系。</p>
+
+						</div>
+					</div>
+					<!--/card-->
+
+					<div class="card" id="c0">
+						<div class="card-header">命名规范</div>
+						<div class="card-body">
+							<b>1，表命名</b>
+							<p>相同业务的表名使用相同的前缀，使其能够排列在一起。</p>
+
+							<b>2，字段命名规范</b>
+							<p>尽量避免联合主键，应使用单一主键。所有业务实体需要主键的，统一“id”，避免主键中出现：user_id, user应出现在表名中。</p>
+							<p>而外键关联user表id的，可以使用user_id,或uid，尽可能简要易懂。</p>
+							<p>多对多关联表以下划线"_"开头，左表名关键词加上下划线“_”再加上右表名关键词。而字段也只有左表主键id和右表主键id两个字段，分别加上索引。</p>
+
+						</div>
+					</div>
+					<!--/card-->
+
+					<div class="card" id="c1">
+
+						
+						<div class="card-header">表继承规范</div>
+
+						<div class="card-body">
+
+							<p>为了使业务具有更好的扩展性，业务库中数据表的设计也应遵循“开闭原则”，对已经存在的业务表（配置库配置表除外），应避免作出改动和调整。需要增加新的业务表，id和主表关联。</p>
+							<p>例如：</p>
+							<p>管理系统原先只有企业员工可以登录，但是需要临时开放部分功能给客户来使用，此时我们只需要增加一张表：person_user_customer, 其主键id和超类表person_user的id字段关联。</p>
+
+						</div>
+					</div>
+					<!--/card-->
+
+					<div class="card" id="c2">
+					
+						<div class="card-header">内置业务表介绍</div>
+
+						<div class="card-body">
+
+							<p>业务库是企业用来存储业务数据的数据库，该库默认会存在一些少量的初始业务数据，用于支撑系统的基本运行，例如：组织机构(branch_com_dept)、用户账号（person_user_staff）、通知消息 （cms_content）、工作流定义（wf_def）、工作流实例（wf_ins）等等... </p>
+					    	<p>业务的研发人员在开发新的功能需求时，业务相关的数据需要保存在该空间中，可以自主建表、视图、 触发器、存储过程等一系列数据库对象，用于保存业务数据甚至处理业务逻辑。</p>
+					    	<p>
+								<center>业务表命名规范 
+					    	<table class="table">
+						    	<tr><td>序号</td><td>前缀</td><td>说明</td></tr>
+						    	<tr><td>1</td><td>branch_</td><td>分支数据表，用于存储符合父子关系的数据。 </td></tr>
+						    	<tr><td>2</td><td>cms_ </td><td>负责存储需要公布的展示信息。 </td></tr>
+						    	<tr><td>3</td><td>person </td><td>负责存储描述人的信息，如：客户、员工、联系人，等等... </td></tr>
+						    	<tr><td>4</td><td>user </td><td>登录系统的账号信息。 </td></tr>
+						    	<tr><td>5</td><td>wf_def </td><td>系统工作流的定义数据。 </td></tr>
+						    	<tr><td>6</td><td>wf_ins </td><td>定义好的工作流在运行时的流程实例数据。 </td></tr>
+						    	<tr><td>7</td><td>im_xls_ </td><td>外部文件导入内部系统过程中产生的中间数据。 </td></tr>
+						    	<tr><td>8</td><td>_ </td><td>两个表的关联数据信息。</td></tr>
+					    	</table>
+					    	 表 3</center>
+					    	</p>
+
+						</div>
+					</div>
+					<!--/card-->
+
+
+
+				</div>
+				<!--/help-con-->
+
+
+
+
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+	</div>
+	<!-- -->
+	<div class="container-fluid list03" style="margin-top: 200px;">
+		<p class="text-center">
+			<a href="/download.html" class="btn btn-outline-light"><span
+				class="glyphicon glyphicon-download mr-10"></span>立即试用最新版本</a>
+		</p>
+	</div>
+	<script src="../static/js/public.js" type="text/javascript"
+		charset="utf-8"></script>
+</body>
+
+
+</html>
