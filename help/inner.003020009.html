@@ -1,1 +1,141 @@
-inner.003020009.html
+<!Doctype html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>帮助系统</title>
+<meta content="NOODP" name="ROBOTS" />
+<meta name="keywords" content="help,Document">
+<meta name="description" content="...">
+
+<!-- Bootstrap4 CSS -->
+<link rel="stylesheet" href="../static/bootstrap4/css/bootstrap.css">
+<link rel="stylesheet" href="../static/css/public.css">
+<link rel="stylesheet" href="../static/css/style.css">
+<!-- jQuery bootstrap.min.js -->
+<script src="../static/js/jquery.min.js"></script>
+
+<!-- bootstrap.bundle.min.js popper.min.js -->
+<script src="../static/js/popper.min.js"></script>
+
+<!-- Bootstrap4 JavaScript -->
+<script src="../static/bootstrap4/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<body>
+	<header id="header">
+		<div class="list01-title bg-info">
+			<div class="btn-group">
+				<a class="btn btn-warning text-muted" href="https://workflow.net.cn"
+					target="_blank"><i class="glyphicon glyphicon-home"></i></a>
+			</div>
+			<h2 class="text-center">配置库中帮助系统配置说明</h2>
+		</div>
+	</header>
+
+	<div id="slider" style="display: none;">
+		<div class="slider_mask">
+			<h1 class="mask-title d-none d-md-block">WORKFLOW-试用说明</h1>
+		</div>
+	</div>
+
+	<!--  -->
+
+	<div class="container-fluid help p-r">
+		<div class="row">
+			<div class="col col-12 col-md-2" style="top: 150px; width: 250px;">
+				<div class="" id="help-nav" style="top: 150px; width: 250px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a href="#c">概述</a></li>
+						<li class="list-group-item"><a href="#c0">入口程序</a></li>
+						<li class="list-group-item"><a href="#c1">配置表说明</a></li>
+
+					</ul>
+				</div>
+			</div>
+
+			<div class="col col-12 col-md-10" style="top: 150px;">
+
+				<div class="help-con">
+					<div class="card" id="c">
+						<div class="card-header">概述</div>
+						<div class="card-body">
+ 
+							<p>右侧边栏为软件自带的帮助系统，不同的模块都可以有自己独立的帮助内容，根据模块编号和帮助内容的数据id，可以找到配置表及对应的数据，修改该数据，即可改变帮助系统要显示的内容。</p>
+
+						</div>
+					</div>
+					<!--/card-->
+
+					<div class="card" id="c0">
+						<div class="card-header">帮助函数调用 -（入口）</div>
+						<div class="card-body">
+							 
+							 <b>呼出帮助功能-右侧边栏</b>
+							 <p>help({帮助id})<b>
+							 <hr>
+							 <b>直接请求帮助内容</b>
+							 /help/{模块}?id={帮助id}
+							 <hr>
+					    	
+						</div>
+					</div>
+					<!--/card-->
+
+					<div class="card" id="c1">
+						
+						<div class="card-header">配置表</div>
+						<div class="card-body">
+							 
+							 <p>
+								<center>帮助系统配置表：`模块_hp`，字段说明
+					    	<table class="table">
+						    	<tr><td>序号</td><td>字段名</td><td>说明</td></tr>
+						    	<tr><td>1</td><td>id</td><td>帮助内容id</td></tr>
+						    	<tr><td>2</td><td>content</td><td>帮助内容，一段html代码，会直接显示在右侧边栏。 </td></tr>
+					    	</table>
+					    	 表 1</center>
+					    	</p>
+							 
+							 
+						</div>
+					</div>
+					<!--/card-->
+ 
+
+
+
+				</div>
+				<!--/help-con-->
+
+
+
+
+
+			</div>
+
+		</div>
+
+
+
+
+
+
+	</div>
+	<!-- -->
+	<div class="container-fluid list03" style="margin-top: 200px;">
+		<p class="text-center">
+			<a href="/download.html" class="btn btn-outline-light"><span
+				class="glyphicon glyphicon-download mr-10"></span>立即试用最新版本</a>
+		</p>
+	</div>
+	<script src="../static/js/public.js" type="text/javascript"
+		charset="utf-8"></script>
+</body>
+
+
+</html>
