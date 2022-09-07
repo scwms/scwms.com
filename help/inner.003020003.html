@@ -444,7 +444,7 @@
 								</code></pre></p>
 								<hr>
 
-								<b>示例2(获取图片base64码)：</b>
+								<b>示例2(获取图片base64码，tooltip提示)：</b>
                                                                 <p><pre><code>
 
 {
@@ -457,7 +457,9 @@
 			let files = $("#iconfilebox").filebox("files");
 			let fileReader = new FileReader();
 			fileReader.readAsDataURL(files[0]); 
-			console.log(fileReader, fileReader.result );
+			fileReader.onload = function(){
+				console.log("base64字符串：",this.result)
+			}
 		},
 		icons: [{
 				iconCls:"icon-help",
