@@ -68,8 +68,62 @@
 						<div class="card-header">概述</div>
 						<div class="card-body">
  
-							<p>右侧边栏为软件自带的帮助系统，不同的模块都可以有自己独立的帮助内容，根据模块编号和帮助内容的数据id，可以找到配置表及对应的数据，修改该数据，即可改变帮助系统要显示的内容。</p>
+							<p>对系统功能的扩展，首先要添加功能，添加的功能授权给特定的角色，该角色的用户登录之后才可以使用该功能。</p>
+							<p>而对数据使用权限的鉴定，则需要<a href="./inner.003020002002.html" target="_blank">dd表</a>中的数据查询脚本来配合完成。</p>
+							<p>例如在获取我的待办数据时增加如下where条件：</p>
+							<p><pre>
+							<code>
+select 
+	
+	
+	t.id, 
+	reverse(substr(reverse('0000000000'||ins.id),1,10)) as ins_code,
+	reverse(substr(reverse('0000000000'||t.id),1,10)) as task_code,
+	
+	ins.insert_time create_time,
+	t.insert_time applicant_time, 
+	cr.title as creator,
+	ap.title as applicant,
+	def.note wf_info,
+	(
+		COALESCE(('<img style="padding:3px;vertical-align\:middle;" src="'||def.icon||'">'),'')||
+		'<a href="javascript:parent.openDetail('''||coalesce(ins.title,'')||''',''/print/showDetail/'||coalesce(def.fun_code,'')||'/1'||
+		k.ask||'datasrc=dd'||k.`and`||'templid=1000'||k.`and`||'ids='||coalesce( ins.bill_id, '')||''','''')">'||
+		'['||coalesce(node.title,'')||']'||coalesce(ap.title,'')||coalesce(date(t.insert_time),'')||coalesce( ins.title,'')||'</a>'
+	) as title,
+	(
+		'<button onclick="showTask(''portal'','|| t.id ||')">受理</button>'
+	) as opt 
+	
+from wf_ins_task t 
 
+  inner join `keyword` as k on k.id = 1
+  inner join `wf_ins` ins on ins.id = t.wf_ins_id 
+  inner join `person` cr on cr.id = ins.creator_id 
+  inner join `wf_def` def on def.id = t.wf_def_id 
+  inner join `wf_def_node` node on node.id = t.wf_node_id 
+  inner join `person` ap on ap.id = t.applicant_id 
+  inner join `_task_user` u on u.tid = t.id 
+  left join `wf_ins_task_entrust` e on e.wf_node_id = node.id and e.visible = 1 and ${now} between e.begin_time and e.end_time 
+  left join person eu on eu.id = e.entrusted_id 
+		
+where  
+	
+	node.visible = 1 and 
+	t.visible = 1 and ins.visible = 1 and def.visible = 1 and 
+	node.func_node = 0 and t.done = 0 and ins.done = 0 and 
+	node.node_index != 0 and node.node_index != 6996899 and 
+	( u.uid = ${my.id} or e.officer_id =  ${my.id} ) 
+
+order by 
+
+	t.insert_time desc 
+	 
+ 
+							</code>
+							</pre>
+							</p>
+<p>${my.id} 表示当前登录人的id，将当前登录人作为条件，筛选出和自己相关的业务数据。</p>
 						</div>
 					</div>
 					<!--/card-->
