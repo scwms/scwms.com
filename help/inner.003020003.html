@@ -444,6 +444,40 @@
 								</code></pre></p>
 								<hr>
 
+								<b>示例2(获取图片base64码)：</b>
+                                                                <p><pre><code>
+
+{
+	"type":"filebox",
+	"options":{
+		"prompt":"请选择一张16X16像素的小图标",
+		"buttonText": "选择图片",
+		"accept": "image/*",
+		"onChange":function(n){
+			let files = $("#iconfilebox").filebox("files");
+			let fileReader = new FileReader();
+			fileReader.readAsDataURL(files[0]); 
+			console.log(fileReader, fileReader.result );
+		},
+		icons: [{
+				iconCls:"icon-help",
+				handler: function(e){
+					$(this).tooltip(
+					{
+						content:function()
+						{
+							return "此处上传的图片会在菜单按钮中显示<br>尺寸务必要求在16X16像素。<br>否则会破坏整个页面的显示。";
+						}
+					});
+				}
+			}]
+	}
+}
+
+
+                                                                </code></pre></p>
+                                                                <hr>
+
 
 							</div>
 						</div>
