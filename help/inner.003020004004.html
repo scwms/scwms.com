@@ -53,9 +53,9 @@
 					<ul class="list-group">
 						<li class="list-group-item"><a href="#c">概述</a></li>
 						<li class="list-group-item"><a href="#c0">常用术语</a></li>
-						<li class="list-group-item"><a href="#c1">打印数据定义</a></li>
-						<li class="list-group-item"><a href="#c2">打印模版定义</a></li>
-						<li class="list-group-item"><a href="#c3">打印函数调用</a></li>
+						<li class="list-group-item"><a href="#c1">打印函数调用</a></li>
+						<li class="list-group-item"><a href="#c2">打印数据定义</a></li>
+						<li class="list-group-item"><a href="#c3">打印模版定义</a></li>
 
 					</ul>
 				</div>
@@ -91,12 +91,22 @@
 
 					<div class="card" id="c1">
 
-						<div class="card-header">打印数据定义</div>
+						<div class="card-header">打印函数调用-（入口）</div>
+						
 
 						<div class="card-body">
 
-							<b>text</b>
+							<b>打印指定id的数据</b>
+							<p>web接口:/print/printSelect/{模块}/{打印模版}?datasrc=dd|ddplus&templid={模版}&ids={数据id}</p>
+							<p>列表页js函数：printSearch(printid)</p>
 							<p></p>
+							<hr>
+							
+							
+							<b>打印全部搜索结果数据（配合列表组件）</b>
+							<p>web接口:/print/printSearch/{模块}/{打印模版}?datasrc=dd|ddplus&templid={模版}&ids={数据id}&...{更多参数根据列表组件所处理的检索条件}</p>
+							<p>列表页js函数：printSearch(printid)</p>
+							<p>注意：检索结果数量过大，会造成数据库和应用服务器压力。</p>
 							<hr>
 
 
@@ -105,13 +115,18 @@
 					<!--/card-->
 
 					<div class="card" id="c2">
-
-						<div class="card-header">打印模版定义</div>
+						<div class="card-header">打印数据定义-（配置）</div>
+						
 
 						<div class="card-body">
 
-							<b>text</b>
-							<p></p>
+							<b>配置表</b>
+							<p>`{模块}_dd`</p>
+							<b>数据行</b>
+							<p>templid={当前模版}</p>
+							<p>datasrc=dd 或者 ddplus </p>
+							<b>数据来源字段</b>
+							<p>value 字段中的sql所执行的结果</p>
 							<hr>
 
 						</div>
@@ -120,12 +135,16 @@
 
 					<div class="card" id="c3">
 
-						<div class="card-header">打印函数调用</div>
+						<div class="card-header">打印模版定义-（配置）</div>
 
 						<div class="card-body">
 
-							<b>text</b>
-							<p></p>
+							<b>配置表</b>
+							<p>`{模块}_dd_pt`</p>
+							<b>数据行</b>
+							<p>id={打印模版}</p>
+							<b>模版数据来源字段</b>
+							<p>content 字段中的html代码</p>
 							<hr>
 
 						</div>
