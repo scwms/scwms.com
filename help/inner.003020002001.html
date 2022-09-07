@@ -1,1 +1,230 @@
-inner.003020002001.html
+<!Doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<title>表头组件-LD_TH</title>
+	<meta content="NOODP" name="ROBOTS" />
+	<meta name="keywords" content="help,Document">
+	<meta name="description" content="   ...">
+ 
+	<!--  Bootstrap4  CSS  -->
+	<link rel="stylesheet" href="../static/bootstrap4/css/bootstrap.css">
+	<link rel="stylesheet" href="../static/css/public.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<!-- jQuerybootstrap.min.js  -->
+	<script src="../static/js/jquery.min.js"></script>
+	 
+	<!-- bootstrap.bundle.min.js  popper.min.js -->
+	<script src="../static/js/popper.min.js"></script>
+	 
+	<!--  Bootstrap4  JavaScript  -->
+	<script src="../static/bootstrap4/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+		 
+<body>		
+<header id="header" >
+	<div class="list01-title bg-info">
+		<div class="btn-group">
+		  <a class="btn btn-warning text-muted" href="https://workflow.net.cn" target="_blank"><i class="glyphicon glyphicon-home"></i></a>
+		</div>
+		<h2 class="text-center">表头组件-配置表：`模块编号_ld_th`</h2>
+	</div>
+</header>
+
+<div id="slider" style="display:none;"><div class="slider_mask"><h1 class="mask-title d-none d-md-block">WORKFLOW-试用说明</h1></div></div>
+
+	
+	<!---->
+
+	<div class="container-fluid help p-r">
+		<div class="row">
+			<div class="col col-12 col-md-2" style="top:150px;width:250px;">
+				<div class="" id="help-nav" style="top:150px;width:250px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a href="#c">概述</a></li>
+						<li class="list-group-item"><a href="#c0">相关概念和术语</a></li>
+						<li class="list-group-item"><a href="#c1">JS函数</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col col-12 col-md-10" style="top:150px;" >
+				
+				<div class="help-con">
+					<div class="card" id="c">
+						<div class="card-header">概述</div>
+					    <div class="card-body">
+							<p>系统将列表分成“表头”和“表数据”两个部分。用于描述“表头”的配置表，表名称统一使用“模块编号”作为前缀再加上“_ld_th”作为后缀。这样的配置表，被称之为“表头组件”。</p>
+							<p>表头组件中一共只有三行有效的数据。（第四行以及后续的行，将不被系统解析，数据的顺序按照id排序，或者自然排序）</p>
+							<p>第一行数据用于描述表头。</p>
+							<p>第二行数据用于描述该列数据是否可以导出（调用JS导出函数将会以xls文件下载列表中的数据）。</p>
+							<p>第三行数据用户描述列表数据的检索条件。</p>
+							<p>另外第三行数据可以注入CSS/HTML或者Javascript前端代码，用于处理一些特殊的搜索逻辑。</p>
+
+							<p>以上规则，第一列数据除外；第一列第一行用于描述ID，第一列第二行和第三行，可以注入一些额外的CSS/HTML或者Javascript代码。</p>
+							<p>表头组件的列名应尽量和查询出数据的字段名保持一致。</p>
+
+							<p>额外小技巧：&lt;!-- input --&gt;可以避开系统对搜索组件的解析，用于自行创建搜索框。</p>
+							<p>额外小技巧：&lt;!-- no search button --&gt;可以避开系统创建搜索按钮，使用自己定义的搜索按钮。</p>
+							
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="c0">
+						<div class="card-header">一些重要的术语和概念</div>
+					    <div class="card-body">
+							<b>1，模块编号</b>
+							<p>通过创建一组相同前缀配置表的方式，定义出一个功能模块，这一组配置表以及配置表中包含的配置数据，被成为软件系统的“模块”，通过点击提前设计好的菜单来打开该功能（模块），在配置表中通过“模块”来区分不同的业务，除了通过配置表前缀，还可以通过web页面请求的的传参（viewName），自定义数据源表中的字段（model）来进行区分这些模块。</p>
+							
+							<b>2，模板</b>
+							<p>一个系统模块中包含有若干个功能，这些功能需要使用不用的表单，不同的处理逻辑，甚至不同的数据源。在配置表中通过模版编号（templid）来区分这些不同的业务逻辑、数据处理展示的方式。</p>
+							
+							<b>3，表头</b>
+							<p>列表页面头部分，包括搜索框搜索按钮，其它一些功能按钮，显示列的名称。</p>
+							
+							<b>4，表数据</b>
+							<p>列表页面第二行以及往下的内容，以JSON格式的数据提供给web页面展示。其获取脚本配置在`模块编号_dd`表中。</p>
+							
+							<b>5，配置表</b>
+							<p>配置库中的表。</p>
+							
+							<b>6，配置库</b>
+							<p>由/opt/workflow.net.cn/config/application.properties配置文件中config.datasource.url指定的数据库。</p>
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="c1">
+
+						<div class="card-header" >表头组件中可以调用的JS函数（前端脚本库）</div>
+
+					    <div class="card-body">
+
+							<b>copyText(str)</b>
+					    	<p>将str字符串复制到系统剪贴板</p>
+
+					    	<b>getBasePath()</b>
+					    	<p>获得网页基本路径，例如：http://trial.workflow.net.cn:1980/,用于在其后拼接上相对路径。</p>
+					    	<p></p>
+
+					    	<b>getViewName()</b>
+					    	<p>获得当前模块编码，例如：003003003</p>
+					    	<p>另外，当前模板id可以从name="templid"的隐藏输入框中获得</p>
+					    	<p></p>
+
+					    	<b>showDetailInNewTab(title, templid, printid, dataid)</b>
+					    	<p>同 parent.showDetailInNewTab(title, viewName, templid, printid, dataid)</p>
+					    	<p>用Tab方式打开数据详情。</p>
+					    	<p>title tab页签的标题</p>
+					    	<p>templid 模版id</p>
+					    	<p>printid 打印模版id，配置在配置库`模块编号_pt`表 id = printid 的那条数据。</p>
+					    	<p>dataid 业务数据id，配置在配置库`模块编号_dd`表中，templid = 当前tempid，所保存的脚本，查询得出的结果所对应的数据ID。</p>
+					    	<p></p>
+
+					    	<b>showDetail(printid, dataid)</b>
+					    	<b>同parent.showDetail(viewName, printid, dataid) </b>
+					    	<p>以window窗口的方式打开数据详情</p>
+					    	<p>printid 打印模版id，配置在配置库`模块编号_pt`表 id = printid 的那条数据。</p>
+					    	<p>dataid 业务数据id，配置在配置库`模块编号_dd`表中，templid = 当前tempid，所保存的脚本，查询得出的结果所对应的数据ID。</p>
+					    	<p>注意：此方法默认将templid假定为1000，若使用了其它的templid，请使用openDetail,openUrl等函数。</p>
+
+					    	<b>showTask(taskId) or (viewName, taskId) </b>
+					    	<p>呼出流程受理面板</p>
+					    	<p><b>taskId</b> 受理任务id 对应表  业务库.wf_ins_task.id </p>
+					    	<p><b>viewName</b> 模块编码 </p>
+
+					    	<b>showHist(viewName, taskId)</b>
+					    	<p>呼出流程历史轨迹面板</p>
+					    	<p><b>taskId</b> 受理任务id 对应表  业务库.wf_ins_task.id </p>
+					    	<p><b>viewName</b> 模块编码 </p>
+					    	
+					    	<b>ln(title, templid, dataid)</b>
+					    	<p>打开数据绑定组件</p>
+					    	<p>系统根据 当前模块编码（viewName）templid，找到一行配置信息，该行配置信息，包括两条sql语句，一条定义左侧数据列表，另一条定义右侧数据列表。</p>
+					    	<p><b>title</b> 页签展示标题</p>
+					    	<p><b>templid</b> 模版id</p>
+					    	<p><b>dataid</b> 待绑定数据id（左侧数据列表中数据id）</p>
+					    	
+					    	 
+					    	<b>add(templid)</b>
+					    	<p>弹出数据添加窗口，根据templid模版id解析表单页页面。</p>
+					    	 
+					    	<b>edit(templid, id)</b>
+					    	<p>弹出数据修改窗口，根据templid模版id解析表单页页面，根据id渲染数据。</p>
+					    	<p></p>
+					    	 
+					    	<b>gourl(url)</b>
+					    	<p>跳转到地址，url若不是以http开头，则跳转时拼接上getBasePath()/作为前缀。</p>
+					    	
+					    	<b>openurl(title, url) </b>
+					    	<p>同parent.openurl(title, url, params)</p>
+					    	<p>用系统对话窗口get一个url地址，请求该地址时会带上当前查询表单的值作为请求参数。（相当于search）</p>
+					    	
+					    	<b>help(id)</b>
+					    	<p>呼出帮助面板，根据当前模块和id显示帮助内容。</p>
+					    	<p><b>id</b> 对应  `配置库`.`模块编码_hp`.id</p>
+					    	
+					    	<b>showRight(a, b)</b>
+					    	<p></p>
+
+					    	<b>visible(a, b)</b>
+					    	<p></p>
+					    	
+					    	<b>unvisible(a, b)</b>
+					    	<p></p>
+					    	 
+					    	<b>gotoPage(c, e)</b>
+					    	<p></p>
+					    	
+					    	<b>search() </b>
+					    	<p></p>
+					    	
+					    	<b>saveSearch()</b>
+					    	<p></p>
+					    	
+					    	<b>saveSelect()</b>
+					    	<p></p>
+					    	
+					    	<b>printSearch(b)</b>
+					    	<p></p>
+					    	
+					    	<b>printSelect(b)</b>
+					    	<p></p>
+					    	 
+					    	<b>tab(b, d, c)</b>
+					    	<p></p>
+					    	
+					    	<b>getSelectIds() (datagrid)</b>
+					    	<p></p>
+					    	 
+					    </div>
+
+					</div><!--/card--> 
+
+				</div><!--/help-con-->
+
+
+				
+				
+				
+			</div>
+
+		</div>
+
+		
+		
+
+		
+
+	</div>
+	<!---->
+	<div class="container-fluid list03" style="margin-top: 200px;">
+		<p class="text-center"><a href="download.html" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>立即试用最新版本</a></p>
+	</div>
+	<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
