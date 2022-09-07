@@ -1,1 +1,363 @@
-https://workflow.net.cn/help/inner.003020001.html
+<!Doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<title>自定义扩展数据源</title>
+	<meta content="NOODP" name="ROBOTS" />
+	<meta name="keywords" content=", ,,,help,Document,,,,">
+	<meta name="description" content="   ...">
+ 
+	<!--  Bootstrap4  CSS  -->
+	<link rel="stylesheet" href="../static/bootstrap4/css/bootstrap.css">
+	<link rel="stylesheet" href="../static/css/public.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<!-- jQuerybootstrap.min.js  -->
+	<script src="../static/js/jquery.min.js"></script>
+	 
+	<!-- bootstrap.bundle.min.js  popper.min.js -->
+	<script src="../static/js/popper.min.js"></script>
+	 
+	<!--  Bootstrap4  JavaScript  -->
+	<script src="../static/bootstrap4/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+		 
+<body>		
+<header id="header" >
+	<div class="list01-title bg-info">
+		<div class="btn-group">
+		  <a class="btn btn-warning text-muted" href="https://workflow.net.cn"><i class="glyphicon glyphicon-home"></i></a>
+		</div>
+		<h2 class="text-center">自定义扩展数据源</h2>
+	</div>
+</header>
+
+<div id="slider" style="display:none;"><div class="slider_mask"><h1 class="mask-title d-none d-md-block">WORKFLOW-试用说明</h1></div></div>
+
+	
+	<!---->
+
+	<div class="container-fluid help p-r">
+
+		<div class="row">
+
+			<div class="col col-12 col-md-2" style="top:150px;width:250px;">
+
+				<div class="" id="help-nav" style="top:150px;width:250px;">
+
+					<ul class="list-group">
+
+						<li class="list-group-item"><a href="#c">概述</a></li>
+						<li class="list-group-item"><a href="#c0">相关概念和术语</a></li>
+						<li class="list-group-item"><a href="#c1">扩展数据源配置表</a></li>
+						
+					</ul>
+
+				</div>
+
+			</div>
+
+
+
+			<div class="col col-12 col-md-10" style="top:150px;" >
+				
+				
+				<div class="help-con">
+					 
+
+					<div class="card" id="c">
+
+						<div class="card-header" >概述</div>
+
+					    <div class="card-body">
+				
+								<p>
+									大多数情况下，我们使用了各种各样的信息系统，它们各司其职，有负责生产调度，有负责销售数据，有负责财务报表，有的负责资源调度，它们相互独立，相互之间却又需要通讯来交换数据，往往这些系统却又来源于不同的厂商...
+								</p>
+								<p>
+									由于某些原因，它们并不能适用于当下新形势所催生出的业务需求。需要对它们进行整合、改造以及统一的规划，需要调整相互协作的方式内容，以达到理想的效果。而这往往需要多方协调、反复沟通确认和试错、最终导致漫长的时间周期和高昂的支出...
+								</p>
+								<p>
+									而我们的方案直切要害，简单暴力，却又切实有效，直接连接到目标系统的数据存储，获取需要的业务数据，根据新的业务规则分析处理，在本系统内直接产生决策的结果。具备灵活机动、开发周期短（不同模块的开发成果通过简单复制修改即可使用，可相互借鉴）、具备试错成本低等优秀特性...
+								</p>
+								<p>
+									为此，我们提供了三种数据源：业务数据源和配置数据源都是系统内部数据，业务数据源和链接业务库，配置数据源链接配置库。
+								</p>
+
+								<b>1,业务库数据源</b>
+                                                		<p>负责存储当前系统的权限系统数据、流程系统数据、以及一些三方系统的业务处理结果数据...</p>
+								<p>配置文件位置(容器内)：/opt/workflow.net.cn/config/application.properties</p>
+								<p>jdbcurl：spring.datasource.url:jdbc:sqlite:/Users/colin/Desktop/workflow.net.cn/config/wf.biz.db</p>
+								<p>支持数据库：SQLLite、MySQL</p>
+
+                                                		<b>2,配置库数据源</b>
+                                                		<p>负责存储当前系统中的模块数据。负责存储业务库中的业务模块配置数据、负责存储扩展库中的业务模块配置数据。</p>
+								<p>配置文件位置(容器内)：/opt/workflow.net.cn/config/application.properties</p>
+                                                                <p>jdbcurl：config.datasource.url:jdbc:sqlite:/Users/colin/Desktop/workflow.net.cn/config/wf.sqllite.conf</p>
+                                                                <p>支持数据库：SQLLite、MySQL</p>
+
+                                                		<b>3,扩展数据源</b>
+                                                		<p>负责链接第三方系统的数据存储，供系统检索分析和处理。区别于配置数据源的是，它是配置在数据库（配置库）中的，并且可以同时配置多个。</p>
+								<p>配置表位置：配置库(/opt/workflow.net.cn/config/wf.sqllite.conf)中data_source_bridge_conf</p>
+								<p>而以下章节，将重点介绍扩展数据源(也就是配置库中data_source_bridge_conf表)的配置数据。</p>
+
+
+					    </div>
+
+					</div><!--/card--> 
+					
+					
+
+					<div class="card" id="c0">
+
+						<div class="card-header">一些重要的术语和概念</div>
+
+					    <div class="card-body">
+
+						<b>1，模块</b>
+						<p>通过创建一组相同前缀配置表的方式，定义出一个功能模块，这一组配置表以及配置表中包含的配置数据，被成为软件系统的“模块”，通过点击提前设计好的菜单来打开该功能（模块），在配置表中通过“模块”来区分不同的业务，除了通过配置表前缀，还可以通过web页面请求的的传参（viewName），自定义数据源表中的字段（model）来进行区分这些模块。</p>
+						<b>2，模板</b>
+						<p>一个系统模块中包含有若干个功能，这些功能需要使用不用的表单，不同的处理逻辑，甚至不同的数据源。在配置表中通过模版编号（templid）来区分这些不同的业务逻辑、数据处理展示的方式。</p>
+						<b>3，优先级</b>
+						<p>负责链接第三方系统的数据存储，供系统检索分析和处理。</p>
+
+					    </div>
+
+					</div><!--/card--> <div class="card" id="c1">
+
+						<div class="card-header" >扩展数据源表字段说明（data_source_bridge_conf）</div>
+
+					    <div class="card-body">
+
+					    	<p>1，model</p>
+					    	<p>模块，参考术语和概念章节</p>
+
+					    	<p>2，templid</p>
+					    	<p>模版，参考术语和概念章节</p>
+
+					    	<p>3，type</p>
+					    	<p>所连接数据源的类型，注意：以Sql开头的对应配置库中才可以执行sql语句，以Spl开头的使用spl脚本。</p>
+					    	<p>可以输入的值包括如下：</p>
+
+					    	<p><b>SqlLite</b> 当前版本正在使用</p>
+                                                <p></p>
+                                                <p><b>SqlMariaDB</b> MariaDB MySQL的开源分支版本 </p>
+                                                <p></p>
+					    	<p><b>SqlMySQL</b> MySQL数据库。</p>
+						<p></p>
+					    	<p><b>SqlAccess</b> Access数据库。</p>
+						<p></p>
+					    	<p><b>SqlClickHouse</b> ClickHouse列数据库。</p>
+						<p></p>
+					    	<p><b>SqlDB2</b> DB2数据库</p>
+						<p></p>
+					    	<p><b>SqlDM</b> 国内 达梦</p>
+						<p></p>
+					    	<p><b>SqlElasticSearch</b> ElasticSearch 非关系型数据库，注意：只支持有限的SQL查询方式，例如：select * from user where MATCH(name,'张三')，分页支持limit 但是只能带一个数字，需要和id > x 一起配合使用。写数据请使用http请求。建议所有非关系型数据库都采用spl方式。</p>
+						<p></p>
+					    	<p><b>SqlH2</b> java H2数据库</p>
+						<p></p>
+					    	<p><b>SqlHSqlDB</b> java HyperSQL DataBase </p>
+						<p></p>
+					    	<p><b>SqlKingBaseES</b> 国内 金仓</p>
+						<p></p>
+						<p><b>SqlOracle</b> Oracle </p>
+						<p></p>
+						<p><b>SqlPostgre</b> PostGreSQL </p>
+						<p></p>
+						<p><b>SqlServer</b> SqlServer </p>
+						<p></p>
+						<p><b>SqlSysBase</b> SysBase </p>
+						<p></p>
+ 						<p><b>SplEsproc</b> 使用SPL语句分析数据。注意：具体连接哪个数据库需要写到配置库的SPL脚本里。</p>
+                                                <p>例如连接ES：=es_open("localhost:9200")</p>
+                                                <p>又例如连接mongodb：=mongo_open("mongodb://root:sa@localhost:27017/col")</p>
+                                                <p>其它使用方式，请自行百度</p>
+                                                <p></p>
+
+						<p>4，visible</p>
+                                                <p>对于系统，该数据源是否可见。1，正常可见；0，不可见；</p>
+						<p>当该数据源出于可见状态时，配置库中对应模块表中使用了相同templid的配置数据，包括sql和spl，都会使用该连接去执行。</p>
+						<p>反之，当该数据源出于不可见状态时，配置库中对应模块表中使用了相同templid的配置数据，包括sql和spl，都会在系统默认的业务库中执行。此时若业务库中也有三方系统相同表，则sql脚本依然有效。</p>
+
+                                                <p>5，conf</p>
+                                                <p>json格式的配置项，系统会根据json里面的url去连接该数据库。以下是一些常用数据库的配置示例：</p>
+
+                                                <p>SQLLite数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:sqlite:/data/sqllite.db",</p>
+                                                <p>  "username":"",</p>
+                                                <p>  "password":"",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>MariaDB数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:mariadb://127.0.0.1/dbname?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=false&rewriteBatchedStatements=true&serverTimezone=Hongkong",</p>
+                                                <p>  "username":"root",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>MySQL数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:mysql://127.0.0.1/dbname?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=false&rewriteBatchedStatements=true&serverTimezone=Hongkong",</p>
+                                                <p>  "username":"root",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>Access数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:ucanaccess:///data/access.mdb;memory=false;openExclusive=false;ignoreCase=true",</p>
+                                                <p>  "username":"",</p>
+                                                <p>  "password":"",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>ClickHouse数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:clickhouse://127.0.0.1:8123/dbname",</p>
+                                                <p>  "username":"root",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>DB2数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:ucanaccess:///data/access.mdb;memory=false;openExclusive=false;ignoreCase=true",</p>
+                                                <p>  "username":"root",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>达梦数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:ucanaccess:///data/access.mdb;memory=false;openExclusive=false;ignoreCase=true",</p>
+                                                <p>  "username":"root",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>ElasticSearch的SQL查询（仅查询）数据源配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"127.0.0.1",</p>
+						<p>  "port":"9200",</p>
+                                                <p>  "username":"elastic",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>H2数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:h2:tcp://localhost/filepath//sea",</p>
+                                                <p>  "username":"",</p>
+                                                <p>  "password":"",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>HSqlDB数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:hsqldb:file://filepath.conf",</p>
+                                                <p>  "username":"root",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>KingBaseES数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:kingbase8://127.0.0.1:54321/dbname",</p>
+                                                <p>  "username":"root",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+						                                               
+						<p>Oracle数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:oracle:thin:@127.0.0.1:1521:dbname",</p>
+						<p>  "username":"root",</p>
+						<p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>PostgreSql数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:postgresql://127.0.0.1:5432/dbname",</p>
+                                                <p>  "username":"root",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>SqlServer数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:sqlserver://127.0.0.1:1433;DatabaseName=dbname",</p>
+                                                <p>  "username":"sa",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+						<p>或者</p>
+						<p>{</p>
+                                                <p>  "url":"jdbc:jtds:sqlserver://127.0.0.1:1433/dbname",</p>
+                                                <p>  "username":"sa",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+
+
+                                                <p>SysBase数据库配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:jtds:sybase://127.0.0.1:5000/dbname",</p>
+                                                <p>  "username":"root",</p>
+                                                <p>  "password":"123456",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p>SPL数据源配置示例：</p>
+                                                <p>{</p>
+                                                <p>  "url":"jdbc:esproc:local://",</p>
+                                                <p>}</p>
+                                                <p></p>
+
+                                                <p></p>
+
+
+						<p>6，note</p>
+                                                <p>用于简要描述该数据源所连接数据存储应用于当前那个项目，所影响的范围，读还是读写，主库还是从库。等一些关键信息，方便维护人员的巡检和维护。</p>
+
+
+
+
+					    </div>
+
+					</div><!--/card--> 
+
+
+
+				</div><!--/help-con-->
+
+
+				
+				
+				
+			</div>
+
+		</div>
+
+		
+		
+
+		
+
+	</div>
+	<!---->
+	<div class="container-fluid list03" style="margin-top: 200px;">
+		<p class="text-center"><a href="download.html" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span></a></p>
+	</div>
+	<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
