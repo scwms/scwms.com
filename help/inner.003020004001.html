@@ -121,19 +121,34 @@
 						<p>特殊情况下，我们也可以独立去调用，可以获得更灵活的配置体验。一共分4个接口地址，均为post方式请求，服务端会校验当前登录身份。也可以在AD配置脚本中通过占位符(${my.id})获得当前登录人id，可以配置数据级别的和业务相关的数据操作权限。</p>
 						
 						<b>1，接收请求参数，处理完成之后跳转到成功提示消息页面。</b>
-						<p>/doAdd/{viewName}/{templid}</p>
+						<p>/detail/doAdd/{viewName}/{templid}</p>
 						<p>从占位符 ${...} 获得前端传递的数据</p>
-						
+						<p>调用示例：</p>
+						<p>
+						<pre><code>
+var ps = {
+		'viewName':'模块编号',
+		'token':‘当前登录人登录后产生的token’, 
+		'templid':‘模版id’,
+		'userid':'当前登录人id',
+	};	
+var url = "${basePath}/detail/doAddReturnJson/003007007/"+ps['templid'];
+$.post(url, ps, function(data){
+	alert(data);
+});
+						</code></pre>
+						</p>					
+	
 						<b>2，接收请求参数，处理完成之后返回json串。</b>
-						<p>/doAddReturnJson/{viewName}/{templid}</p>
+						<p>/detail/doAddReturnJson/{viewName}/{templid}</p>
 						<p>从占位符 ${...} 获得前端传递的数据</p>
 						
 						<b>3，接收RequestBody，处理完成之后跳转到成功提示消息页面。</b>
-						<p>/doAddJson/{viewName}/{templid}</p>
+						<p>/detail/doAddJson/{viewName}/{templid}</p>
 						<p>从占位符 ${request_body} 获得jsonbody json串数据</p>
 						
 						<b>4，接收RequestBody，处理完成之后返回json串。</b>
-						<p>/doAddJsonReturnJson/{viewName}/{templid}</p>
+						<p>/detail/doAddJsonReturnJson/{viewName}/{templid}</p>
 						<p>从占位符 ${request_body} 获得jsonbody json串数据</p>
 						
 						<b>AD表字段说明</b>
