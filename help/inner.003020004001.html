@@ -47,7 +47,7 @@
 					<ul class="list-group">
 						<li class="list-group-item"><a href="#c">概述</a></li>
 						<li class="list-group-item"><a href="#cc">常用术语</a></li>
-						<li class="list-group-item"><a href="#ccc">AD配置表</a></li>
+						<li class="list-group-item"><a href="#ccc">入口以及配置</a></li>
 						<li class="list-group-item"><a href="#c0">0，执行SQL</a></li>
 						<li class="list-group-item"><a href="#c1">1，执行SQL返回key</a></li>
 						<li class="list-group-item"><a href="#c2">2，执行查询</a></li>
@@ -114,21 +114,37 @@
 					
 					<div class="card" id="ccc">
 
-						<div class="card-header" >数据处理件（AD表）字段说明</div>
+						<div class="card-header" >数据处理件程序入口 及 配置表字段说明</div>
 
 					    <div class="card-body">
-
-						<b>id</b>
-					    	<p>主键</p>
-
-					    	<b>templid</b>
-					    	<p>模版id</p>
-
-					    	<b>returnkey</b>
-					    	<p>返回值类型，根据该字段值决定是否有返回值，以及执行什么类型的脚本。</p>
-					    	 
-						<b>insertsql</b>
-						<p>要执行的脚本</p>
+						<p>AD 数据处理程序接口为http post请求方式调用，配置表单组件时，系统会自动调用该接口。 </p>
+						<p>特殊情况下，我们也可以独立去调用，可以获得更灵活的配置体验。一共分4个接口地址，均为post方式请求，服务端会校验当前登录身份。也可以在AD配置脚本中通过占位符(${my.id})获得当前登录人id，可以配置数据级别的和业务相关的数据操作权限。</p>
+						
+						<b>1，接收请求参数，处理完成之后跳转到成功提示消息页面。</b>
+						<p>/doAdd/{viewName}/{templid}</p>
+						<p>从占位符 ${...} 获得前端传递的数据</p>
+						
+						<b>2，接收请求参数，处理完成之后返回json串。</b>
+						<p>/doAddReturnJson/{viewName}/{templid}</p>
+						<p>从占位符 ${...} 获得前端传递的数据</p>
+						
+						<b>3，接收RequestBody，处理完成之后跳转到成功提示消息页面。</b>
+						<p>/doAddJson/{viewName}/{templid}</p>
+						<p>从占位符 ${request_body} 获得jsonbody json串数据</p>
+						
+						<b>4，接收RequestBody，处理完成之后返回json串。</b>
+						<p>/doAddJsonReturnJson/{viewName}/{templid}</p>
+						<p>从占位符 ${request_body} 获得jsonbody json串数据</p>
+						
+						<b>AD表字段说明</b>
+						<table class="table">
+						    	<tr><td>序号</td><td>字段</td><td>说明</td></tr>
+						    	<tr><td>1</td><td>id</td><td>主键，脚本按id顺序执行</td></tr>
+						    	<tr><td>2</td><td>templid</td><td>模版id</td></tr>
+						    	<tr><td>3</td><td>returnkey</td><td>返回值类型，根据该字段值决定是否有返回值，以及执行什么类型的脚本。</td></tr>
+						    	<tr><td>4</td><td>insertsql</td><td>要执行的脚本，不一定是插入SQL语句，也可以是查询语句和shell脚本。（参考后续章节）</td></tr>
+					    </table><center> 表 1</center>
+					    	
 
 					 </div>
                                         </div><!--/card--> 
