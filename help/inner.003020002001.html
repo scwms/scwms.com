@@ -147,7 +147,6 @@
 					    	<p><b>title</b> 页签展示标题</p>
 					    	<p><b>templid</b> 模版id</p>
 					    	<p><b>dataid</b> 待绑定数据id（左侧数据列表中数据id）</p>
-					    	
 					    	 
 					    	<b>add(templid)</b>
 					    	<p>弹出数据添加窗口，根据templid模版id解析表单页页面。</p>
@@ -166,39 +165,41 @@
 					    	<b>help(id)</b>
 					    	<p>呼出帮助面板，根据当前模块和id显示帮助内容。</p>
 					    	<p><b>id</b> 对应  `配置库`.`模块编码_hp`.id</p>
-					    	
-					    	<b>showRight(a, b)</b>
-					    	<p></p>
-
-					    	<b>visible(a, b)</b>
-					    	<p></p>
-					    	
-					    	<b>unvisible(a, b)</b>
-					    	<p></p>
 					    	 
-					    	<b>gotoPage(c, e)</b>
-					    	<p></p>
+					    	<b>visible(tableName, id)</b>
+					    	<p>将表 tableName 中 id 等于特定值的数据，visible 字段修改为 1 。</p>
+					    	
+					    	<b>unvisible(tableName, id)</b>
+					    	<p>将表 tableName 中 id 等于特定值的数据，visible 字段修改为 0。</p>
+					    	 
+					    	<b>gotoPage(page, limit) </b>
+					    	<p>列表数据翻页<br>
+								page 第多少页<br>
+								limit 每页取多少行</p>
 					    	
 					    	<b>search() </b>
-					    	<p></p>
+					    	<p>执行列表页面检索条件检索（提交查询表单）</p>
 					    	
 					    	<b>saveSearch()</b>
-					    	<p></p>
+					    	<p>将列表页查询结果以excel格式导出保存到本地</p>
 					    	
 					    	<b>saveSelect()</b>
-					    	<p></p>
+					    	<p>将列表页查询结果选中的行以excel格式导出保存到本地</p>
 					    	
-					    	<b>printSearch(b)</b>
-					    	<p></p>
+					    	<b>printSearch(id)</b>
+					    	<p>根据打印详情页模板id，将列表页查询结果打印显示</p>
 					    	
 					    	<b>printSelect(b)</b>
-					    	<p></p>
+					    	<p>根据打印详情页模板id，将列表页查询结果中选中的行打印显示</p>
 					    	 
 					    	<b>tab(b, d, c)</b>
-					    	<p></p>
+					    	<p>打开一个tab页（另一个模块）<br>
+								viewName 模块编码<br>
+								title tab页标题<br>
+								params tab页页面get请求参数</p>
 					    	
 					    	<b>getSelectIds() (datagrid)</b>
-					    	<p></p>
+					    	<p>获取当前列表中被选中行数据ID</p>
 					    	 
 					    </div>
 
