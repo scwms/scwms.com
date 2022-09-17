@@ -6,20 +6,20 @@
 	
 	<title>表头组件-LD_TH</title>
 	<meta content="NOODP" name="ROBOTS" />
-	<meta name="keywords" content="help,Document">
-	<meta name="description" content="   ...">
+	<meta name="keywords" content="help,Document">
+	<meta name="description" content="...">
  
-	<!--  Bootstrap4  CSS  -->
+	<!-- Bootstrap4 CSS -->
 	<link rel="stylesheet" href="../static/bootstrap4/css/bootstrap.css">
 	<link rel="stylesheet" href="../static/css/public.css">
 	<link rel="stylesheet" href="../static/css/style.css">
-	<!-- jQuerybootstrap.min.js  -->
+	<!-- jQuery bootstrap.min.js -->
 	<script src="../static/js/jquery.min.js"></script>
 	 
-	<!-- bootstrap.bundle.min.js  popper.min.js -->
+	<!-- bootstrap.bundle.min.js popper.min.js -->
 	<script src="../static/js/popper.min.js"></script>
 	 
-	<!--  Bootstrap4  JavaScript  -->
+	<!-- Bootstrap4 JavaScript -->
 	<script src="../static/bootstrap4/js/bootstrap.min.js"></script>
 
 </head>
@@ -38,7 +38,7 @@
 <div id="slider" style="display:none;"><div class="slider_mask"><h1 class="mask-title d-none d-md-block">WORKFLOW-试用说明</h1></div></div>
 
 	
-	<!---->
+	<!-- -->
 
 	<div class="container-fluid help p-r">
 		<div class="row">
@@ -103,7 +103,7 @@
 
 					    <div class="card-body">
 
-							<b>copyText(str)</b>
+						<b>copyText(str)</b>
 					    	<p>将str字符串复制到系统剪贴板</p>
 
 					    	<b>getBasePath()</b>
@@ -131,7 +131,7 @@
 					    	<p>dataid 业务数据id，配置在配置库`模块编号_dd`表中，templid = 当前tempid，所保存的脚本，查询得出的结果所对应的数据ID。</p>
 					    	<p>注意：此方法默认将templid假定为1000，若使用了其它的templid，请使用openDetail,openUrl等函数。</p>
 
-					    	<b>showTask(taskId) or (viewName, taskId) </b>
+					    	<b>showTask(taskId), showTask(viewName, taskId) </b>
 					    	<p>呼出流程受理面板</p>
 					    	<p><b>taskId</b> 受理任务id 对应表  业务库.wf_ins_task.id </p>
 					    	<p><b>viewName</b> 模块编码 </p>
@@ -189,16 +189,16 @@
 					    	<b>printSearch(id)</b>
 					    	<p>根据打印详情页模板id，将列表页查询结果打印显示</p>
 					    	
-					    	<b>printSelect(b)</b>
+					    	<b>printSelect(printid)</b>
 					    	<p>根据打印详情页模板id，将列表页查询结果中选中的行打印显示</p>
 					    	 
-					    	<b>tab(b, d, c)</b>
+					    	<b>tab(viewName, title, params)</b>
 					    	<p>打开一个tab页（另一个模块）<br>
 								viewName 模块编码<br>
 								title tab页标题<br>
 								params tab页页面get请求参数</p>
 					    	
-					    	<b>getSelectIds() (datagrid)</b>
+					    	<b>getSelectIds(), getSelectIds(datagrid)</b>
 					    	<p>获取当前列表中被选中行数据ID</p>
 					    	 
 					    </div>
@@ -221,7 +221,7 @@
 		
 
 	</div>
-	<!---->
+	<!-- -->
 	<div class="container-fluid list03" style="margin-top: 200px;">
 		<p class="text-center"><a href="download.html" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>立即试用最新版本</a></p>
 	</div>

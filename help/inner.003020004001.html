@@ -1,1 +1,264 @@
-inner.003020004001.html
+<!Doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<title>数据处理组件-AD</title>
+	<meta content="NOODP" name="ROBOTS" />
+	<meta name="keywords" content="help,Document">
+	<meta name="description" content="...">
+ 
+	<!-- Bootstrap4 CSS -->
+	<link rel="stylesheet" href="../static/bootstrap4/css/bootstrap.css">
+	<link rel="stylesheet" href="../static/css/public.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<!-- jQuery bootstrap.min.js -->
+	<script src="../static/js/jquery.min.js"></script>
+	 
+	<!-- bootstrap.bundle.min.js popper.min.js -->
+	<script src="../static/js/popper.min.js"></script>
+	 
+	<!-- Bootstrap4 JavaScript -->
+	<script src="../static/bootstrap4/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+		 
+<body>		
+<header id="header" >
+	<div class="list01-title bg-info">
+		<div class="btn-group">
+		  <a class="btn btn-warning text-muted" href="https://workflow.net.cn" target="_blank"><i class="glyphicon glyphicon-home"></i></a>
+		</div>
+		<h2 class="text-center">数据处理组件-配置表：`模块编号_ad`</h2>
+	</div>
+</header>
+
+<div id="slider" style="display:none;"><div class="slider_mask"><h1 class="mask-title d-none d-md-block">WORKFLOW-试用说明</h1></div></div>
+
+	
+	<!-- -->
+
+	<div class="container-fluid help p-r">
+		<div class="row">
+			<div class="col col-12 col-md-2" style="top:150px;width:250px;">
+				<div class="" id="help-nav" style="top:150px;width:250px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a href="#c">概述</a></li>
+						<li class="list-group-item"><a href="#cc">术语</a></li>
+						<li class="list-group-item"><a href="#ccc">AD配置表</a></li>
+						<li class="list-group-item"><a href="#c0">0，执行SQL</a></li>
+						<li class="list-group-item"><a href="#c1">1，执行SQL返回key</a></li>
+						<li class="list-group-item"><a href="#c2">2，执行查询</a></li>
+						<li class="list-group-item"><a href="#c3">3，执行get请求</a></li>
+						<li class="list-group-item"><a href="#c4">4，执行post请求</a></li>
+						<li class="list-group-item"><a href="#c5">5，设定一个断言</a></li>
+						<li class="list-group-item"><a href="#c6">6，执行shell脚本</a></li>
+						<li class="list-group-item"><a href="#c7">7，执行一个java类</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col col-12 col-md-10" style="top:150px;" >
+				
+				<div class="help-con">
+					<div class="card" id="c">
+						<div class="card-header">概述</div>
+					    <div class="card-body">
+							<p>传统的web应用处理表单使用的java selvet 或者php 从表单接收到参数后，会由服务器端程序来处理接收到的数据。</p>
+							<p></p>
+							<p>而本系统则通过在一张AD配置表中配置出多种不同类型的脚本来实现和写代码相同的效果。从而完成各种业务需求的实现。</p>
+							<p>AD配置表中同一个模块的同一套模版可以在一个事务中执行多条脚本，包含sql脚本shell脚本，http请求脚本。并且可以根据需要穿插使用，并且按照配置数据id的顺序执行，先执行脚本的返回结果，可以为后面的脚本提供决策依据。返回值使用内置占位符${returnkey_id}的方式获取，d是数字格式，即脚本所在行的ID。</p>
+
+							<p>支持如下几种方式来处理由客户端提交过来的请求：</p>
+							<b>1，SQL语句</b>
+							<p>有一些SQL是可以有返回值的，如：returnkey in （1，2），另外一些SQL没有返回值，如：returnkey = 0，sql的类型请参考后续的章节。</p>
+
+							<b>2，SHELL脚本</b>
+							<p>当AD数据的returnkey = 6 时，表示该脚本为一段shell脚本，该shell只能被执行于服务器所在的容器内部。</p>
+
+							<b>3，HTTP请求</b>
+							<p>当AD数据的returnkey = 3 时，表示需要执行get请求，returnkey = 4时， 执行post请求。</p>
+
+							<b>4，外部java类</b>
+							<p>当AD数据的returnkey = 7 时，表示要执行一个java字节码文件。</p>
+							
+							<b>5，断言</b>
+							<b>当AD数据的returnkey = 5 时，表示要执行一段SQL查询脚本，并且该select语句只能返回1，如果返回了其它的内容，则抛出异常，并且回滚事物，之前对数据库的写操作全部作废。</b>
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="cc">
+						<div class="card-header">一些重要的术语和概念</div>
+					    <div class="card-body">
+							<b>1，模块编号</b>
+							<p>通过创建一组相同前缀配置表的方式，定义出一个功能模块，这一组配置表以及配置表中包含的配置数据，被成为软件系统的“模块”，通过点击提前设计好的菜单来打开该功能（模块），在配置表中通过“模块”来区分不同的业务，除了通过配置表前缀，还可以通过web页面请求的的传参（viewName），自定义数据源表中的字段（model）来进行区分这些模块。</p>
+							
+							<b>2，模板</b>
+							<p>一个系统模块中包含有若干个功能，这些功能需要使用不用的表单，不同的处理逻辑，甚至不同的数据源。在配置表中通过模版编号（templid）来区分这些不同的业务逻辑、数据处理展示的方式。</p>
+							
+							<b>3，请求参数</b>
+							<p>网页提交表单时所携带的参数，在AD脚本中（SQL或Shell）使用占位符(${占位符},#{占位符})方式获得。</p>
+							
+							<b>4，内部参数</b>
+							<p>当前登录人id：${my.id}。</p>
+							<p>当前登录人姓名：${my.name}。</p>
+							<p>当前域名：${basePath}。</p>
+							<p>当前时间：${now}。</p>
+ 							<p>前辈脚本返回值：${returnkey_id},id取_ad表id值。</p>
+
+							
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="ccc">
+
+						<div class="card-header" >数据处理件（AD表）字段说明</div>
+
+					    <div class="card-body">
+
+						<b>id</b>
+					    	<p>主键</p>
+
+					    	<b>templid</b>
+					    	<p>模版id</p>
+
+					    	<b>returnkey</b>
+					    	<p>返回值类型，根据该字段值决定是否有返回值，以及执行什么类型的脚本。</p>
+					    	 
+						<b>insertsql</b>
+						<p>要执行的脚本</p>
+
+					 </div>
+                                        </div><!--/card--> 
+
+                                        <div class="card" id="c0">
+
+                                                <div class="card-header" >执行无反馈SQL：insert、update、delete</div>
+
+                                            <div class="card-body">
+
+
+						<p>0，执行SQL语句：insert、update、delete，用于处理数据，但是没有返回值。注意：无返回值的脚本优先级最低将在有返回值脚本后执行。</p>
+
+
+                                         </div>  
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c1">
+
+                                                <div class="card-header" >执行insert返回key</div>
+
+                                            <div class="card-body">
+                                            
+
+						<p>当returnkey字段的值等于1，执行SQL语句：insert，返回值刚刚插入数据的键值。这相当于mysql数据库中的last_insert_id()。 </p>
+
+
+                                         </div>  
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c2">
+
+                                                <div class="card-header" >执行select SQL语句</div>
+
+                                            <div class="card-body">
+                                            
+
+						<p>当returnkey字段的值等于2，执行SQL语句：select，根据查询语句，返回一个字符串。这样可以将sql拆分成多个步骤，逐步实现复杂的业务逻辑。 </p>
+
+
+                                         </div>  
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c3">
+
+                                                <div class="card-header" >执行get请求</div>
+
+                                            <div class="card-body">
+                                            
+
+						<p>当returnkey字段的值等于3，执行SQL语句：select，该select返回3列：url, headers 和 parameters， 分别表示要请求的url地址，请求该url地址时候要传递的头信息和请求该地址时要传递的参数。系统会自动向该地址发送一个get请求。返回由该请求得到的字符串。<br>例如：<br>select <br>	'${basePath}/getResource/3/html' as url ,<br>	'{"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"}' as headers,<br>	'{}' as parameters <br>from <br>	dual<br>您可以在其它服务器上的应用程序中处理部分业务逻辑。</p>
+
+
+                                         </div>  
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c4">
+
+                                                <div class="card-header" >执行POST请求</div>
+
+                                            <div class="card-body">
+                                            
+
+						<p>当returnkey字段的值等于4，执行SQL语句：select，该select返回3列：url, headers 和 parameters， 分别表示要请求的url地址，请求该url地址时候要传递的头信息和请求该地址时要传递的参数。系统会自动向该地址发送一个post请求。返回由该请求得到的字符串。<br>例如：<br>select <br>	'${basePath}/getResource/3/html' as url ,<br>	'{"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"}' as headers,<br>	'{}' as parameters <br>from <br>	dual<br>您可以在其它应用中处理部分业务逻辑。</p>
+
+
+                                         </div>  
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c5">
+
+                                                <div class="card-header" >设定断言</div>
+
+                                            <div class="card-body">
+                                            
+
+						<p>当returnkey字段的值等于5，执行SQL语句：select，该select语句查询返回的值必须是1，否则将会抛出异常，前面所执行的SQL语句将会全部回滚。 </p>
+
+                                         </div>  
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c6">
+
+                                                <div class="card-header" >执行Shell脚本</div>
+
+                                            <div class="card-body">
+                                            
+
+						<p>当returnkey字段的值等于6，执行shell脚本，返回shell所打印的内容，例如： echo 3 将会返回3。您可以在shell环境下处理该业务的部分逻辑，例如：发送电子邮件、发送短信、生成日志，等等... </p>
+
+
+                                         </div>  
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c7">
+
+                                                <div class="card-header" >执行java</div>
+
+                                            <div class="card-body">
+                                            
+
+						<p>当returnkey字段的值等于7，执行java类，要求该java类必须有main方法，参数由main方法的String[] args字符串数组的args[0]传入，将会获得一个json格式的字符串，该json包含了当前登录人以及页面传参信息。您可以在java环境下处理该业务的部分逻辑。
+
+						该脚本无返回值。 </p>
+
+					    </div>
+
+					</div><!--/card--> 
+
+				</div><!--/help-con-->
+
+
+				
+				
+				
+			</div>
+
+		</div>
+
+		
+		
+
+		
+
+	</div>
+	<!-- -->
+	<div class="container-fluid list03" style="margin-top: 200px;">
+		<p class="text-center"><a href="download.html" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>立即试用最新版本</a></p>
+	</div>
+	<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
