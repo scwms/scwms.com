@@ -1,1 +1,231 @@
-inner.003020002002.html
+<!Doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<title>表数据组件-_DD</title>
+	<meta content="NOODP" name="ROBOTS" />
+	<meta name="keywords" content="help,Document">
+	<meta name="description" content="...">
+ 
+	<!-- Bootstrap4 CSS -->
+	<link rel="stylesheet" href="../static/bootstrap4/css/bootstrap.css">
+	<link rel="stylesheet" href="../static/css/public.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<!-- jQuery bootstrap.min.js -->
+	<script src="../static/js/jquery.min.js"></script>
+	 
+	<!-- bootstrap.bundle.min.js popper.min.js -->
+	<script src="../static/js/popper.min.js"></script>
+	 
+	<!-- Bootstrap4 JavaScript -->
+	<script src="../static/bootstrap4/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+		 
+<body>		
+<header id="header" >
+	<div class="list01-title bg-info">
+		<div class="btn-group">
+		  <a class="btn btn-warning text-muted" href="https://workflow.net.cn" target="_blank"><i class="glyphicon glyphicon-home"></i></a>
+		</div>
+		<h2 class="text-center">表数据组件-配置表：`模块编号_dd` && _ld </h2>
+	</div>
+</header>
+
+<div id="slider" style="display:none;"><div class="slider_mask"><h1 class="mask-title d-none d-md-block">WORKFLOW-试用说明</h1></div></div>
+
+	
+	<!-- -->
+
+	<div class="container-fluid help p-r">
+		<div class="row">
+			<div class="col col-12 col-md-2" style="top:150px;width:250px;">
+				<div class="" id="help-nav" style="top:150px;width:250px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a href="#c">概述</a></li>
+						<li class="list-group-item"><a href="#c0">相关概念和术语</a></li>
+						<li class="list-group-item"><a href="#c1">DD表字段说明</a></li>
+						<li class="list-group-item"><a href="#c2">视图列表数据</a></li>
+						<li class="list-group-item"><a href="#c3">普通列表数据</a></li>
+						<li class="list-group-item"><a href="#c4">增强列表数据</a></li>
+						<li class="list-group-item"><a href="#c5">详情/打印数据</a></li>
+						<li class="list-group-item"><a href="#c6">表单数据</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col col-12 col-md-10" style="top:150px;" >
+				
+				<div class="help-con">
+					<div class="card" id="c">
+						<div class="card-header">概述</div>
+					    <div class="card-body">
+						<p>配置库中以_dd结尾的配置表，负责同时为列表页(普通列表、增强列表)，表单页、详情页、数据的检索、打印、和导出提供数据服务。</p>
+					 	<p>而视图列表则是一个特例，它使用了_ld为后缀的视图作为数据来源。</p>
+							
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="c0">
+						<div class="card-header">一些重要的术语和概念</div>
+					    <div class="card-body">
+							<b>1，模块编号</b>
+							<p>通过创建一组相同前缀配置表的方式，定义出一个功能模块，这一组配置表以及配置表中包含的配置数据，被成为软件系统的“模块”，通过点击提前设计好的菜单来打开该功能（模块），在配置表中通过“模块”来区分不同的业务，除了通过配置表前缀，还可以通过web页面请求的的传参（viewName），自定义数据源表中的字段（model）来进行区分这些模块。</p>
+							
+							<b>2，模板</b>
+							<p>一个系统模块中包含有若干个功能，这些功能需要使用不用的表单，不同的处理逻辑，甚至不同的数据源。在配置表中通过模版编号（templid）来区分这些不同的业务逻辑、数据处理展示的方式。</p>
+							
+							<b>3，表头</b>
+							<p>列表页面头部分，包括搜索框搜索按钮，其它一些功能按钮，显示列的名称。</p>
+							
+							<b>4，表数据</b>
+							<p>列表页面第二行以及往下的内容，以JSON格式的数据提供给web页面展示。其获取脚本配置在`模块编号_dd`表中。</p>
+							
+							<b>5，配置表</b>
+							<p>配置库中的表。</p>
+							
+							<b>6，配置库</b>
+							<p>由/opt/workflow.net.cn/config/application.properties配置文件中config.datasource.url指定的数据库。</p>
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="c1">
+
+						<div class="card-header" >DD表（`模块编号_dd`)字段说明</div>
+
+					    <div class="card-body">
+
+					    	<b>id</b>
+					    	<p>系统解析时，按照ID值的顺序</p>
+					    	
+						<b>templid</b>
+						<p>模板id</p>
+
+						<b>group</b>
+						<p>表单分组（参考表单组件），若该数据不是为表单提供数据，则可忽略。</p>
+
+                                                <b>name</b>
+                                                <p>表单项名称（参考表单组件），若该数据不是为表单提供数据，则可忽略。</p>
+
+                                                <b>value</b>
+                                                <p>数据值，为不同组件提供数据，数据值的获取方式不同，大多SQL语句，js组件使用js代码，html组件使用html代码，shell组件使用shell脚本...参考具体组件。</p>
+
+                                                <b>editor</b>
+                                                <p>表单编辑器/控件（参考表单组件），若该数据不是为表单提供数据，则可忽略，偶尔用做它途，例如：ddplus列表组件将查询列表数据行脚本保存于此。</p>
+
+                                                <b>dbcol</b>
+                                                <p>表单控件的名称，AD组件使用该值来接收数据，若没填，默认使用field_{id}来接收，非表单控价忽略此项。</p>
+
+
+
+					    </div>
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c2">
+
+                                                <div class="card-header" >视图列表数据(_ld视图)</div>
+
+                                            <div class="card-body">
+
+						<p>以视图列表示例（003021001）为例，配置库中视图：003021001_ld,所列出的数据为“示例”模块中的“视图列表”子模块提供数据服务。所查询出的数据将按照“表头“定义的列，展示在系统中。</p>
+						<b>注意以下几点：</b>
+						<p>1，视图中必须有id列，id列为主键列，数字类型，不可重复。</p>
+						<p>2，复杂数据类型的值（除了字符和数字）必须转字符，否则显示格式可能会混乱。例如：mysql中的日期时间now()需要转换成 DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s')，否则数据显示混乱。</p>
+						<p>3，数据量不可过大，过大会导致页面加载缓慢，超过1万行数据，请使用增强列表组件展示数据。</p>
+						<p>4，视图中需要展示的字段，需和表头定义的一致。</p>
+
+					    </div>
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c3">
+
+                                                <div class="card-header" >普通列表数据</div>
+
+                                            <div class="card-body">
+
+
+						<p>以普通列表示例（003021002）为例，配置库中表：003021002_dd,templid列值为100的记录，value中所保存的sql语句所查询出的结果，会根据“表头”定义的列，展示在系统中。</p>
+                                                <b>注意以下几点：</b>
+                                                <p>1，视图中必须有id列，id列为主键列，数字类型，不可重复。</p>
+                                                <p>2，复杂数据类型的值（除了字符和数字）必须转字符，否则显示格式可能会混乱。例如：mysql中的日期时间now()需要转换成 DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s')，否则数据显示混乱。</p>
+                                                <p>3，数据量不可过大，过大会导致页面加载缓慢，超过1万行数据，请使用增强列表组件展示数据。</p>
+                                                <p>4，视图中需要展示的字段，需和表头定义的一致。</p>
+
+						<b>和视图列表的区别:</b>
+						<p>1，将视图sql查询语句保存在了DD表中</p>
+						<p>2，支持按照检索框样式名检索数(参考普通列表示例)</p>
+
+					    </div>
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c4">
+
+                                                <div class="card-header" >增强列表数据</div>
+
+                                            <div class="card-body">
+
+                                                
+                                                <p>以增强列表示例（003021003）为例，配置库中表：003021003_dd,templid列值为100的记录，value中所保存的sql语句所查询出的结果，会根据“表头”定义的列，展示在系统中。</p>
+						<p>列表页中结果集的总记录数，将由额外一条查询语句专门负责，保存在对应的editor列中。</p>
+                                                <b>注意以下几点：</b>
+                                                <p>1，视图中必须有id列，id列为主键列，数字类型，不可重复。</p>
+                                                <p>2，复杂数据类型的值（除了字符和数字）必须转字符，否则显示格式可能会混乱。例如：mysql中的日期时间now()需要转换成 DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s')，否则数据显示混乱。</p>
+                                                <p>3，editor字段不能为空，区别于普通列表。</p>
+                                                <p>4，视图中需要展示的字段，需和表头定义的一致。</p>
+
+                                                <b>和普通列表的区别:</b>
+                                                <p>1，不支持按照检索框样式搜索结果，需要手动接收和处理由页面端传过来的参数值。</p>
+                                                <p>2，数据总记录数由专门的sql负责(普通列表和视图列表均使用嵌套子查询方式)因此查询效率会有所提升，但是需要额外处理检索条件。</p>
+
+
+					    </div>
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c5">
+
+                                                <div class="card-header" >详情数据、打印数据</div>
+
+                                            <div class="card-body">
+						<p>系统detail数据页面是由打印模版(_pt)和数据(_dd)两个部分组成的，和普通视图一样，通过调用时传递参数templid，详情页默认templid传1000，也可以自己定义一个数字，系统会找到dd表中templid=1000的那条记录，执行保存于value列中的sql语句，当然，该sql需要接收一个数据的id作为检索条件。查到的数据会使用pt表中指定的模版来展示，参考列表组件中的 showDetailInNewTab(title, templid, printid, dataid)方法。</p>
+
+						 </div>
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c6">
+
+                                                <div class="card-header" >表单数据</div>
+
+                                            <div class="card-body">
+						<p>同理，由于数据的添加和修改页面使用了不同的templid，所以展示会略有不同。但是控件要展示的值同样都来自于value列。而表单页面不同的输入控件，均保存在editor列中，以json格式的数据存储。不同控件的的定义和配置方式，请参考另外一篇文档<a href="/help/inner.003020003.html" target="_blank">《表单组件》</a></p>
+
+					    </div>
+
+					</div><!--/card--> 
+
+				</div><!--/help-con-->
+
+
+				
+				
+				
+			</div>
+
+		</div>
+
+		
+		
+
+		
+
+	</div>
+	<!-- -->
+	<div class="container-fluid list03" style="margin-top: 200px;">
+		<p class="text-center"><a href="download.html" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>立即试用最新版本</a></p>
+	</div>
+	<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>
