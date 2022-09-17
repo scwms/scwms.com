@@ -1,1 +1,228 @@
-由于时间原因，文档稍后奉上，敬请见谅。
+<!Doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<title>表单录入控件H</title>
+	<meta content="NOODP" name="ROBOTS" />
+	<meta name="keywords" content="help,Document">
+	<meta name="description" content="...">
+ 
+	<!-- Bootstrap4 CSS -->
+	<link rel="stylesheet" href="../static/bootstrap4/css/bootstrap.css">
+	<link rel="stylesheet" href="../static/css/public.css">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<!-- jQuery bootstrap.min.js -->
+	<script src="../static/js/jquery.min.js"></script>
+	 
+	<!-- bootstrap.bundle.min.js popper.min.js -->
+	<script src="../static/js/popper.min.js"></script>
+	 
+	<!-- Bootstrap4 JavaScript -->
+	<script src="../static/bootstrap4/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+		 
+<body>		
+<header id="header" >
+	<div class="list01-title bg-info">
+		<div class="btn-group">
+		  <a class="btn btn-warning text-muted" href="https://workflow.net.cn" target="_blank"><i class="glyphicon glyphicon-home"></i></a>
+		</div>
+		<h2 class="text-center">表单录入控件</h2>
+	</div>
+</header>
+
+<div id="slider" style="display:none;"><div class="slider_mask"><h1 class="mask-title d-none d-md-block">WORKFLOW-试用说明</h1></div></div>
+
+	
+	<!-- -->
+
+	<div class="container-fluid help p-r">
+		<div class="row">
+			<div class="col col-12 col-md-2" style="top:150px;width:250px;">
+				<div class="" id="help-nav" style="top:150px;width:250px;">
+					<ul class="list-group">
+						<li class="list-group-item"><a href="#c">概述</a></li>
+						<li class="list-group-item"><a href="#c0">相关概念和术语</a></li>
+						<li class="list-group-item"><a href="#c1">单行输入控件</a></li>
+<!-- text,validatebox,password,maskedbox,numberbox,numberspinner -->
+						<li class="list-group-item"><a href="#c2">多行输入控件</a></li>
+<!-- textarea,wang,md -->
+						<li class="list-group-item"><a href="#c3">选择控件</a></li>
+<!-- combobox,combotree,switchbutton,checkbox -->
+						<li class="list-group-item"><a href="#c4">日期时间控件</a></li>
+<!-- datebox,datetimebox -->
+						<li class="list-group-item"><a href="#c5">附件上传控件</a></li>
+<!-- filebox -->
+						<li class="list-group-item"><a href="#c6">数据网格控件</a></li>
+<!-- datagrid -->
+						<li class="list-group-item"><a href="#c7">其它控件</a></li>
+<!-- none,javascript,html,hidden -->
+
+					</ul>
+				</div>
+			</div>
+
+			<div class="col col-12 col-md-10" style="top:150px;" >
+				
+				<div class="help-con">
+					<div class="card" id="c">
+						<div class="card-header">概述</div>
+					    <div class="card-body">
+
+						<p>系统表单录入页面是根据数据(_dd)表中的控件(editor)和控件值value共同组成的，通过调用时传递参数templid，表单的templid可以自己拟定，但是应该避开像100或1000这样的数字，因为需要预留给列表和详情，系统会找到dd表中特定的templid值的若干条记录，每条记录描述一个控件，不同的页签用group区分开，editor中描述了控件的类型、数据、验证方式等等详细信息，系统需要根据此信息来解析和展示该控件。</p>
+	
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="c0">
+						<div class="card-header">一些重要的术语和概念</div>
+					    <div class="card-body">
+							<b>1，模块编号</b>
+							<p>通过创建一组相同前缀配置表的方式，定义出一个功能模块，这一组配置表以及配置表中包含的配置数据，被成为软件系统的“模块”，通过点击提前设计好的菜单来打开该功能（模块），在配置表中通过“模块”来区分不同的业务，除了通过配置表前缀，还可以通过web页面请求的的传参（viewName），自定义数据源表中的字段（model）来进行区分这些模块。</p>
+							
+							<b>2，模板</b>
+							<p>一个系统模块中包含有若干个功能，这些功能需要使用不用的表单，不同的处理逻辑，甚至不同的数据源。在配置表中通过模版编号（templid）来区分这些不同的业务逻辑、数据处理展示的方式。</p>
+							
+							<b>3，表单</b>
+							<p>负责数据采集的页面，包含若干输入控件，用于录入和提交数据。</p>
+							
+							<b>4，表数据</b>
+							<p>列表页面第二行以及往下的内容，以JSON格式的数据提供给web页面展示。其获取脚本配置在`模块编号_dd`表中。</p>
+							
+							<b>5，配置表</b>
+							<p>配置库中的表。</p>
+							
+							<b>6，配置库</b>
+							<p>由/opt/workflow.net.cn/config/application.properties配置文件中config.datasource.url指定的数据库。</p>
+					    </div>
+					</div><!--/card--> 
+					
+					<div class="card" id="c1">
+
+						<div class="card-header" >单行输入控件</div>
+
+					    <div class="card-body">
+
+					    	<b></b>
+					    	<p></p>
+					    	
+
+                                            </div>
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c2">
+
+                                                <div class="card-header" >多行输入控件</div>
+
+                                            <div class="card-body">
+
+                                                <b></b>
+                                                <p></p>
+
+
+                                            </div>
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c3">
+
+                                                <div class="card-header" >选择控件</div>
+
+                                            <div class="card-body">
+
+                                                <b></b>
+                                                <p></p>
+
+                                            </div>
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c4">
+
+                                                <div class="card-header" >日期时间控件</div>
+
+                                            <div class="card-body">
+
+                                                <b></b>
+                                                <p></p>
+
+
+                                            </div>
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c5">
+
+                                                <div class="card-header" >附件上传控件</div>
+
+                                            <div class="card-body">
+
+                                                <b></b>
+                                                <p></p>
+
+
+                                            </div>
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c6">
+
+                                                <div class="card-header" >数据网格控件</div>
+
+                                            <div class="card-body">
+
+                                                <b></b>
+                                                <p></p>
+
+
+                                            </div>
+                                        </div><!--/card-->
+
+                                        <div class="card" id="c7">
+
+                                                <div class="card-header" >其它控件</div>
+
+                                            <div class="card-body">
+
+                                                <b></b>
+                                                <p></p>
+
+
+                                            </div>
+                                        </div><!--/card-->
+
+
+
+
+
+
+
+
+
+
+
+				</div><!--/help-con-->
+
+
+				
+				
+				
+			</div>
+
+		</div>
+
+		
+		
+
+		
+
+	</div>
+	<!-- -->
+	<div class="container-fluid list03" style="margin-top: 200px;">
+		<p class="text-center"><a href="download.html" class="btn btn-outline-light"><span class="glyphicon glyphicon-download mr-10"></span>立即试用最新版本</a></p>
+	</div>
+	<script src="../static/js/public.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+
+</html>
