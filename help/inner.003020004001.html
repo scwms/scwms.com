@@ -140,7 +140,7 @@
                                             <div class="card-body">
 
 
-						<p>0，执行SQL语句：insert、update、delete，用于处理数据，但是没有返回值。注意：无返回值的脚本优先级最低将在有返回值脚本后执行。</p>
+						<p>当returnkey字段的值等于0时，执行SQL语句：insert、update、delete，用于处理数据，但是没有返回值。注意：无返回值的脚本优先级最低将在有返回值脚本后执行。</p>
 
 
                                          </div>  
@@ -153,7 +153,7 @@
                                             <div class="card-body">
                                             
 
-						<p>当returnkey字段的值等于1，执行SQL语句：insert，返回值刚刚插入数据的键值。这相当于mysql数据库中的last_insert_id()。 </p>
+						<p>当returnkey字段的值等于1时，执行SQL语句：insert，返回值刚刚插入数据的键值。这相当于mysql数据库中的last_insert_id()。 </p>
 
 
                                          </div>  
@@ -166,7 +166,7 @@
                                             <div class="card-body">
                                             
 
-						<p>当returnkey字段的值等于2，执行SQL语句：select，根据查询语句，返回一个字符串。这样可以将sql拆分成多个步骤，逐步实现复杂的业务逻辑。 </p>
+						<p>当returnkey字段的值等于2时，执行SQL语句：select，根据查询语句，返回一个字符串。这样可以将sql拆分成多个步骤，逐步实现复杂的业务逻辑。 </p>
 
 
                                          </div>  
@@ -179,7 +179,7 @@
                                             <div class="card-body">
                                             
 
-						<p>当returnkey字段的值等于3，执行SQL语句：select，该select返回3列：url, headers 和 parameters， 分别表示要请求的url地址，请求该url地址时候要传递的头信息和请求该地址时要传递的参数。系统会自动向该地址发送一个get请求。返回由该请求得到的字符串。<br>例如：<br>select <br>	'${basePath}/getResource/3/html' as url ,<br>	'{"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"}' as headers,<br>	'{}' as parameters <br>from <br>	dual<br>您可以在其它服务器上的应用程序中处理部分业务逻辑。</p>
+						<p>当returnkey字段的值等于3时，执行SQL语句：select，该select返回3列：url, headers 和 parameters， 分别表示要请求的url地址，请求该url地址时候要传递的头信息和请求该地址时要传递的参数。系统会自动向该地址发送一个get请求。返回由该请求得到的字符串。<br>例如：<br>select <br>	'${basePath}/getResource/3/html' as url ,<br>	'{"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"}' as headers,<br>	'{}' as parameters <br>from <br>	dual<br>您可以在其它服务器上的应用程序中处理部分业务逻辑。</p>
 
 
                                          </div>  
@@ -192,7 +192,7 @@
                                             <div class="card-body">
                                             
 
-						<p>当returnkey字段的值等于4，执行SQL语句：select，该select返回3列：url, headers 和 parameters， 分别表示要请求的url地址，请求该url地址时候要传递的头信息和请求该地址时要传递的参数。系统会自动向该地址发送一个post请求。返回由该请求得到的字符串。<br>例如：<br>select <br>	'${basePath}/getResource/3/html' as url ,<br>	'{"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"}' as headers,<br>	'{}' as parameters <br>from <br>	dual<br>您可以在其它应用中处理部分业务逻辑。</p>
+						<p>当returnkey字段的值等于4时，执行SQL语句：select，该select返回3列：url, headers 和 parameters， 分别表示要请求的url地址，请求该url地址时候要传递的头信息和请求该地址时要传递的参数。系统会自动向该地址发送一个post请求。返回由该请求得到的字符串。<br>例如：<br>select <br>	'${basePath}/getResource/3/html' as url ,<br>	'{"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"}' as headers,<br>	'{}' as parameters <br>from <br>	dual<br>您可以在其它应用中处理部分业务逻辑。</p>
 
 
                                          </div>  
@@ -205,7 +205,7 @@
                                             <div class="card-body">
                                             
 
-						<p>当returnkey字段的值等于5，执行SQL语句：select，该select语句查询返回的值必须是1，否则将会抛出异常，前面所执行的SQL语句将会全部回滚。 </p>
+						<p>当returnkey字段的值等于5时，执行SQL语句：select，该select语句查询返回的值必须是1，否则将会抛出异常，前面所执行的SQL语句将会全部回滚。 </p>
 
                                          </div>  
                                         </div><!--/card-->
@@ -217,7 +217,7 @@
                                             <div class="card-body">
                                             
 
-						<p>当returnkey字段的值等于6，执行shell脚本，返回shell所打印的内容，例如： echo 3 将会返回3。您可以在shell环境下处理该业务的部分逻辑，例如：发送电子邮件、发送短信、生成日志，等等... </p>
+						<p>当returnkey字段的值等于6时，执行shell脚本，返回shell所打印的内容，例如： echo 3 将会返回3。您可以在shell环境下处理该业务的部分逻辑，例如：发送电子邮件、发送短信、生成日志，等等... </p>
 
 
                                          </div>  
@@ -230,7 +230,7 @@
                                             <div class="card-body">
                                             
 
-						<p>当returnkey字段的值等于7，执行java类，要求该java类必须有main方法，参数由main方法的String[] args字符串数组的args[0]传入，将会获得一个json格式的字符串，该json包含了当前登录人以及页面传参信息。您可以在java环境下处理该业务的部分逻辑。
+						<p>当returnkey字段的值等于7时，执行java类，要求该java类必须有main方法，参数由main方法的String[] args字符串数组的args[0]传入，将会获得一个json格式的字符串，该json包含了当前登录人以及页面传参信息。您可以在java环境下处理该业务的部分逻辑。
 
 						该脚本无返回值。 </p>
 
