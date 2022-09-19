@@ -66,9 +66,9 @@
 					<div class="card" id="c">
 						<div class="card-header">概述</div>
 					    <div class="card-body">
-							<p>传统的web应用处理表单使用的java selvet 或者php 从表单接收到参数后，会由服务器端程序来处理接收到的数据。</p>
+							<p>传统的web应用处理表单数据，大多是通过http请求从表单接收到参数后，服务器端使用jsp或者php程序来处理接收到的数据，然后再将处理过的数据存储到数据中。</p>
 							<p></p>
-							<p>而本系统则通过在一张AD配置表中配置出多种不同类型的脚本来实现和写代码相同的效果。从而完成各种业务需求的实现。</p>
+							<p>而本轻代码配置系统则通过在一张AD配置表中配置出多种不同类型的脚本来实现和写代码相同的效果。从而完成各种业务需求的实现。</p>
 							<p>AD配置表中同一个模块的同一套模版可以在一个事务中执行多条脚本，包含sql脚本shell脚本，http请求脚本。并且可以根据需要穿插使用，并且按照配置数据id的顺序执行，先执行脚本的返回结果，可以为后面的脚本提供决策依据。返回值使用内置占位符${returnkey_id}的方式获取，d是数字格式，即脚本所在行的ID。</p>
 
 							<p>支持如下几种方式来处理由客户端提交过来的请求：</p>
@@ -135,7 +135,7 @@
 
                                         <div class="card" id="c0">
 
-                                                <div class="card-header" >执行无反馈SQL：insert、update、delete</div>
+                                                <div class="card-header" >0，执行无反馈SQL：insert、update、delete</div>
 
                                             <div class="card-body">
 
@@ -148,7 +148,7 @@
 
                                         <div class="card" id="c1">
 
-                                                <div class="card-header" >执行insert返回key</div>
+                                                <div class="card-header" >1，执行insert返回key</div>
 
                                             <div class="card-body">
                                             
@@ -161,7 +161,7 @@
 
                                         <div class="card" id="c2">
 
-                                                <div class="card-header" >执行select SQL语句</div>
+                                                <div class="card-header" >2，执行select SQL语句</div>
 
                                             <div class="card-body">
                                             
@@ -174,7 +174,7 @@
 
                                         <div class="card" id="c3">
 
-                                                <div class="card-header" >执行get请求</div>
+                                                <div class="card-header" >3，执行get请求</div>
 
                                             <div class="card-body">
                                             
@@ -187,7 +187,7 @@
 
                                         <div class="card" id="c4">
 
-                                                <div class="card-header" >执行POST请求</div>
+                                                <div class="card-header" >4，执行POST请求</div>
 
                                             <div class="card-body">
                                             
@@ -200,7 +200,7 @@
 
                                         <div class="card" id="c5">
 
-                                                <div class="card-header" >设定断言</div>
+                                                <div class="card-header" >5，设定断言</div>
 
                                             <div class="card-body">
                                             
@@ -212,7 +212,7 @@
 
                                         <div class="card" id="c6">
 
-                                                <div class="card-header" >执行Shell脚本</div>
+                                                <div class="card-header" >6，执行Shell脚本</div>
 
                                             <div class="card-body">
                                             
@@ -225,7 +225,7 @@
 
                                         <div class="card" id="c7">
 
-                                                <div class="card-header" >执行java</div>
+                                                <div class="card-header" >7，执行java</div>
 
                                             <div class="card-body">
                                             
